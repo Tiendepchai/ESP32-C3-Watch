@@ -36,11 +36,11 @@ final class BLEConfigClient: NSObject, ObservableObject {
     @Published var callsEnabled = true
 
     private let targetName = "C3-ANCS"
-    private let serviceUUID = CBUUID(string: "9F4A1000-4F3E-4A5B-9C01-9A2B3C4D5E60")
-    private let summaryUUID = CBUUID(string: "9F4A1001-4F3E-4A5B-9C01-9A2B3C4D5E60")
-    private let pageUUID = CBUUID(string: "9F4A1002-4F3E-4A5B-9C01-9A2B3C4D5E60")
-    private let catalogUUID = CBUUID(string: "9F4A1003-4F3E-4A5B-9C01-9A2B3C4D5E60")
-    private let toggleUUID = CBUUID(string: "9F4A1004-4F3E-4A5B-9C01-9A2B3C4D5E60")
+    private let serviceUUID = CBUUID(string: "605E4D3C-2B9A-019C-5B4A-3E4F00104A9F")
+    private let summaryUUID = CBUUID(string: "605E4D3C-2B9A-019C-5B4A-3E4F01104A9F")
+    private let pageUUID = CBUUID(string: "605E4D3C-2B9A-019C-5B4A-3E4F02104A9F")
+    private let catalogUUID = CBUUID(string: "605E4D3C-2B9A-019C-5B4A-3E4F03104A9F")
+    private let toggleUUID = CBUUID(string: "605E4D3C-2B9A-019C-5B4A-3E4F04104A9F")
 
     private var central: CBCentralManager!
     private var peripheral: CBPeripheral?
@@ -192,10 +192,13 @@ extension BLEConfigClient: CBPeripheralDelegate {
                 bluetoothState = "Service discovery failed"
                 return
             }
-            peripheral.services?.forEach { service in
-                guard service.uuid == serviceUUID else { return }
-                peripheral.discoverCharacteristics([summaryUUID, pageUUID, catalogUUID, toggleUUID], for: service)
+
+            guard let service = peripheral.services?.first(where: { $0.uuid == serviceUUID }) else {
+                bluetoothState = "Config service not found"
+                return
             }
+
+            peripheral.discoverCharacteristics([summaryUUID, pageUUID, catalogUUID, toggleUUID], for: service)
         }
     }
 
@@ -222,6 +225,14 @@ extension BLEConfigClient: CBPeripheralDelegate {
                 default:
                     break
                 }
+            }
+
+            guard summaryCharacteristic != nil,
+                  pageCharacteristic != nil,
+                  catalogCharacteristic != nil,
+                  toggleCharacteristic != nil else {
+                bluetoothState = "Config characteristics missing"
+                return
             }
 
             refreshAll()
