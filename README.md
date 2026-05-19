@@ -76,8 +76,8 @@ The firmware implements the standard ANCS accessory flow:
 
 ```text
 ┌────────────────────┐
-│      iPhone         │
-│  ANCS + CTS Server  │
+│      iPhone        │
+│  ANCS + CTS Server │
 └─────────┬──────────┘
           │ BLE encrypted link
           ▼
@@ -89,20 +89,20 @@ The firmware implements the standard ANCS accessory flow:
 │  └───────┬───────┘   └─────┬──────┘  │
 │          │                 │         │
 │          ▼                 ▼         │
-│  ┌───────────────┐   ┌────────────┐  │
+│  ┌───────────────┐   ┌─────────────┐ │
 │  │ CTS Client    │   │ Notification│ │
 │  │ Time Sync     │   │ Store       │ │
-│  └───────┬───────┘   └─────┬──────┘  │
+│  └───────┬───────┘   └─────┬───────┘ │
 │          │                 │         │
 │          ▼                 ▼         │
 │  ┌────────────────────────────────┐  │
-│  │        Display Manager          │  │
-│  │      SH1106 OLED Rendering      │  │
+│  │        Display Manager         │  │
+│  │      SH1106 OLED Rendering     │  │
 │  └────────────────────────────────┘  │
 │                                      │
 │  ┌────────────────────────────────┐  │
-│  │        Storage Manager          │  │
-│  │        NVS Settings/Bonds       │  │
+│  │        Storage Manager         │  │
+│  │        NVS Settings/Bonds      │  │
 │  └────────────────────────────────┘  │
 └──────────────────────────────────────┘
 ```
