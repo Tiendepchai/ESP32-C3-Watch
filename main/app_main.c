@@ -11,24 +11,38 @@
 #include "display_manager.h"
 #include "esp_check.h"
 #include "esp_log.h"
+#include "esp_pm.h"
 #include "esp_system.h"
+#include "esp_task_wdt.h"
 #include "esp_timer.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/queue.h"
 #include "freertos/task.h"
+#include <time.h>
+#include "cts_client.h"
 #include "notification_store.h"
+#include "power_manager.h"
 #include "storage_manager.h"
 
+/* Đặt 1 khi đã wire xong battery divider + TP4056 STAT. */
+#define APP_ENABLE_POWER_MONITOR 0
+
 static const char *TAG = BOARD_TAG_APP;
+
+#define APP_DETAIL_REQUEST_COOLDOWN_MS 5000ULL
 
 typedef enum {
     APP_EVENT_BLE_STATE = 0,
     APP_EVENT_BOND,
     APP_EVENT_NOTIFICATION,
     APP_EVENT_CONFIG_CHANGED,
+    APP_EVENT_NAVIGATION,
     APP_EVENT_BUTTON,
     APP_EVENT_FILTER_OVERLAY_TIMEOUT,
     APP_EVENT_REBOOT,
+    APP_EVENT_POWER,
+    APP_EVENT_DISPLAY_AUTO_OFF,
+    APP_EVENT_WATCHFACE_TICK,
 } app_event_type_t;
 
 typedef struct {
@@ -38,7 +52,9 @@ typedef struct {
         ble_manager_state_t ble_state;
         bool bonded;
         button_manager_event_t button_event;
+        ble_manager_navigation_state_t navigation;
         notification_record_t notification;
+        power_state_t power;
     } data;
 } app_event_t;
 
@@ -54,13 +70,104 @@ typedef struct {
     bool bonded;
     bool filter_overlay_visible;
     bool reboot_pending;
+    bool display_active;
     esp_timer_handle_t filter_overlay_timer;
     esp_timer_handle_t reboot_timer;
-    notification_record_t snapshot_records[BOARD_NOTIFICATION_QUEUE_MAX];
-    notification_record_t filtered_records[BOARD_NOTIFICATION_QUEUE_MAX];
+    esp_timer_handle_t display_off_timer;
+    esp_timer_handle_t watchface_timer;
+    ble_manager_navigation_state_t navigation;
+    power_state_t power;
+    uint32_t detail_request_uids[BOARD_NOTIFICATION_QUEUE_MAX];
+    uint64_t detail_request_ms[BOARD_NOTIFICATION_QUEUE_MAX];
+    uint32_t filtered_uids[BOARD_NOTIFICATION_QUEUE_MAX];
 } app_ctx_t;
 
 static app_ctx_t s_app;
+
+static void app_set_state(app_state_t state);
+static void app_apply_display_off_policy(void);
+
+static uint64_t app_now_ms(void)
+{
+    return (uint64_t)(esp_timer_get_time() / 1000ULL);
+}
+
+static void app_reset_detail_requests(void)
+{
+    memset(s_app.detail_request_uids, 0, sizeof(s_app.detail_request_uids));
+    memset(s_app.detail_request_ms, 0, sizeof(s_app.detail_request_ms));
+}
+
+static void app_forget_detail_request(uint32_t uid)
+{
+    if (uid == 0U) {
+        return;
+    }
+
+    for (size_t i = 0; i < BOARD_NOTIFICATION_QUEUE_MAX; ++i) {
+        if (s_app.detail_request_uids[i] == uid) {
+            s_app.detail_request_uids[i] = 0;
+            s_app.detail_request_ms[i] = 0;
+            return;
+        }
+    }
+}
+
+static bool app_recently_requested_details(uint32_t uid)
+{
+    uint64_t now_ms;
+
+    if (uid == 0U) {
+        return true;
+    }
+
+    now_ms = app_now_ms();
+    for (size_t i = 0; i < BOARD_NOTIFICATION_QUEUE_MAX; ++i) {
+        if (s_app.detail_request_uids[i] != uid) {
+            continue;
+        }
+        if ((now_ms - s_app.detail_request_ms[i]) < APP_DETAIL_REQUEST_COOLDOWN_MS) {
+            return true;
+        }
+        s_app.detail_request_uids[i] = 0;
+        s_app.detail_request_ms[i] = 0;
+        return false;
+    }
+
+    return false;
+}
+
+static void app_note_detail_request(uint32_t uid)
+{
+    size_t target = BOARD_NOTIFICATION_QUEUE_MAX;
+    uint64_t oldest_ms = UINT64_MAX;
+    uint64_t now_ms;
+
+    if (uid == 0U) {
+        return;
+    }
+
+    now_ms = app_now_ms();
+    for (size_t i = 0; i < BOARD_NOTIFICATION_QUEUE_MAX; ++i) {
+        if (s_app.detail_request_uids[i] == uid) {
+            target = i;
+            break;
+        }
+        if (s_app.detail_request_uids[i] == 0U) {
+            target = i;
+            break;
+        }
+        if (s_app.detail_request_ms[i] <= oldest_ms) {
+            oldest_ms = s_app.detail_request_ms[i];
+            target = i;
+        }
+    }
+
+    if (target < BOARD_NOTIFICATION_QUEUE_MAX) {
+        s_app.detail_request_uids[target] = uid;
+        s_app.detail_request_ms[target] = now_ms;
+    }
+}
 
 static const char *app_state_to_string(app_state_t state)
 {
@@ -79,6 +186,10 @@ static const char *app_state_to_string(app_state_t state)
         return "ANCS_READY";
     case APP_STATE_SHOWING_NOTIFICATION:
         return "SHOWING_NOTIFICATION";
+    case APP_STATE_SHOWING_NAVIGATION:
+        return "SHOWING_NAVIGATION";
+    case APP_STATE_WATCHFACE:
+        return "WATCHFACE";
     case APP_STATE_DISCONNECTED:
         return "DISCONNECTED";
     case APP_STATE_RECONNECTING:
@@ -95,10 +206,8 @@ static const char *app_filter_to_string(notification_filter_t filter)
         return "All";
     case NOTIFICATION_FILTER_CALLS:
         return "Calls";
-    case NOTIFICATION_FILTER_MESSAGES_SOCIAL:
-        return "Messages/Social";
-    case NOTIFICATION_FILTER_IMPORTANT_ONLY:
-        return "Important only";
+    case NOTIFICATION_FILTER_NAVIGATION:
+        return "Navigation";
     default:
         return "All";
     }
@@ -111,108 +220,133 @@ static bool app_is_call_category(uint8_t category_id)
            category_id == ANCS_CATEGORY_ID_VOICEMAIL;
 }
 
+/* Case-insensitive substring match. */
 static bool app_text_contains_token(const char *text, const char *token)
 {
-    size_t text_len;
-    size_t token_len;
-
     if (text == NULL || token == NULL) {
         return false;
     }
-
-    text_len = strlen(text);
-    token_len = strlen(token);
+    size_t text_len = strlen(text);
+    size_t token_len = strlen(token);
     if (token_len == 0U || text_len < token_len) {
         return false;
     }
-
     for (size_t i = 0; i <= (text_len - token_len); ++i) {
         size_t j = 0;
         while (j < token_len) {
             char a = text[i + j];
             char b = token[j];
-
-            if (a >= 'A' && a <= 'Z') {
-                a = (char)(a - 'A' + 'a');
-            }
-            if (b >= 'A' && b <= 'Z') {
-                b = (char)(b - 'A' + 'a');
-            }
-            if (a != b) {
-                break;
-            }
+            if (a >= 'A' && a <= 'Z') a = (char)(a - 'A' + 'a');
+            if (b >= 'A' && b <= 'Z') b = (char)(b - 'A' + 'a');
+            if (a != b) break;
             j++;
         }
         if (j == token_len) {
             return true;
         }
     }
-
     return false;
 }
 
-static bool app_is_default_allowed_app_id(const char *app_id)
+/* Whitelist các app navigation đã verify. Match qua app_id từ ANCS (substring,
+ * case-insensitive) để tránh false-positive như Ebooking đặt category=LOCATION. */
+static bool app_is_navigation_app_id(const char *app_id)
 {
     static const char *const tokens[] = {
-        "telegram",
-        "messenger",
-        "zalo",
-        "momo",
-        "mservice",
-        "tpbank",
-        "tpb",
-        "mbbank",
-        "mb mobile",
-        "mbmobile",
-        "instagram",
+        "google.maps",   /* com.google.Maps */
+        "apple.maps",    /* com.apple.Maps  */
+        "waze",          /* com.waze.iphone */
     };
-
     if (app_id == NULL || app_id[0] == '\0') {
         return false;
     }
-
     for (size_t i = 0; i < sizeof(tokens) / sizeof(tokens[0]); ++i) {
         if (app_text_contains_token(app_id, tokens[i])) {
             return true;
         }
     }
-
     return false;
 }
 
-static bool app_is_message_social_record(const notification_record_t *record)
+static bool app_is_navigation_record(const notification_record_t *record)
 {
-    static const char *const tokens[] = {
-        "telegram",
-        "messenger",
-        "zalo",
-        "instagram",
-    };
-
     if (record == NULL) {
         return false;
     }
+    /* Chỉ tin app_id từ whitelist. Bỏ qua category_id vì iOS lump tất cả
+     * mọi notif liên quan vị trí (booking, ride-share, ...) vào LOCATION. */
+    return app_is_navigation_app_id(record->app_id);
+}
 
-    if (record->category_id == ANCS_CATEGORY_ID_SOCIAL) {
-        return true;
+static void app_prepare_navigation_display(notification_record_t *record)
+{
+    char primary[BOARD_ANCS_TITLE_MAX_LEN] = {0};
+    char secondary[BOARD_ANCS_MESSAGE_MAX_LEN] = {0};
+
+    if (record == NULL) {
+        return;
     }
 
-    for (size_t i = 0; i < sizeof(tokens) / sizeof(tokens[0]); ++i) {
-        if (app_text_contains_token(record->app_id, tokens[i])) {
-            return true;
+    strlcpy(primary, record->title, sizeof(primary));
+    strlcpy(secondary, record->message, sizeof(secondary));
+
+    if (primary[0] == '\0' && secondary[0] != '\0') {
+        strlcpy(primary, secondary, sizeof(primary));
+        secondary[0] = '\0';
+    }
+
+    strlcpy(record->title, primary, sizeof(record->title));
+    strlcpy(record->message, secondary, sizeof(record->message));
+}
+
+/* Detect turn direction từ text (case-insensitive substring).
+ * Hỗ trợ tiếng Anh (Maps EN locale) và tiếng Việt không dấu.
+ * U-turn check trước "turn" để không nuốt nhầm. */
+static nav_icon_t app_detect_nav_direction(const char *primary, const char *secondary)
+{
+    const char *texts[2] = { primary, secondary };
+    for (int i = 0; i < 2; ++i) {
+        const char *t = texts[i];
+        if (t == NULL || t[0] == '\0') continue;
+
+        if (app_text_contains_token(t, "u-turn") ||
+            app_text_contains_token(t, "u turn") ||
+            app_text_contains_token(t, "uturn") ||
+            app_text_contains_token(t, "quay dau") ||
+            app_text_contains_token(t, "quay \xc4\x91\xe1\xba\xa7u")) { /* "quay đầu" */
+            return NAV_ICON_UTURN;
+        }
+        if (app_text_contains_token(t, "left") ||
+            app_text_contains_token(t, "trai") ||
+            app_text_contains_token(t, "tr\xc3\xa1i")) { /* "trái" */
+            return NAV_ICON_LEFT;
+        }
+        if (app_text_contains_token(t, "right") ||
+            app_text_contains_token(t, "phai") ||
+            app_text_contains_token(t, "ph\xe1\xba\xa3i")) { /* "phải" */
+            return NAV_ICON_RIGHT;
+        }
+        if (app_text_contains_token(t, "straight") ||
+            app_text_contains_token(t, "continue") ||
+            app_text_contains_token(t, "thang") ||
+            app_text_contains_token(t, "th\xe1\xba\xb3ng") || /* "thẳng" */
+            app_text_contains_token(t, "ti\xe1\xba\xbfp t\xe1\xbb\xa5" "c")) { /* "tiếp tục" */
+            return NAV_ICON_STRAIGHT;
         }
     }
-
-    return false;
+    return NAV_ICON_NONE;
 }
 
 static bool app_record_matches_filter(const notification_record_t *record)
 {
     bool calls_allowed = true;
-    bool app_allowed = false;
 
     if (record == NULL || !record->valid) {
         return false;
+    }
+
+    if (s_app.filter == NOTIFICATION_FILTER_ALL) {
+        return true;
     }
 
     if (app_is_call_category(record->category_id)) {
@@ -230,14 +364,6 @@ static bool app_record_matches_filter(const notification_record_t *record)
         if (record->app_id[0] == '\0') {
             return false;
         }
-
-        app_allowed = app_is_default_allowed_app_id(record->app_id);
-        if (storage_manager_is_notification_app_allowed(record->app_id, &app_allowed) && !app_allowed) {
-            return false;
-        }
-        if (!app_allowed) {
-            return false;
-        }
     }
 
     switch (s_app.filter) {
@@ -245,10 +371,8 @@ static bool app_record_matches_filter(const notification_record_t *record)
         return true;
     case NOTIFICATION_FILTER_CALLS:
         return app_is_call_category(record->category_id);
-    case NOTIFICATION_FILTER_MESSAGES_SOCIAL:
-        return app_is_message_social_record(record);
-    case NOTIFICATION_FILTER_IMPORTANT_ONLY:
-        return (record->event_flags & ANCS_EVENT_FLAG_IMPORTANT) != 0U;
+    case NOTIFICATION_FILTER_NAVIGATION:
+        return app_is_navigation_record(record);
     default:
         return true;
     }
@@ -256,16 +380,16 @@ static bool app_record_matches_filter(const notification_record_t *record)
 
 static size_t app_get_filtered_notifications(void)
 {
+    uint32_t snapshot_uids[BOARD_NOTIFICATION_QUEUE_MAX];
+    notification_record_t record;
     size_t total;
     size_t filtered = 0;
 
-    memset(s_app.snapshot_records, 0, sizeof(s_app.snapshot_records));
-    memset(s_app.filtered_records, 0, sizeof(s_app.filtered_records));
-
-    total = notification_store_get_all(s_app.store, s_app.snapshot_records, BOARD_NOTIFICATION_QUEUE_MAX);
+    total = notification_store_snapshot_uids(s_app.store, snapshot_uids, BOARD_NOTIFICATION_QUEUE_MAX);
     for (size_t i = 0; i < total && filtered < BOARD_NOTIFICATION_QUEUE_MAX; ++i) {
-        if (app_record_matches_filter(&s_app.snapshot_records[i])) {
-            s_app.filtered_records[filtered++] = s_app.snapshot_records[i];
+        if (notification_store_find_by_uid(s_app.store, snapshot_uids[i], &record) &&
+            app_record_matches_filter(&record)) {
+            s_app.filtered_uids[filtered++] = snapshot_uids[i];
         }
     }
 
@@ -307,6 +431,8 @@ static const char *app_status_text_for_state(app_state_t state)
     case APP_STATE_CONNECTED:
     case APP_STATE_ANCS_READY:
     case APP_STATE_SHOWING_NOTIFICATION:
+    case APP_STATE_SHOWING_NAVIGATION:
+    case APP_STATE_WATCHFACE:
         return "Connected";
     case APP_STATE_DISCONNECTED:
         return "Disconnected";
@@ -324,6 +450,7 @@ static void app_set_state(app_state_t state)
     }
     s_app.state = state;
     ESP_LOGI(TAG, "app_state -> %s", app_state_to_string(state));
+    app_apply_display_off_policy();
 }
 
 static bool app_post_event_with_wait(QueueHandle_t queue, const app_event_t *event, TickType_t wait_ticks)
@@ -372,6 +499,145 @@ static void app_reboot_timer_cb(void *arg)
     }
 }
 
+static void app_display_off_timer_cb(void *arg)
+{
+    QueueHandle_t queue = (QueueHandle_t)arg;
+    app_event_t event = {
+        .type = APP_EVENT_DISPLAY_AUTO_OFF,
+    };
+
+    if (!app_post_event_with_wait(queue, &event, 0)) {
+        ESP_LOGW(TAG, "dropping display auto-off event, app queue full");
+    }
+}
+
+static void app_watchface_timer_cb(void *arg)
+{
+    QueueHandle_t queue = (QueueHandle_t)arg;
+    app_event_t event = {
+        .type = APP_EVENT_WATCHFACE_TICK,
+    };
+
+    if (!app_post_event_with_wait(queue, &event, 0)) {
+        ESP_LOGW(TAG, "dropping watchface tick, app queue full");
+    }
+}
+
+static void app_render_watchface(void)
+{
+    char time_str[8] = "--:--";
+    char date_str[20] = "";
+    char battery_str[12] = "";
+    const char *source_str = "";
+    bool synced = cts_client_is_time_synced();
+
+    if (synced) {
+        time_t now = time(NULL);
+        struct tm tm_local;
+        localtime_r(&now, &tm_local);
+        snprintf(time_str, sizeof(time_str), "%02d:%02d", tm_local.tm_hour, tm_local.tm_min);
+        strftime(date_str, sizeof(date_str), "%a %d %b", &tm_local);
+    }
+
+    if (s_app.power.source != POWER_SOURCE_UNKNOWN) {
+        snprintf(battery_str, sizeof(battery_str), "%u%%", (unsigned)s_app.power.battery_pct);
+        switch (s_app.power.source) {
+        case POWER_SOURCE_CHARGING: source_str = "CHRG"; break;
+        case POWER_SOURCE_CHARGED:  source_str = "FULL"; break;
+        default:                    source_str = "";     break;
+        }
+    }
+
+    app_set_state(APP_STATE_WATCHFACE);
+    display_show_watchface(s_app.display, time_str, date_str, battery_str, source_str);
+}
+
+static void app_start_watchface_timer(void)
+{
+    if (s_app.watchface_timer == NULL) {
+        return;
+    }
+    esp_timer_stop(s_app.watchface_timer);
+    /* Tick every 30s — adequate for HH:MM display and battery%. */
+    esp_timer_start_periodic(s_app.watchface_timer, 30ULL * 1000ULL * 1000ULL);
+}
+
+static void app_stop_watchface_timer(void)
+{
+    if (s_app.watchface_timer != NULL) {
+        esp_timer_stop(s_app.watchface_timer);
+    }
+}
+
+#if APP_ENABLE_POWER_MONITOR
+static void app_power_state_cb(const power_state_t *state, void *user_ctx)
+{
+    QueueHandle_t queue = (QueueHandle_t)user_ctx;
+    app_event_t event = {
+        .type = APP_EVENT_POWER,
+    };
+
+    if (state != NULL) {
+        event.data.power = *state;
+    }
+    if (!app_post_event(queue, &event)) {
+        ESP_LOGW(TAG, "dropping power state event, app queue full");
+    }
+}
+#endif
+
+static void app_apply_display_off_policy(void)
+{
+    if (s_app.display_off_timer == NULL) {
+        return;
+    }
+    esp_timer_stop(s_app.display_off_timer);
+    /* Navigation thường yêu cầu màn hình luôn sáng — bỏ qua auto-off. */
+    if (s_app.state == APP_STATE_SHOWING_NAVIGATION) {
+        return;
+    }
+    esp_timer_start_once(s_app.display_off_timer,
+                         (uint64_t)BOARD_DISPLAY_AUTO_OFF_MS * 1000ULL);
+}
+
+static void app_kick_display_activity(void)
+{
+    if (s_app.display == NULL) {
+        return;
+    }
+    if (!s_app.display_active) {
+        if (display_set_active(s_app.display, true) == ESP_OK) {
+            s_app.display_active = true;
+            ESP_LOGI(TAG, "display woken by activity");
+        }
+    }
+    app_apply_display_off_policy();
+}
+
+static void app_handle_power_state(const power_state_t *state)
+{
+    if (state == NULL) {
+        return;
+    }
+    s_app.power = *state;
+    if (state->critical_battery) {
+        ESP_LOGW(TAG, "battery critical (%u%%), consider shutdown", (unsigned)state->battery_pct);
+    } else if (state->low_battery) {
+        ESP_LOGW(TAG, "battery low (%u%%)", (unsigned)state->battery_pct);
+    }
+}
+
+static void app_handle_display_auto_off(void)
+{
+    if (s_app.display == NULL || !s_app.display_active) {
+        return;
+    }
+    if (display_set_active(s_app.display, false) == ESP_OK) {
+        s_app.display_active = false;
+        ESP_LOGI(TAG, "display auto-off after %u ms idle", (unsigned)BOARD_DISPLAY_AUTO_OFF_MS);
+    }
+}
+
 static void app_ble_state_cb(ble_manager_state_t state, void *user_ctx)
 {
     app_event_t event = {
@@ -408,6 +674,23 @@ static void app_config_changed_cb(void *user_ctx)
     }
 }
 
+static void app_navigation_cb(const ble_manager_navigation_state_t *state, void *user_ctx)
+{
+    app_event_t event = {
+        .type = APP_EVENT_NAVIGATION,
+    };
+    QueueHandle_t queue = (QueueHandle_t)user_ctx;
+
+    if (state == NULL) {
+        return;
+    }
+
+    event.data.navigation = *state;
+    if (!app_post_event(queue, &event)) {
+        ESP_LOGW(TAG, "dropping navigation event, app queue full");
+    }
+}
+
 static void app_notification_cb(const notification_record_t *record, bool complete, void *user_ctx)
 {
     app_event_t event = {
@@ -439,6 +722,25 @@ static void app_button_cb(button_manager_event_t event, void *user_ctx)
     }
 }
 
+static bool app_has_active_navigation(void)
+{
+    return s_app.navigation.active;
+}
+
+static void app_render_navigation_view(void)
+{
+    nav_icon_t icon = app_detect_nav_direction(s_app.navigation.instruction,
+                                               s_app.navigation.title);
+    app_set_state(APP_STATE_SHOWING_NAVIGATION);
+    display_show_navigation(s_app.display,
+                            s_app.navigation.source,
+                            s_app.navigation.title,
+                            s_app.navigation.instruction,
+                            s_app.navigation.distance,
+                            s_app.navigation.eta,
+                            icon);
+}
+
 static void app_render_notification(const notification_record_t *record)
 {
     notification_record_t display_record = {0};
@@ -458,68 +760,160 @@ static void app_render_notification(const notification_record_t *record)
         }
     }
 
+    nav_icon_t icon = NAV_ICON_NONE;
+    if (app_is_navigation_record(&display_record)) {
+        app_prepare_navigation_display(&display_record);
+        icon = app_detect_nav_direction(display_record.title, display_record.message);
+    }
+
     app_or_category = display_record.app_id[0] != '\0'
                       ? display_record.app_id
                       : ancs_category_id_to_string(display_record.category_id);
-    display_show_notification(s_app.display, app_or_category, display_record.title, display_record.message);
+    display_show_notification(s_app.display, app_or_category, display_record.title,
+                              display_record.message, icon);
 }
 
-static bool app_record_needs_details(const notification_record_t *record)
+static bool app_record_needs_details(const notification_record_t *record, bool include_pre_existing)
 {
     return record != NULL &&
+           record->uid != 0U &&
            record->valid &&
            !record->details_complete &&
+           (include_pre_existing || (record->event_flags & ANCS_EVENT_FLAG_PRE_EXISTING) == 0U) &&
            record->event_id != ANCS_EVENT_ID_NOTIFICATION_REMOVED;
 }
 
-static void app_request_record_details(size_t index)
+static bool app_should_surface_pre_existing(const notification_record_t *record, bool selected_matches)
 {
+    if (!app_record_matches_filter(record)) {
+        return false;
+    }
+
+    return selected_matches ||
+           s_app.filtered_count == 0U ||
+           s_app.state == APP_STATE_ANCS_READY ||
+           s_app.state == APP_STATE_WATCHFACE;
+}
+
+static void app_request_record_details_by_uid(uint32_t uid, bool include_pre_existing)
+{
+    notification_record_t record;
     esp_err_t rc;
 
-    if (index >= s_app.filtered_count || !app_record_needs_details(&s_app.filtered_records[index])) {
+    if (uid == 0U || !notification_store_find_by_uid(s_app.store, uid, &record)) {
+        return;
+    }
+    if (!app_record_needs_details(&record, include_pre_existing)) {
+        return;
+    }
+    if (app_recently_requested_details(uid)) {
         return;
     }
 
-    rc = ble_manager_request_notification_details(&s_app.filtered_records[index], true);
-    if (rc != ESP_OK && rc != ESP_ERR_INVALID_STATE) {
+    rc = ble_manager_request_notification_details(&record, true);
+    if (rc == ESP_OK) {
+        app_note_detail_request(uid);
+        return;
+    }
+    if (rc != ESP_ERR_INVALID_STATE) {
         ESP_LOGW(TAG, "failed to queue detail fetch for uid=%" PRIu32 ", rc=%s",
-                 s_app.filtered_records[index].uid, esp_err_to_name(rc));
+                 uid, esp_err_to_name(rc));
     }
 }
 
-static void app_request_selected_window_details(void)
+static void app_request_selected_window_details(bool include_pre_existing)
 {
     if (s_app.filtered_count == 0U || s_app.selected_index >= s_app.filtered_count) {
         return;
     }
 
     if ((s_app.selected_index + 1U) < s_app.filtered_count) {
-        app_request_record_details(s_app.selected_index + 1U);
+        app_request_record_details_by_uid(s_app.filtered_uids[s_app.selected_index + 1U], include_pre_existing);
     }
     if (s_app.selected_index > 0U) {
-        app_request_record_details(s_app.selected_index - 1U);
+        app_request_record_details_by_uid(s_app.filtered_uids[s_app.selected_index - 1U], include_pre_existing);
     }
-    app_request_record_details(s_app.selected_index);
+    app_request_record_details_by_uid(s_app.filtered_uids[s_app.selected_index], include_pre_existing);
+}
+
+static void app_request_background_details(size_t max_requests)
+{
+    uint32_t snapshot_uids[BOARD_NOTIFICATION_QUEUE_MAX];
+    notification_record_t record;
+    size_t total;
+    size_t requested = 0;
+    esp_err_t rc;
+
+    if (max_requests == 0U) {
+        return;
+    }
+
+    total = notification_store_snapshot_uids(s_app.store, snapshot_uids, BOARD_NOTIFICATION_QUEUE_MAX);
+    for (size_t i = 0; i < total && requested < max_requests; ++i) {
+        if (!notification_store_find_by_uid(s_app.store, snapshot_uids[i], &record)) {
+            continue;
+        }
+        if (!app_record_needs_details(&record, false)) {
+            continue;
+        }
+        if ((record.event_flags & ANCS_EVENT_FLAG_PRE_EXISTING) != 0U) {
+            continue;
+        }
+        if (app_recently_requested_details(record.uid)) {
+            continue;
+        }
+
+        rc = ble_manager_request_notification_details(&record, false);
+        if (rc == ESP_OK) {
+            app_note_detail_request(record.uid);
+            requested++;
+            continue;
+        }
+        if (rc == ESP_ERR_INVALID_STATE) {
+            break;
+        }
+
+        ESP_LOGW(TAG, "failed to queue background detail fetch for uid=%" PRIu32 ", rc=%s",
+                 record.uid, esp_err_to_name(rc));
+    }
 }
 
 static bool app_refresh_notification_view(void)
 {
     size_t count = app_get_filtered_notifications();
 
+    if (app_has_active_navigation()) {
+        app_stop_watchface_timer();
+        app_render_navigation_view();
+        app_request_background_details(BOARD_ANCS_PREEXISTING_ENRICH_MAX);
+        return true;
+    }
+
     if (count == 0U) {
         s_app.selected_index = 0;
-        app_set_state(APP_STATE_ANCS_READY);
-        display_show_status(s_app.display, app_status_text_for_state(s_app.state));
-        return false;
+        app_render_watchface();
+        app_start_watchface_timer();
+        app_request_background_details(BOARD_ANCS_PREEXISTING_ENRICH_MAX);
+        return true;
     }
+
+    app_stop_watchface_timer();
 
     if (s_app.selected_index >= count) {
         s_app.selected_index = 0;
     }
 
-    app_set_state(APP_STATE_SHOWING_NOTIFICATION);
-    app_render_notification(&s_app.filtered_records[s_app.selected_index]);
-    app_request_selected_window_details();
+    {
+        notification_record_t record;
+        uint32_t selected_uid = s_app.filtered_uids[s_app.selected_index];
+        if (notification_store_find_by_uid(s_app.store, selected_uid, &record)) {
+            app_set_state(APP_STATE_SHOWING_NOTIFICATION);
+            app_render_notification(&record);
+        }
+        app_request_record_details_by_uid(selected_uid, true);
+    }
+    app_request_selected_window_details(false);
+    app_request_background_details(BOARD_ANCS_PREEXISTING_ENRICH_MAX);
     return true;
 }
 
@@ -567,16 +961,24 @@ static void app_handle_ble_state(ble_manager_state_t ble_state)
     case BLE_MANAGER_STATE_CONNECTED:
     case BLE_MANAGER_STATE_SECURED:
         app_set_state(APP_STATE_CONNECTED);
-        display_show_status(s_app.display, app_status_text_for_ble_state(ble_state));
+        if (app_has_active_navigation()) {
+            app_render_navigation_view();
+        } else {
+            display_show_status(s_app.display, app_status_text_for_ble_state(ble_state));
+        }
         break;
     case BLE_MANAGER_STATE_ANCS_READY:
         app_set_state(APP_STATE_ANCS_READY);
-        if (!app_refresh_notification_view()) {
+        if (app_has_active_navigation()) {
+            app_render_navigation_view();
+        } else if (!app_refresh_notification_view()) {
             display_show_status(s_app.display, app_status_text_for_ble_state(ble_state));
         }
         break;
     case BLE_MANAGER_STATE_DISCONNECTED:
+        memset(&s_app.navigation, 0, sizeof(s_app.navigation));
         s_app.selected_index = 0;
+        app_reset_detail_requests();
         app_set_state(APP_STATE_DISCONNECTED);
         notification_store_clear(s_app.store);
         display_show_status(s_app.display, app_status_text_for_ble_state(ble_state));
@@ -588,6 +990,31 @@ static void app_handle_ble_state(ble_manager_state_t ble_state)
     default:
         break;
     }
+}
+
+static void app_handle_navigation(const ble_manager_navigation_state_t *state)
+{
+    if (state == NULL) {
+        return;
+    }
+
+    s_app.navigation = *state;
+    app_cancel_filter_overlay();
+
+    if (uxQueueMessagesWaiting(s_app.queue) > 0) {
+        return;
+    }
+
+    if (app_has_active_navigation()) {
+        ESP_LOGI(TAG, "navigation foreground active source=%s seq=%" PRIu32,
+                 s_app.navigation.source,
+                 s_app.navigation.sequence);
+        app_render_navigation_view();
+        return;
+    }
+
+    ESP_LOGI(TAG, "navigation foreground cleared");
+    app_refresh_notification_view();
 }
 
 static void app_handle_notification(const notification_record_t *record, bool complete)
@@ -606,8 +1033,14 @@ static void app_handle_notification(const notification_record_t *record, bool co
         return;
     }
 
+    if (record->uid == 0U) {
+        ESP_LOGW(TAG, "dropping malformed notification event with uid=0");
+        return;
+    }
+
     if (record->event_id == ANCS_EVENT_ID_NOTIFICATION_REMOVED) {
         app_cancel_filter_overlay();
+        app_forget_detail_request(record->uid);
         notification_store_remove_by_uid(s_app.store, record->uid);
         app_refresh_notification_view();
         return;
@@ -621,8 +1054,6 @@ static void app_handle_notification(const notification_record_t *record, bool co
             merged.category_id = record->category_id;
             merged.category_count = record->category_count;
             merged.details_complete = false;
-            merged.title[0] = '\0';
-            merged.message[0] = '\0';
         }
         if (record->app_id[0] != '\0') {
             strlcpy(merged.app_id, record->app_id, sizeof(merged.app_id));
@@ -646,11 +1077,15 @@ static void app_handle_notification(const notification_record_t *record, bool co
         merged.valid = true;
     }
 
-    notification_store_upsert(s_app.store, &merged);
+    if (notification_store_upsert(s_app.store, &merged) != ESP_OK) {
+        ESP_LOGW(TAG, "failed to store notification uid=%" PRIu32, merged.uid);
+        return;
+    }
+    if (complete) {
+        app_forget_detail_request(merged.uid);
+    }
     if (complete && merged.app_id[0] != '\0') {
-        if (storage_manager_track_notification_app(merged.app_id,
-                                                   app_is_default_allowed_app_id(merged.app_id),
-                                                   &app_added) != ESP_OK) {
+        if (storage_manager_track_notification_app(merged.app_id, true, &app_added) != ESP_OK) {
             ESP_LOGW(TAG, "failed to track app_id=%s", merged.app_id);
         } else if (app_added) {
             ble_manager_notify_config_changed();
@@ -659,15 +1094,31 @@ static void app_handle_notification(const notification_record_t *record, bool co
     pre_existing = (merged.event_flags & ANCS_EVENT_FLAG_PRE_EXISTING) != 0U;
     selected_matches = s_app.filtered_count > 0U &&
                        s_app.selected_index < s_app.filtered_count &&
-                       s_app.filtered_records[s_app.selected_index].uid == merged.uid;
+                       s_app.filtered_uids[s_app.selected_index] == merged.uid;
+
+    if (uxQueueMessagesWaiting(s_app.queue) > 0) {
+        return;
+    }
 
     if (!complete) {
+        if (pre_existing) {
+            if (app_should_surface_pre_existing(&merged, selected_matches)) {
+                app_cancel_filter_overlay();
+                app_kick_display_activity();
+                app_refresh_notification_view();
+            }
+            return;
+        }
+
         if (app_record_matches_filter(&merged) && s_app.state == APP_STATE_ANCS_READY) {
+            app_kick_display_activity();
             app_refresh_notification_view();
         } else if (selected_matches) {
+            app_kick_display_activity();
             app_refresh_notification_view();
         } else {
-            app_request_selected_window_details();
+            app_request_selected_window_details(false);
+            app_request_background_details(BOARD_ANCS_PREEXISTING_ENRICH_MAX);
         }
         return;
     }
@@ -677,7 +1128,8 @@ static void app_handle_notification(const notification_record_t *record, bool co
             if (selected_matches || s_app.state == APP_STATE_ANCS_READY) {
                 app_refresh_notification_view();
             } else {
-                app_request_selected_window_details();
+                app_request_selected_window_details(false);
+                app_request_background_details(BOARD_ANCS_PREEXISTING_ENRICH_MAX);
             }
             return;
         }
@@ -688,7 +1140,8 @@ static void app_handle_notification(const notification_record_t *record, bool co
         return;
     }
 
-    app_request_selected_window_details();
+    app_request_selected_window_details(false);
+    app_request_background_details(BOARD_ANCS_PREEXISTING_ENRICH_MAX);
 }
 
 static void app_cycle_filter(void)
@@ -706,6 +1159,11 @@ static void app_step_notification(int direction)
 
     app_cancel_filter_overlay();
 
+    if (app_has_active_navigation()) {
+        app_render_navigation_view();
+        return;
+    }
+
     if (count == 0U) {
         app_refresh_notification_view();
         return;
@@ -722,9 +1180,14 @@ static void app_step_notification(int direction)
              (unsigned)(s_app.selected_index + 1U),
              (unsigned)count,
              app_filter_to_string(s_app.filter));
-    app_set_state(APP_STATE_SHOWING_NOTIFICATION);
-    app_render_notification(&s_app.filtered_records[s_app.selected_index]);
-    app_request_selected_window_details();
+    {
+        notification_record_t record;
+        if (notification_store_find_by_uid(s_app.store, s_app.filtered_uids[s_app.selected_index], &record)) {
+            app_set_state(APP_STATE_SHOWING_NOTIFICATION);
+            app_render_notification(&record);
+        }
+    }
+    app_request_selected_window_details(true);
 }
 
 static void app_clear_current_notification(void)
@@ -732,6 +1195,11 @@ static void app_clear_current_notification(void)
     size_t count = app_get_filtered_notifications();
 
     app_cancel_filter_overlay();
+
+    if (app_has_active_navigation()) {
+        app_render_navigation_view();
+        return;
+    }
 
     if (count == 0U) {
         display_show_status(s_app.display, app_status_text_for_state(s_app.state));
@@ -742,8 +1210,12 @@ static void app_clear_current_notification(void)
         s_app.selected_index = 0;
     }
 
-    ESP_LOGI(TAG, "clearing local notification uid=%" PRIu32, s_app.filtered_records[s_app.selected_index].uid);
-    notification_store_remove_by_uid(s_app.store, s_app.filtered_records[s_app.selected_index].uid);
+    {
+        uint32_t uid = s_app.filtered_uids[s_app.selected_index];
+        ESP_LOGI(TAG, "clearing local notification uid=%" PRIu32, uid);
+        app_forget_detail_request(uid);
+        notification_store_remove_by_uid(s_app.store, uid);
+    }
     app_refresh_notification_view();
 }
 
@@ -773,6 +1245,7 @@ static void app_execute_clear_bonds_and_reboot(void)
     s_app.reboot_pending = false;
     ble_manager_clear_bonds();
     storage_manager_set_bonded(false);
+    app_reset_detail_requests();
     notification_store_clear(s_app.store);
     esp_restart();
 }
@@ -806,15 +1279,39 @@ static void app_handle_button(button_manager_event_t event)
 
 static void app_handle_config_changed(void)
 {
-    app_refresh_notification_view();
+    if (app_has_active_navigation()) {
+        app_render_navigation_view();
+    } else {
+        app_refresh_notification_view();
+    }
+}
+
+static bool app_worker_task_wdt_subscribed(void)
+{
+    return esp_task_wdt_status(NULL) == ESP_OK;
 }
 
 static void app_worker_task(void *arg)
 {
     app_event_t event;
+    const TickType_t wdt_poll_ticks = pdMS_TO_TICKS(1000);
     (void)arg;
 
-    while (xQueueReceive(s_app.queue, &event, portMAX_DELAY) == pdTRUE) {
+    for (;;) {
+        BaseType_t received = xQueueReceive(s_app.queue, &event, wdt_poll_ticks);
+        bool wdt_subscribed = app_worker_task_wdt_subscribed();
+
+        if (wdt_subscribed) {
+            esp_err_t rc = esp_task_wdt_reset();
+            if (rc != ESP_OK) {
+                ESP_LOGW(TAG, "failed to reset app_worker task watchdog, rc=%s", esp_err_to_name(rc));
+            }
+        }
+
+        if (received != pdTRUE) {
+            continue;
+        }
+
         switch (event.type) {
         case APP_EVENT_BLE_STATE:
             app_handle_ble_state(event.data.ble_state);
@@ -825,11 +1322,19 @@ static void app_worker_task(void *arg)
             break;
         case APP_EVENT_NOTIFICATION:
             app_handle_notification(&event.data.notification, event.complete);
+            if (event.complete) {
+                app_kick_display_activity();
+            }
             break;
         case APP_EVENT_CONFIG_CHANGED:
             app_handle_config_changed();
             break;
+        case APP_EVENT_NAVIGATION:
+            app_handle_navigation(&event.data.navigation);
+            app_kick_display_activity();
+            break;
         case APP_EVENT_BUTTON:
+            app_kick_display_activity();
             app_handle_button(event.data.button_event);
             break;
         case APP_EVENT_FILTER_OVERLAY_TIMEOUT:
@@ -840,6 +1345,20 @@ static void app_worker_task(void *arg)
             break;
         case APP_EVENT_REBOOT:
             app_execute_clear_bonds_and_reboot();
+            break;
+        case APP_EVENT_POWER:
+            app_handle_power_state(&event.data.power);
+            if (s_app.state == APP_STATE_WATCHFACE) {
+                app_render_watchface();
+            }
+            break;
+        case APP_EVENT_DISPLAY_AUTO_OFF:
+            app_handle_display_auto_off();
+            break;
+        case APP_EVENT_WATCHFACE_TICK:
+            if (s_app.state == APP_STATE_WATCHFACE && s_app.display_active) {
+                app_render_watchface();
+            }
             break;
         default:
             break;
@@ -859,6 +1378,23 @@ void app_start(void)
     s_app.state = (app_state_t)-1;
     s_app.filter = NOTIFICATION_FILTER_ALL;
     app_set_state(APP_STATE_BOOT);
+
+#if CONFIG_PM_ENABLE
+    {
+        esp_pm_config_t pm_config = {
+            .max_freq_mhz = CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ,
+            .min_freq_mhz = 10,
+#if CONFIG_FREERTOS_USE_TICKLESS_IDLE
+            .light_sleep_enable = true,
+#else
+            .light_sleep_enable = false,
+#endif
+        };
+        ESP_ERROR_CHECK(esp_pm_configure(&pm_config));
+        ESP_LOGI(TAG, "esp_pm configured: max=%dMHz min=%dMHz light_sleep=%d",
+                 pm_config.max_freq_mhz, pm_config.min_freq_mhz, pm_config.light_sleep_enable);
+    }
+#endif
 
     ESP_ERROR_CHECK(storage_manager_init());
     ESP_ERROR_CHECK(display_init(&s_app.display));
@@ -886,9 +1422,24 @@ void app_start(void)
         .arg = s_app.queue,
         .name = "app_reboot",
     };
+    const esp_timer_create_args_t display_off_timer_args = {
+        .callback = app_display_off_timer_cb,
+        .arg = s_app.queue,
+        .name = "app_disp_off",
+    };
+    const esp_timer_create_args_t watchface_timer_args = {
+        .callback = app_watchface_timer_cb,
+        .arg = s_app.queue,
+        .name = "app_watchface",
+    };
 
     ESP_ERROR_CHECK(esp_timer_create(&filter_overlay_timer_args, &s_app.filter_overlay_timer));
     ESP_ERROR_CHECK(esp_timer_create(&reboot_timer_args, &s_app.reboot_timer));
+    ESP_ERROR_CHECK(esp_timer_create(&display_off_timer_args, &s_app.display_off_timer));
+    ESP_ERROR_CHECK(esp_timer_create(&watchface_timer_args, &s_app.watchface_timer));
+
+    s_app.display_active = true;
+    s_app.power.source = POWER_SOURCE_UNKNOWN;
 
     BaseType_t task_ok = xTaskCreate(app_worker_task, "app_worker", 6144, NULL, 5, &s_app.task);
     ESP_ERROR_CHECK(task_ok == pdPASS ? ESP_OK : ESP_FAIL);
@@ -897,11 +1448,24 @@ void app_start(void)
     button_cfg.user_ctx = s_app.queue;
     ESP_ERROR_CHECK(button_manager_init(&button_cfg));
 
+#if APP_ENABLE_POWER_MONITOR
+    power_manager_config_t power_cfg = {
+        .state_cb = app_power_state_cb,
+        .user_ctx = s_app.queue,
+    };
+    ESP_ERROR_CHECK(power_manager_init(&power_cfg));
+#else
+    ESP_LOGI(TAG, "power monitor disabled at compile time");
+#endif
+
     ble_cfg.device_name = BOARD_DEVICE_NAME;
     ble_cfg.state_cb = app_ble_state_cb;
     ble_cfg.bond_cb = app_bond_cb;
     ble_cfg.notification_cb = app_notification_cb;
     ble_cfg.config_changed_cb = app_config_changed_cb;
+    ble_cfg.navigation_cb = app_navigation_cb;
     ble_cfg.user_ctx = s_app.queue;
     ESP_ERROR_CHECK(ble_manager_init(&ble_cfg));
+
+    app_kick_display_activity();
 }
