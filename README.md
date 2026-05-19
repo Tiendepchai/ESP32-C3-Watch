@@ -1,39 +1,125 @@
 # ESP32-C3 ANCS Watch
 
-## English
+[![ESP-IDF](https://img.shields.io/badge/ESP--IDF-v6.0+-blue.svg)](https://github.com/espressif/esp-idf)
+[![Target](https://img.shields.io/badge/Target-ESP32--C3-green.svg)](https://www.espressif.com/en/products/socs/esp32-c3)
+[![BLE](https://img.shields.io/badge/BLE-ANCS-informational.svg)](https://developer.apple.com/library/archive/documentation/CoreBluetooth/Reference/AppleNotificationCenterServiceSpecification/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-ESP32-C3 ANCS Watch is an ESP-IDF firmware project for a compact BLE watch-style accessory. It pairs with an iPhone, subscribes to Apple Notification Center Service (ANCS), fetches notification attributes, and renders notifications on a 128x64 SH1106 OLED.
+**ESP32-C3 ANCS Watch** is an ESP-IDF firmware project for a compact BLE watch-style accessory.  
+It pairs with an iPhone, subscribes to Apple Notification Center Service (ANCS), fetches notification attributes, synchronizes time, and renders notifications on a 128 × 64 SH1106 OLED display.
 
-The firmware is built around the ANCS accessory topology:
+> **Project status:** Active firmware prototype. The core BLE/ANCS/display flow is implemented; power monitoring and iOS companion features are optional or under development.
+
+---
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [System Architecture](#system-architecture)
+- [Hardware](#hardware)
+- [Firmware Layout](#firmware-layout)
+- [Notification Ordering](#notification-ordering)
+- [Getting Started](#getting-started)
+- [Build and Flash](#build-and-flash)
+- [Usage](#usage)
+- [Testing Checklist](#testing-checklist)
+- [Troubleshooting](#troubleshooting)
+- [Roadmap](#roadmap)
+- [License](#license)
+
+---
+
+## Overview
+
+The firmware implements the standard ANCS accessory flow:
 
 1. The ESP32-C3 advertises as a BLE peripheral.
-2. The iPhone connects and bonds to the ESP32-C3.
-3. After the link is encrypted, the ESP32-C3 acts as a GATT client and discovers ANCS on the iPhone.
-4. The ESP32-C3 subscribes to ANCS Notification Source and Data Source.
-5. For each notification UID, it requests `AppIdentifier`, `Title`, `Message`, and `Date`.
-6. Notifications are stored in memory and sorted with the newest notification first.
+2. The iPhone connects and creates a secure BLE bond.
+3. After encryption is enabled, the ESP32-C3 switches role logically to a GATT client and discovers ANCS on the iPhone.
+4. The ESP32-C3 subscribes to the ANCS Notification Source and Data Source characteristics.
+5. For each notification UID, the firmware requests:
+   - `AppIdentifier`
+   - `Title`
+   - `Message`
+   - `Date`
+6. Notifications are stored locally and sorted with the newest notification first.
+7. The display manager renders connection status, watchface, notification detail, and navigation views.
 
-### Current Features
+---
 
-- BLE pairing and bonding with NimBLE.
-- Bonded reconnect flow with directed advertising first, then general advertising fallback.
-- ANCS service discovery, CCCD subscription, and attribute fetching.
+## Key Features
+
+- BLE pairing and bonding powered by NimBLE.
+- Bonded reconnect flow using directed advertising first, then general advertising fallback.
+- ANCS discovery, CCCD subscription, notification event handling, and attribute parsing.
 - Date-based notification ordering using ANCS `Date` when available.
-- Current Time Service read for watchface time sync.
-- SH1106 OLED rendering for status, watchface, notifications, and navigation views.
-- Local notification store with configurable filtering.
-- NVS-backed app settings and bond state.
-- Two-button control for navigation, clearing notifications, filter changes, and bond reset.
-- Optional iOS SwiftUI companion scaffold for configuration and navigation handoff.
+- Temporary local receive timestamp while waiting for notification attributes.
+- iOS Current Time Service client for watchface time synchronization.
+- SH1106 128 × 64 OLED rendering for:
+  - connection status
+  - watchface
+  - notification list/detail
+  - navigation state
+- In-memory notification store with configurable filtering.
+- NVS-backed settings and bond state persistence.
+- Two-button physical control for:
+  - notification navigation
+  - clearing notifications
+  - changing filters
+  - resetting bond state
+- Optional SwiftUI companion scaffold for future configuration and navigation handoff.
 
-### Hardware
+---
 
-- MCU: ESP32-C3
-- Display: SH1106 128x64 OLED over I2C
-- Button A: GPIO3, active low
-- Button B: GPIO4, active low
+## System Architecture
 
-Default wiring:
+```text
+┌────────────────────┐
+│      iPhone         │
+│  ANCS + CTS Server  │
+└─────────┬──────────┘
+          │ BLE encrypted link
+          ▼
+┌──────────────────────────────────────┐
+│              ESP32-C3                │
+│                                      │
+│  ┌───────────────┐   ┌────────────┐  │
+│  │ BLE Manager   │──▶│ ANCS Client│  │
+│  └───────┬───────┘   └─────┬──────┘  │
+│          │                 │         │
+│          ▼                 ▼         │
+│  ┌───────────────┐   ┌────────────┐  │
+│  │ CTS Client    │   │ Notification│ │
+│  │ Time Sync     │   │ Store       │ │
+│  └───────┬───────┘   └─────┬──────┘  │
+│          │                 │         │
+│          ▼                 ▼         │
+│  ┌────────────────────────────────┐  │
+│  │        Display Manager          │  │
+│  │      SH1106 OLED Rendering      │  │
+│  └────────────────────────────────┘  │
+│                                      │
+│  ┌────────────────────────────────┐  │
+│  │        Storage Manager          │  │
+│  │        NVS Settings/Bonds       │  │
+│  └────────────────────────────────┘  │
+└──────────────────────────────────────┘
+```
+
+---
+
+## Hardware
+
+| Component | Specification |
+| --- | --- |
+| MCU | ESP32-C3 |
+| Display | SH1106 128 × 64 OLED |
+| Display bus | I2C |
+| Button A | GPIO3, active low |
+| Button B | GPIO4, active low |
+
+### Default Wiring
 
 | Function | ESP32-C3 Pin |
 | --- | --- |
@@ -44,188 +130,296 @@ Default wiring:
 | Button A | GPIO3 to GND |
 | Button B | GPIO4 to GND |
 
-Board constants live in `components/board_config/include/board_config.h`.
+Board-level constants are defined in:
 
-### Firmware Structure
-
-| Path | Purpose |
-| --- | --- |
-| `main/` | Application state machine and UI/event orchestration |
-| `components/ble_manager/` | NimBLE setup, advertising, bonding, reconnect, config GATT service |
-| `components/ancs_client/` | ANCS discovery, notification subscription, attribute request/parse |
-| `components/cts_client/` | iOS Current Time Service client |
-| `components/display_manager/` | SH1106 display driver, framebuffer, notification/watchface rendering |
-| `components/notification_store/` | In-memory notification storage and sorting |
-| `components/storage_manager/` | NVS-backed settings |
-| `components/power_manager/` | Optional battery/power monitoring |
-| `ios/ANCSWatchConfig/` | SwiftUI companion app scaffold |
-
-### Notification Ordering
-
-The ordering pipeline is:
-
-1. Receive ANCS Notification Source.
-2. Extract `NotificationUID`.
-3. Send `GetNotificationAttributes(NotificationUID, AppIdentifier, Title, Message, Date)`.
-4. Parse Data Source response.
-5. Use ANCS `Date` as the notification timestamp when present.
-6. Store and sort notifications by timestamp descending.
-
-Before attributes are fetched, the firmware uses the local receive time as a temporary timestamp. Once `Date` arrives, the stored record is updated and the list is re-sorted.
-
-### Build and Flash
-
-Activate ESP-IDF v6.0:
-
-```bash
-source /Users/allah-computer/.espressif/tools/activate_idf_v6.0.sh
+```text
+components/board_config/include/board_config.h
 ```
-
-Build:
-
-```bash
-idf.py set-target esp32c3
-idf.py build
-```
-
-Flash and monitor:
-
-```bash
-idf.py -p /dev/cu.usbmodem113301 flash monitor
-```
-
-If the local Python environment hits the macOS `platform.mac_ver()` issue, the known workaround used during development is:
-
-```bash
-IDF_COMPONENT_MANAGER=0 python -c 'import os, platform, runpy, sys; tools=os.path.join(os.environ["IDF_PATH"],"tools"); sys.path.insert(0,tools); platform.mac_ver=lambda release="", versioninfo=("", "", ""), machine="": ("26.1", ("", "", ""), os.uname().machine); sys.argv=[os.path.join(tools,"idf.py")]+sys.argv[1:]; runpy.run_path(sys.argv[0], run_name="__main__")' build
-```
-
-### Test Checklist
-
-- Clear iOS Bluetooth bond and ESP32-C3 bonds before testing a first-pair flow.
-- Pair from iOS or nRF Connect and verify the first bond does not remove the local bond.
-- Confirm logs show `bond store peers after secure=1`.
-- Wait for `ANCS ready, attrs=enabled`.
-- Send several notifications, then disconnect by walking out of range.
-- Reconnect and verify pre-existing notifications wake the display and appear.
-- Verify fetched notification details reorder the list by ANCS `Date`.
-
-### License
-
-This project is licensed under the MIT License. See `LICENSE`.
 
 ---
 
-## Tiếng Việt
+## Firmware Layout
 
-ESP32-C3 ANCS Watch là firmware ESP-IDF cho một thiết bị đeo nhỏ dùng BLE. Thiết bị ghép đôi với iPhone, đăng ký Apple Notification Center Service (ANCS), lấy chi tiết thông báo và hiển thị lên màn hình OLED SH1106 128x64.
-
-Firmware dùng đúng mô hình accessory của ANCS:
-
-1. ESP32-C3 quảng bá BLE như một peripheral.
-2. iPhone kết nối và tạo bond với ESP32-C3.
-3. Sau khi link đã mã hóa, ESP32-C3 đóng vai trò GATT client và discover ANCS trên iPhone.
-4. ESP32-C3 subscribe ANCS Notification Source và Data Source.
-5. Với mỗi notification UID, firmware request `AppIdentifier`, `Title`, `Message` và `Date`.
-6. Thông báo được lưu trong RAM và sắp xếp để thông báo mới nhất nằm đầu danh sách.
-
-### Tính năng hiện có
-
-- Pairing và bonding BLE bằng NimBLE.
-- Reconnect theo bond cũ: directed advertising trước, sau đó fallback sang general advertising.
-- Discover ANCS, subscribe CCCD và fetch attribute.
-- Sắp xếp thông báo theo thời gian thật từ ANCS `Date` khi có.
-- Đồng bộ giờ watchface qua iOS Current Time Service.
-- Hiển thị status, watchface, thông báo và điều hướng trên OLED SH1106.
-- Store thông báo trong RAM, có filter theo nhóm/app.
-- Lưu cấu hình và trạng thái bond bằng NVS.
-- Hai nút bấm để chuyển thông báo, xóa thông báo, đổi filter và reset bond.
-- Có scaffold app iOS SwiftUI để cấu hình và gửi trạng thái điều hướng.
-
-### Phần cứng
-
-- MCU: ESP32-C3
-- Màn hình: OLED SH1106 128x64 qua I2C
-- Nút A: GPIO3, kéo xuống GND khi nhấn
-- Nút B: GPIO4, kéo xuống GND khi nhấn
-
-Sơ đồ chân mặc định:
-
-| Chức năng | Chân ESP32-C3 |
+| Path | Purpose |
 | --- | --- |
-| OLED VCC | 3V3 |
-| OLED GND | GND |
-| OLED SDA | GPIO6 |
-| OLED SCL | GPIO7 |
-| Nút A | GPIO3 xuống GND |
-| Nút B | GPIO4 xuống GND |
+| `main/` | Application state machine, UI flow, and event orchestration |
+| `components/ble_manager/` | NimBLE initialization, advertising, bonding, reconnect, and config GATT service |
+| `components/ancs_client/` | ANCS discovery, notification subscription, attribute request, and response parser |
+| `components/cts_client/` | iOS Current Time Service client |
+| `components/display_manager/` | SH1106 driver, framebuffer, watchface rendering, and notification rendering |
+| `components/notification_store/` | In-memory notification storage, filtering, and sorting |
+| `components/storage_manager/` | NVS-backed settings and persistent state |
+| `components/power_manager/` | Optional battery and power monitoring |
+| `ios/ANCSWatchConfig/` | Optional SwiftUI companion app scaffold |
 
-Các hằng số phần cứng nằm trong `components/board_config/include/board_config.h`.
+---
 
-### Cấu trúc firmware
+## Notification Ordering
 
-| Đường dẫn | Vai trò |
-| --- | --- |
-| `main/` | State machine của app và điều phối event/UI |
-| `components/ble_manager/` | Khởi tạo NimBLE, advertising, bonding, reconnect, config GATT service |
-| `components/ancs_client/` | Discover ANCS, subscribe thông báo, request/parse attribute |
-| `components/cts_client/` | Client đọc giờ từ iOS Current Time Service |
-| `components/display_manager/` | Driver SH1106, framebuffer, render watchface/thông báo |
-| `components/notification_store/` | Lưu và sắp xếp thông báo trong RAM |
-| `components/storage_manager/` | Lưu cấu hình bằng NVS |
-| `components/power_manager/` | Theo dõi pin/nguồn, hiện đang tùy chọn |
-| `ios/ANCSWatchConfig/` | Scaffold app iOS SwiftUI |
+The notification ordering pipeline is designed to avoid relying only on local receive time.
 
-### Thứ tự thông báo
-
-Luồng sắp xếp hiện tại là:
-
-1. ESP32 nhận ANCS Notification Source.
-2. Lấy `NotificationUID`.
-3. Gửi `GetNotificationAttributes(NotificationUID, AppIdentifier, Title, Message, Date)`.
-4. Parse phản hồi từ Data Source.
-5. Nếu có ANCS `Date`, dùng giá trị đó làm timestamp của thông báo.
-6. Lưu vào store và sort giảm dần theo timestamp, tức thông báo mới nhất nằm đầu.
-
-Trước khi fetch chi tiết xong, firmware dùng tạm thời điểm ESP32 nhận event. Khi `Date` từ iPhone trả về, record được cập nhật timestamp và danh sách được sắp xếp lại.
-
-### Build và flash
-
-Kích hoạt ESP-IDF v6.0:
-
-```bash
-source /Users/allah-computer/.espressif/tools/activate_idf_v6.0.sh
+```text
+ANCS Notification Source event
+        │
+        ▼
+Extract NotificationUID
+        │
+        ▼
+Request attributes:
+AppIdentifier, Title, Message, Date
+        │
+        ▼
+Parse ANCS Data Source response
+        │
+        ▼
+Use ANCS Date if available
+        │
+        ▼
+Update notification record
+        │
+        ▼
+Sort newest first
 ```
 
-Build:
+When a notification event first arrives, the firmware stores it with the local receive timestamp as a temporary value.  
+After the ANCS `Date` attribute is fetched, the stored record is updated and the notification list is re-sorted by timestamp in descending order.
+
+This allows notifications such as:
+
+```text
+Messenger  - 1 second ago
+MoMo       - 2 minutes ago
+```
+
+to appear in the expected order, with the newest notification at the top.
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+Install and configure:
+
+- ESP-IDF v6.0 or newer
+- Python environment required by ESP-IDF
+- USB serial driver for your ESP32-C3 board
+- An iPhone with Bluetooth enabled
+- Optional: nRF Connect for BLE debugging
+
+### Clone the Repository
+
+```bash
+git clone <your-repository-url>
+cd esp32-c3-ancs-watch
+```
+
+### Set the ESP-IDF Target
 
 ```bash
 idf.py set-target esp32c3
+```
+
+---
+
+## Build and Flash
+
+### Activate ESP-IDF
+
+Use the activation script generated by your ESP-IDF installation.
+
+Example:
+
+```bash
+source "$HOME/.espressif/tools/activate_idf_v6.0.sh"
+```
+
+Alternatively, if ESP-IDF is installed globally:
+
+```bash
+. "$IDF_PATH/export.sh"
+```
+
+### Build
+
+```bash
 idf.py build
 ```
 
-Flash và mở monitor:
+### Flash
+
+Replace the port with the serial device used by your board.
 
 ```bash
-idf.py -p /dev/cu.usbmodem113301 flash monitor
+idf.py -p /dev/cu.usbmodemXXXX flash
 ```
 
-Nếu môi trường Python trên macOS gặp lỗi `platform.mac_ver()`, workaround đã dùng trong lúc phát triển là:
+### Monitor Logs
+
+```bash
+idf.py -p /dev/cu.usbmodemXXXX monitor
+```
+
+### Flash and Monitor in One Command
+
+```bash
+idf.py -p /dev/cu.usbmodemXXXX flash monitor
+```
+
+---
+
+## Usage
+
+### First Pairing
+
+1. Flash the firmware to the ESP32-C3.
+2. Open the Bluetooth settings on iOS.
+3. Select the ESP32-C3 accessory.
+4. Accept the pairing request.
+5. Wait until the BLE link is encrypted and ANCS discovery completes.
+6. Send a test notification to the iPhone.
+7. Verify that the OLED displays the notification.
+
+### Reconnect Flow
+
+After a successful bond, the firmware tries:
+
+1. Directed advertising to the bonded iPhone.
+2. General advertising fallback if directed reconnect fails.
+3. ANCS rediscovery after the encrypted link is restored.
+
+### Button Controls
+
+| Action | Expected Behavior |
+| --- | --- |
+| Button A | Navigate through notifications or UI views |
+| Button B | Change filter, clear notification, or trigger secondary action |
+| Long press / configured combo | Reset bond state or enter maintenance flow |
+
+> Exact button behavior depends on the current firmware state machine and board configuration.
+
+---
+
+## Testing Checklist
+
+Before testing a first-pair flow:
+
+- Clear the iOS Bluetooth bond for the ESP32-C3.
+- Clear stored bonds on the ESP32-C3.
+- Reboot both devices if bonding behavior is inconsistent.
+
+Recommended validation sequence:
+
+- Pair from iOS or nRF Connect.
+- Confirm the first bond is retained locally.
+- Check logs for:
+
+```text
+bond store peers after secure=1
+```
+
+- Wait for:
+
+```text
+ANCS ready, attrs=enabled
+```
+
+- Send several notifications from different apps.
+- Verify that notification details are fetched correctly.
+- Verify that notifications are sorted by ANCS `Date`.
+- Walk out of range to force a disconnect.
+- Return to range and confirm bonded reconnect works.
+- Confirm pre-existing or pending notifications can wake the display and render correctly.
+- Test button navigation, filter changes, clear action, and bond reset.
+
+---
+
+## Troubleshooting
+
+### ANCS does not become ready
+
+Check that:
+
+- The iPhone accepted the BLE pairing request.
+- The connection is encrypted.
+- The ESP32-C3 bond was not erased after pairing.
+- ANCS discovery runs only after encryption.
+- Notification permissions are enabled on iOS.
+
+Useful log marker:
+
+```text
+ANCS ready, attrs=enabled
+```
+
+### Notifications appear but details are missing
+
+Check that:
+
+- Data Source subscription succeeded.
+- Control Point writes are accepted.
+- `GetNotificationAttributes` is sent with the correct `NotificationUID`.
+- The parser handles fragmented Data Source responses.
+
+### Notification order is incorrect
+
+Check that:
+
+- `Date` is included in the requested ANCS attributes.
+- The firmware updates the temporary receive timestamp after `Date` arrives.
+- The notification store re-sorts the list after attribute parsing.
+
+### Reconnect does not work
+
+Check that:
+
+- Bond data is stored in NVS.
+- Directed advertising uses the bonded peer address.
+- General advertising fallback starts after directed advertising fails.
+- iOS still has the accessory saved in Bluetooth settings.
+
+### macOS ESP-IDF `platform.mac_ver()` issue
+
+If the local Python environment fails because of a macOS version parsing issue, use a clean ESP-IDF Python environment first.  
+If the issue persists, the following development workaround can be used:
 
 ```bash
 IDF_COMPONENT_MANAGER=0 python -c 'import os, platform, runpy, sys; tools=os.path.join(os.environ["IDF_PATH"],"tools"); sys.path.insert(0,tools); platform.mac_ver=lambda release="", versioninfo=("", "", ""), machine="": ("26.1", ("", "", ""), os.uname().machine); sys.argv=[os.path.join(tools,"idf.py")]+sys.argv[1:]; runpy.run_path(sys.argv[0], run_name="__main__")' build
 ```
 
-### Checklist kiểm thử
+---
 
-- Xóa bond Bluetooth trên iOS và xóa bond trên ESP32-C3 trước khi test luồng pair lần đầu.
-- Pair từ iOS hoặc nRF Connect và xác nhận bond đầu tiên không làm mất bond local.
-- Kiểm tra log có `bond store peers after secure=1`.
-- Chờ log `ANCS ready, attrs=enabled`.
-- Gửi vài thông báo, sau đó đi ra xa để mất kết nối.
-- Quay lại gần thiết bị và kiểm tra thông báo pre-existing có bật màn hình và hiển thị.
-- Kiểm tra sau khi fetch chi tiết, danh sách thông báo được sắp xếp theo ANCS `Date`.
+## Roadmap
 
-### License
+- [ ] Add battery percentage monitoring.
+- [ ] Add charging status display.
+- [ ] Improve notification grouping by app.
+- [ ] Add persistent notification history if required.
+- [ ] Finalize iOS SwiftUI companion app.
+- [ ] Add configurable button actions.
+- [ ] Add screenshots or hardware photos.
+- [ ] Add CI build workflow for ESP-IDF.
+- [ ] Add release binaries and flashing instructions.
 
-Dự án dùng giấy phép MIT. Xem file `LICENSE`.
+---
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+---
+
+## Vietnamese Summary
+
+**ESP32-C3 ANCS Watch** là firmware ESP-IDF cho thiết bị đeo nhỏ dùng BLE. Thiết bị ghép đôi với iPhone, subscribe Apple Notification Center Service, lấy thông tin `AppIdentifier`, `Title`, `Message`, `Date`, sau đó hiển thị thông báo lên OLED SH1106 128 × 64.
+
+Điểm chính:
+
+- Pairing/bonding BLE bằng NimBLE.
+- Tự reconnect với iPhone đã bond.
+- Fetch chi tiết thông báo qua ANCS.
+- Sort thông báo theo `Date` để thông báo mới nhất hiện trên đầu.
+- Đồng bộ giờ qua iOS Current Time Service.
+- Hiển thị watchface và notification bằng SH1106 OLED.
+- Lưu cấu hình bằng NVS.
+- Điều khiển bằng hai nút vật lý.
