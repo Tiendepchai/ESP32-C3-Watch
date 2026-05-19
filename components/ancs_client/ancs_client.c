@@ -51,6 +51,7 @@ typedef struct {
 typedef struct {
     uint16_t conn_handle;
     uint16_t mtu;
+    uint32_t session_id;
     uint16_t service_start_handle;
     uint16_t service_end_handle;
     uint16_t notification_source_handle;
@@ -71,6 +72,8 @@ typedef struct {
     uint8_t pre_existing_enrich_count;
     bool ready;
     bool attr_channel_ready;
+    bool notification_source_subscribed;
+    bool data_source_subscribed;
     bool pending_record_valid;
     bool pending_record_discard;
     bool pending_request_awaiting_response;
@@ -81,28 +84,164 @@ typedef struct {
 } ancs_client_ctx_t;
 
 static ancs_client_ctx_t s_ancs;
+static uint32_t s_ancs_next_session_id = 1U;
 
 static const ancs_attribute_request_t s_requested_attrs[] = {
     { .attribute_id = ANCS_ATTR_ID_APP_IDENTIFIER, .max_len = 0 },
     { .attribute_id = ANCS_ATTR_ID_TITLE, .max_len = BOARD_ANCS_TITLE_MAX_LEN - 1 },
     { .attribute_id = ANCS_ATTR_ID_MESSAGE, .max_len = BOARD_ANCS_MESSAGE_MAX_LEN - 1 },
+    { .attribute_id = ANCS_ATTR_ID_DATE, .max_len = 0 },
 };
+
+typedef enum {
+    ANCS_CLIENT_CB_TAG_NONE = 0,
+    ANCS_CLIENT_CB_TAG_NOTIFICATION_SOURCE = 1,
+    ANCS_CLIENT_CB_TAG_DATA_SOURCE = 2,
+    ANCS_CLIENT_CB_TAG_DISCOVERY_TIMER = 3,
+    ANCS_CLIENT_CB_TAG_ATTR_REQUEST_TIMER = 4,
+} ancs_client_cb_tag_t;
 
 static esp_err_t ancs_client_start_discovery_now(void);
 static esp_err_t ancs_client_arm_discovery_timer(uint32_t delay_ms);
 static esp_err_t ancs_client_arm_attr_request_timer(uint32_t delay_ms);
+static void ancs_client_discovery_timer_cb(void *arg);
+static void ancs_client_attr_request_timer_cb(void *arg);
 static void ancs_client_kick_attr_request(void);
 static esp_err_t ancs_client_send_attr_request(const notification_record_t *record);
 static void ancs_client_retry_pending_request(const char *reason);
 static int ancs_client_cp_write_cb(uint16_t conn_handle, const struct ble_gatt_error *error,
                                    struct ble_gatt_attr *attr, void *arg);
+static void ancs_client_emit_ready(void);
 static void ancs_client_reset_metrics(void);
 static void ancs_client_log_session_summary(const char *reason);
+static esp_err_t ancs_client_recreate_timers(void);
+
+static uint32_t ancs_client_next_session_id(void)
+{
+    uint32_t session_id = s_ancs_next_session_id++;
+
+    if (session_id == 0U) {
+        session_id = s_ancs_next_session_id++;
+    }
+
+    return session_id;
+}
+
+static uintptr_t ancs_client_make_cb_token(uint32_t session_id, ancs_client_cb_tag_t tag)
+{
+    return (((uintptr_t)session_id) << 8) | (uintptr_t)tag;
+}
+
+static uint32_t ancs_client_token_session_id(void *arg)
+{
+    return (uint32_t)(((uintptr_t)arg) >> 8);
+}
+
+static ancs_client_cb_tag_t ancs_client_token_tag(void *arg)
+{
+    return (ancs_client_cb_tag_t)((uintptr_t)arg & 0xFFU);
+}
+
+static bool ancs_client_callback_is_current(uint16_t conn_handle, void *arg)
+{
+    uint32_t callback_session_id = ancs_client_token_session_id(arg);
+
+    return callback_session_id != 0U &&
+           callback_session_id == s_ancs.session_id &&
+           s_ancs.conn_handle != BLE_HS_CONN_HANDLE_NONE &&
+           conn_handle == s_ancs.conn_handle;
+}
+
+static bool ancs_client_timer_callback_is_current(void *arg, ancs_client_cb_tag_t expected_tag)
+{
+    uint32_t callback_session_id = ancs_client_token_session_id(arg);
+
+    return callback_session_id != 0U &&
+           callback_session_id == s_ancs.session_id &&
+           ancs_client_token_tag(arg) == expected_tag;
+}
+
+static esp_err_t ancs_client_delete_timer_handle(esp_timer_handle_t *timer)
+{
+    esp_err_t rc;
+
+    if (timer == NULL || *timer == NULL) {
+        return ESP_OK;
+    }
+
+    rc = esp_timer_stop(*timer);
+    if (rc != ESP_OK && rc != ESP_ERR_INVALID_STATE) {
+        return rc;
+    }
+
+    rc = esp_timer_delete(*timer);
+    if (rc != ESP_OK) {
+        return rc;
+    }
+
+    *timer = NULL;
+    return ESP_OK;
+}
+
+static esp_err_t ancs_client_recreate_timers(void)
+{
+    const esp_timer_create_args_t discovery_timer_args = {
+        .callback = ancs_client_discovery_timer_cb,
+        .arg = (void *)ancs_client_make_cb_token(s_ancs.session_id, ANCS_CLIENT_CB_TAG_DISCOVERY_TIMER),
+        .name = "ancs_disc",
+    };
+    const esp_timer_create_args_t attr_timer_args = {
+        .callback = ancs_client_attr_request_timer_cb,
+        .arg = (void *)ancs_client_make_cb_token(s_ancs.session_id, ANCS_CLIENT_CB_TAG_ATTR_REQUEST_TIMER),
+        .name = "ancs_attr",
+    };
+    esp_err_t rc;
+
+    ESP_RETURN_ON_ERROR(ancs_client_delete_timer_handle(&s_ancs.discovery_timer), TAG,
+                        "failed to delete ANCS discovery timer");
+    ESP_RETURN_ON_ERROR(ancs_client_delete_timer_handle(&s_ancs.attr_request_timer), TAG,
+                        "failed to delete ANCS attr timer");
+
+    rc = esp_timer_create(&discovery_timer_args, &s_ancs.discovery_timer);
+    ESP_RETURN_ON_ERROR(rc, TAG, "failed to create ANCS discovery timer");
+
+    rc = esp_timer_create(&attr_timer_args, &s_ancs.attr_request_timer);
+    if (rc != ESP_OK) {
+        (void)ancs_client_delete_timer_handle(&s_ancs.discovery_timer);
+        ESP_RETURN_ON_ERROR(rc, TAG, "failed to create ANCS attr timer");
+    }
+
+    return ESP_OK;
+}
+
+static void ancs_client_complete_subscriptions(void)
+{
+    s_ancs.ready = s_ancs.notification_source_subscribed;
+    s_ancs.attr_channel_ready = s_ancs.ready &&
+                                s_ancs.control_point_handle != 0U &&
+                                s_ancs.data_source_handle != 0U &&
+                                s_ancs.data_source_cccd_handle != 0U &&
+                                s_ancs.data_source_subscribed;
+
+    if (!s_ancs.ready) {
+        ESP_LOGW(TAG, "ANCS Notification Source subscription missing; leaving client not ready");
+        return;
+    }
+
+    ESP_LOGI(TAG, "ANCS ready, attrs=%s queued=%u",
+             s_ancs.attr_channel_ready ? "enabled" : "basic-only",
+             (unsigned)s_ancs.request_queue_count);
+    ancs_client_emit_ready();
+    ancs_client_kick_attr_request();
+}
 
 static void ancs_client_discovery_timer_cb(void *arg)
 {
     struct ble_gap_conn_desc desc;
-    (void)arg;
+
+    if (!ancs_client_timer_callback_is_current(arg, ANCS_CLIENT_CB_TAG_DISCOVERY_TIMER)) {
+        return;
+    }
 
     if (s_ancs.conn_handle == BLE_HS_CONN_HANDLE_NONE) {
         return;
@@ -225,6 +364,19 @@ static void ancs_client_pop_queued_record(void)
     s_ancs.request_queue_count--;
 }
 
+static void ancs_client_pop_last_queued_record(void)
+{
+    size_t tail_index;
+
+    if (s_ancs.request_queue_count == 0U) {
+        return;
+    }
+
+    tail_index = ancs_client_request_queue_index(s_ancs.request_queue_count - 1U);
+    memset(&s_ancs.request_queue[tail_index], 0, sizeof(s_ancs.request_queue[tail_index]));
+    s_ancs.request_queue_count--;
+}
+
 static void ancs_client_remove_queued_record(uint32_t uid)
 {
     if (uid == 0U || s_ancs.request_queue_count == 0U) {
@@ -297,10 +449,13 @@ static void ancs_client_queue_record(const notification_record_t *record, bool p
     }
 
     if (s_ancs.request_queue_count == BOARD_ANCS_ATTR_QUEUE_MAX) {
+        size_t tail_index = ancs_client_request_queue_index(s_ancs.request_queue_count - 1U);
+
         s_ancs.metrics.attr_queue_drops++;
-        ESP_LOGW(TAG, "ANCS attr queue full, dropping oldest queued uid=%" PRIu32,
-                 s_ancs.request_queue[s_ancs.request_queue_head].uid);
-        ancs_client_pop_queued_record();
+        ESP_LOGW(TAG, "ANCS attr queue full, dropping queued uid=%" PRIu32 " for uid=%" PRIu32,
+                 s_ancs.request_queue[tail_index].uid,
+                 record->uid);
+        ancs_client_pop_last_queued_record();
     }
 
     if (prioritize) {
@@ -362,7 +517,8 @@ static esp_err_t ancs_client_send_attr_request(const notification_record_t *reco
     ESP_RETURN_ON_FALSE(cmd_len != 0U, ESP_FAIL, TAG, "failed to build control point command");
 
     rc = ble_gattc_write_flat(s_ancs.conn_handle, s_ancs.control_point_handle,
-                              cmd, cmd_len, ancs_client_cp_write_cb, NULL);
+                              cmd, cmd_len, ancs_client_cp_write_cb,
+                              (void *)ancs_client_make_cb_token(s_ancs.session_id, ANCS_CLIENT_CB_TAG_NONE));
     ESP_RETURN_ON_FALSE(rc == 0, ESP_FAIL, TAG, "failed to request attributes, rc=%d", rc);
     s_ancs.metrics.attr_requests_started++;
     return ESP_OK;
@@ -429,7 +585,10 @@ static void ancs_client_retry_pending_request(const char *reason)
 static void ancs_client_attr_request_timer_cb(void *arg)
 {
     const char *reason;
-    (void)arg;
+
+    if (!ancs_client_timer_callback_is_current(arg, ANCS_CLIENT_CB_TAG_ATTR_REQUEST_TIMER)) {
+        return;
+    }
 
     if (!s_ancs.pending_record_valid || s_ancs.pending_uid == 0U) {
         return;
@@ -445,9 +604,11 @@ static void ancs_client_attr_request_timer_cb(void *arg)
 static int ancs_client_cp_write_cb(uint16_t conn_handle, const struct ble_gatt_error *error,
                                    struct ble_gatt_attr *attr, void *arg)
 {
-    (void)conn_handle;
     (void)attr;
-    (void)arg;
+
+    if (!ancs_client_callback_is_current(conn_handle, arg)) {
+        return 0;
+    }
 
     if (error->status != 0) {
         s_ancs.metrics.attr_send_failures++;
@@ -501,11 +662,20 @@ static void ancs_client_kick_attr_request(void)
 static int ancs_client_subscribe_cb(uint16_t conn_handle, const struct ble_gatt_error *error,
                                     struct ble_gatt_attr *attr, void *arg)
 {
-    (void)conn_handle;
-    (void)arg;
+    ancs_client_cb_tag_t tag;
+
+    if (!ancs_client_callback_is_current(conn_handle, arg)) {
+        return 0;
+    }
+
+    tag = ancs_client_token_tag(arg);
 
     if (error->status != 0) {
         ESP_LOGW(TAG, "CCCD write failed, handle=%u status=%d", attr != NULL ? attr->handle : 0U, error->status);
+    } else if (tag == ANCS_CLIENT_CB_TAG_NOTIFICATION_SOURCE) {
+        s_ancs.notification_source_subscribed = true;
+    } else if (tag == ANCS_CLIENT_CB_TAG_DATA_SOURCE) {
+        s_ancs.data_source_subscribed = true;
     }
 
     if (s_ancs.pending_subscriptions > 0U) {
@@ -513,15 +683,7 @@ static int ancs_client_subscribe_cb(uint16_t conn_handle, const struct ble_gatt_
     }
 
     if (s_ancs.pending_subscriptions == 0U) {
-        s_ancs.ready = true;
-        s_ancs.attr_channel_ready = (s_ancs.control_point_handle != 0U &&
-                                     s_ancs.data_source_handle != 0U &&
-                                     s_ancs.data_source_cccd_handle != 0U);
-        ESP_LOGI(TAG, "ANCS ready, attrs=%s queued=%u",
-                 s_ancs.attr_channel_ready ? "enabled" : "basic-only",
-                 (unsigned)s_ancs.request_queue_count);
-        ancs_client_emit_ready();
-        ancs_client_kick_attr_request();
+        ancs_client_complete_subscriptions();
     }
 
     return 0;
@@ -533,23 +695,31 @@ static esp_err_t ancs_client_start_subscriptions(void)
     int rc;
 
     s_ancs.pending_subscriptions = 0;
+    s_ancs.notification_source_subscribed = false;
+    s_ancs.data_source_subscribed = false;
 
     if (s_ancs.notification_source_cccd_handle != 0U) {
         s_ancs.pending_subscriptions++;
         rc = ble_gattc_write_flat(s_ancs.conn_handle, s_ancs.notification_source_cccd_handle,
                                   cccd_enable_notify, sizeof(cccd_enable_notify),
-                                  ancs_client_subscribe_cb, NULL);
+                                  ancs_client_subscribe_cb,
+                                  (void *)ancs_client_make_cb_token(s_ancs.session_id,
+                                                                    ANCS_CLIENT_CB_TAG_NOTIFICATION_SOURCE));
         if (rc != 0) {
             ESP_LOGW(TAG, "failed to subscribe Notification Source, rc=%d", rc);
             s_ancs.pending_subscriptions--;
         }
+    } else {
+        ESP_LOGW(TAG, "ANCS Notification Source CCCD not found");
     }
 
     if (s_ancs.data_source_cccd_handle != 0U) {
         s_ancs.pending_subscriptions++;
         rc = ble_gattc_write_flat(s_ancs.conn_handle, s_ancs.data_source_cccd_handle,
                                   cccd_enable_notify, sizeof(cccd_enable_notify),
-                                  ancs_client_subscribe_cb, NULL);
+                                  ancs_client_subscribe_cb,
+                                  (void *)ancs_client_make_cb_token(s_ancs.session_id,
+                                                                    ANCS_CLIENT_CB_TAG_DATA_SOURCE));
         if (rc != 0) {
             ESP_LOGW(TAG, "failed to subscribe Data Source, rc=%d", rc);
             s_ancs.pending_subscriptions--;
@@ -557,9 +727,7 @@ static esp_err_t ancs_client_start_subscriptions(void)
     }
 
     if (s_ancs.pending_subscriptions == 0U) {
-        s_ancs.ready = true;
-        s_ancs.attr_channel_ready = false;
-        ancs_client_emit_ready();
+        ancs_client_complete_subscriptions();
     }
 
     return ESP_OK;
@@ -568,9 +736,11 @@ static esp_err_t ancs_client_start_subscriptions(void)
 static int ancs_client_disc_dsc_cb(uint16_t conn_handle, const struct ble_gatt_error *error,
                                    uint16_t chr_val_handle, const struct ble_gatt_dsc *dsc, void *arg)
 {
-    (void)conn_handle;
     (void)chr_val_handle;
-    (void)arg;
+
+    if (!ancs_client_callback_is_current(conn_handle, arg)) {
+        return 0;
+    }
 
     if (error->status == 0 && dsc != NULL) {
         if (ble_uuid_cmp(&dsc->uuid.u, BLE_UUID16_DECLARE(BLE_GATT_DSC_CLT_CFG_UUID16)) == 0) {
@@ -603,7 +773,10 @@ static int ancs_client_disc_chr_cb(uint16_t conn_handle, const struct ble_gatt_e
                                    const struct ble_gatt_chr *chr, void *arg)
 {
     int rc;
-    (void)arg;
+
+    if (!ancs_client_callback_is_current(conn_handle, arg)) {
+        return 0;
+    }
 
     if (error->status == 0 && chr != NULL) {
         if ((chr->properties & BLE_GATT_CHR_PROP_NOTIFY) &&
@@ -629,7 +802,8 @@ static int ancs_client_disc_chr_cb(uint16_t conn_handle, const struct ble_gatt_e
         }
 
         rc = ble_gattc_disc_all_dscs(conn_handle, s_ancs.service_start_handle,
-                                     s_ancs.service_end_handle, ancs_client_disc_dsc_cb, NULL);
+                                     s_ancs.service_end_handle, ancs_client_disc_dsc_cb,
+                                     (void *)ancs_client_make_cb_token(s_ancs.session_id, ANCS_CLIENT_CB_TAG_NONE));
         if (rc != 0) {
             ESP_LOGE(TAG, "failed to discover ANCS descriptors, rc=%d", rc);
         }
@@ -644,7 +818,10 @@ static int ancs_client_disc_svc_cb(uint16_t conn_handle, const struct ble_gatt_e
                                    const struct ble_gatt_svc *svc, void *arg)
 {
     int rc;
-    (void)arg;
+
+    if (!ancs_client_callback_is_current(conn_handle, arg)) {
+        return 0;
+    }
 
     if (error->status == 0 && svc != NULL) {
         s_ancs.service_start_handle = svc->start_handle;
@@ -671,7 +848,8 @@ static int ancs_client_disc_svc_cb(uint16_t conn_handle, const struct ble_gatt_e
         }
 
         rc = ble_gattc_disc_all_chrs(conn_handle, s_ancs.service_start_handle,
-                                     s_ancs.service_end_handle, ancs_client_disc_chr_cb, NULL);
+                                     s_ancs.service_end_handle, ancs_client_disc_chr_cb,
+                                     (void *)ancs_client_make_cb_token(s_ancs.session_id, ANCS_CLIENT_CB_TAG_NONE));
         if (rc != 0) {
             ESP_LOGE(TAG, "failed to discover ANCS chars, rc=%d", rc);
         }
@@ -690,32 +868,21 @@ esp_err_t ancs_client_init(const ancs_client_config_t *config)
 {
     esp_timer_handle_t existing_timer = s_ancs.discovery_timer;
     esp_timer_handle_t existing_attr_timer = s_ancs.attr_request_timer;
-    const esp_timer_create_args_t discovery_timer_args = {
-        .callback = ancs_client_discovery_timer_cb,
-        .name = "ancs_disc",
-    };
-    const esp_timer_create_args_t attr_timer_args = {
-        .callback = ancs_client_attr_request_timer_cb,
-        .name = "ancs_attr",
-    };
 
     ESP_RETURN_ON_FALSE(config != NULL, ESP_ERR_INVALID_ARG, TAG, "config is null");
+    if (ancs_client_delete_timer_handle(&existing_timer) != ESP_OK) {
+        ESP_LOGW(TAG, "failed to delete existing ANCS discovery timer during init");
+    }
+    if (ancs_client_delete_timer_handle(&existing_attr_timer) != ESP_OK) {
+        ESP_LOGW(TAG, "failed to delete existing ANCS attr timer during init");
+    }
     memset(&s_ancs, 0, sizeof(s_ancs));
-    s_ancs.discovery_timer = existing_timer;
-    s_ancs.attr_request_timer = existing_attr_timer;
     s_ancs.cfg = *config;
     s_ancs.mtu = 23;
     s_ancs.conn_handle = BLE_HS_CONN_HANDLE_NONE;
+    s_ancs.session_id = ancs_client_next_session_id();
     ancs_client_clear_request_queue();
-
-    if (s_ancs.discovery_timer == NULL) {
-        ESP_RETURN_ON_ERROR(esp_timer_create(&discovery_timer_args, &s_ancs.discovery_timer), TAG,
-                            "failed to create ANCS discovery timer");
-    }
-    if (s_ancs.attr_request_timer == NULL) {
-        ESP_RETURN_ON_ERROR(esp_timer_create(&attr_timer_args, &s_ancs.attr_request_timer), TAG,
-                            "failed to create ANCS attr timer");
-    }
+    ESP_RETURN_ON_ERROR(ancs_client_recreate_timers(), TAG, "failed to initialize ANCS timers");
     ancs_client_reset_metrics();
     return ESP_OK;
 }
@@ -726,22 +893,24 @@ void ancs_client_reset(void)
     esp_timer_handle_t discovery_timer = s_ancs.discovery_timer;
     esp_timer_handle_t attr_request_timer = s_ancs.attr_request_timer;
 
-    if (discovery_timer != NULL) {
-        esp_timer_stop(discovery_timer);
+    if (ancs_client_delete_timer_handle(&discovery_timer) != ESP_OK) {
+        ESP_LOGW(TAG, "failed to delete ANCS discovery timer during reset");
     }
-    if (attr_request_timer != NULL) {
-        esp_timer_stop(attr_request_timer);
+    if (ancs_client_delete_timer_handle(&attr_request_timer) != ESP_OK) {
+        ESP_LOGW(TAG, "failed to delete ANCS attr timer during reset");
     }
 
     ancs_client_log_session_summary("reset");
 
     memset(&s_ancs, 0, sizeof(s_ancs));
-    s_ancs.discovery_timer = discovery_timer;
-    s_ancs.attr_request_timer = attr_request_timer;
     s_ancs.cfg = cfg;
     s_ancs.mtu = 23;
     s_ancs.conn_handle = BLE_HS_CONN_HANDLE_NONE;
+    s_ancs.session_id = ancs_client_next_session_id();
     ancs_client_clear_request_queue();
+    if (ancs_client_recreate_timers() != ESP_OK) {
+        ESP_LOGW(TAG, "failed to recreate ANCS timers during reset");
+    }
     ancs_client_reset_metrics();
 }
 
@@ -772,6 +941,8 @@ static esp_err_t ancs_client_start_discovery_now(void)
     s_ancs.control_point_handle = 0;
     s_ancs.ready = false;
     s_ancs.attr_channel_ready = false;
+    s_ancs.notification_source_subscribed = false;
+    s_ancs.data_source_subscribed = false;
     ancs_client_clear_rx_state();
     ancs_client_clear_pending_request_state();
     ancs_client_clear_request_queue();
@@ -780,7 +951,8 @@ static esp_err_t ancs_client_start_discovery_now(void)
     ESP_LOGI(TAG, "starting ANCS service discovery, conn_handle=%u retry=%u",
              s_ancs.conn_handle, s_ancs.discovery_retry_count);
 
-    rc = ble_gattc_disc_svc_by_uuid(s_ancs.conn_handle, &s_ancs_service_uuid.u, ancs_client_disc_svc_cb, NULL);
+    rc = ble_gattc_disc_svc_by_uuid(s_ancs.conn_handle, &s_ancs_service_uuid.u, ancs_client_disc_svc_cb,
+                                    (void *)ancs_client_make_cb_token(s_ancs.session_id, ANCS_CLIENT_CB_TAG_NONE));
     ESP_RETURN_ON_FALSE(rc == 0, ESP_FAIL, TAG, "ble_gattc_disc_svc_by_uuid failed: rc=%d", rc);
     return ESP_OK;
 }
@@ -788,14 +960,18 @@ static esp_err_t ancs_client_start_discovery_now(void)
 esp_err_t ancs_client_start_discovery(uint16_t conn_handle)
 {
     s_ancs.conn_handle = conn_handle;
+    s_ancs.session_id = ancs_client_next_session_id();
     s_ancs.discovery_retry_count = 0;
+    ESP_RETURN_ON_ERROR(ancs_client_recreate_timers(), TAG, "failed to recreate ANCS timers for discovery");
     return ancs_client_start_discovery_now();
 }
 
 esp_err_t ancs_client_schedule_discovery(uint16_t conn_handle, uint32_t delay_ms)
 {
     s_ancs.conn_handle = conn_handle;
+    s_ancs.session_id = ancs_client_next_session_id();
     s_ancs.discovery_retry_count = 0;
+    ESP_RETURN_ON_ERROR(ancs_client_recreate_timers(), TAG, "failed to recreate ANCS timers for discovery");
     ESP_LOGI(TAG, "ANCS discovery scheduled in %u ms", delay_ms);
     return ancs_client_arm_discovery_timer(delay_ms);
 }
@@ -844,6 +1020,9 @@ int ancs_client_handle_notify_rx(uint16_t conn_handle, uint16_t attr_handle, con
     bool pre_existing;
 
     if (om == NULL) {
+        return 0;
+    }
+    if (s_ancs.conn_handle == BLE_HS_CONN_HANDLE_NONE || conn_handle != s_ancs.conn_handle) {
         return 0;
     }
 
@@ -940,12 +1119,15 @@ int ancs_client_handle_notify_rx(uint16_t conn_handle, uint16_t attr_handle, con
                                                 s_requested_attrs,
                                                 sizeof(s_requested_attrs) / sizeof(s_requested_attrs[0]))) {
             if (ancs_parse_notification_attrs(s_ancs.data_source_buffer, s_ancs.data_source_len, &record) == ESP_OK) {
+                uint64_t attr_timestamp_ms = record.timestamp_ms;
                 if (s_ancs.pending_record_valid && s_ancs.pending_record.uid == record.uid) {
                     record.event_id = s_ancs.pending_record.event_id;
                     record.event_flags = s_ancs.pending_record.event_flags;
                     record.category_id = s_ancs.pending_record.category_id;
                     record.category_count = s_ancs.pending_record.category_count;
-                    record.timestamp_ms = s_ancs.pending_record.timestamp_ms;
+                    record.timestamp_ms = attr_timestamp_ms != 0U
+                                          ? attr_timestamp_ms
+                                          : s_ancs.pending_record.timestamp_ms;
                 }
                 if (record.timestamp_ms == 0U) {
                     record.timestamp_ms = (uint64_t)(esp_timer_get_time() / 1000ULL);

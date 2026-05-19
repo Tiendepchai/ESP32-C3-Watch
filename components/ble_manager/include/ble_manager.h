@@ -22,11 +22,22 @@ typedef enum {
 } ble_manager_state_t;
 
 typedef struct {
+    bool active;
+    uint32_t sequence;
+    char source[BOARD_NAV_SOURCE_MAX_LEN];
+    char title[BOARD_ANCS_TITLE_MAX_LEN];
+    char instruction[BOARD_ANCS_MESSAGE_MAX_LEN];
+    char distance[BOARD_NAV_DISTANCE_MAX_LEN];
+    char eta[BOARD_NAV_ETA_MAX_LEN];
+} ble_manager_navigation_state_t;
+
+typedef struct {
     const char *device_name;
     void (*state_cb)(ble_manager_state_t state, void *user_ctx);
     void (*bond_cb)(bool bonded, void *user_ctx);
     void (*notification_cb)(const notification_record_t *record, bool complete, void *user_ctx);
     void (*config_changed_cb)(void *user_ctx);
+    void (*navigation_cb)(const ble_manager_navigation_state_t *state, void *user_ctx);
     void *user_ctx;
 } ble_manager_config_t;
 

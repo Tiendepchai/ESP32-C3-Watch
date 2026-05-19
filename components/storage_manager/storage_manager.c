@@ -13,21 +13,35 @@
 #define STORAGE_NAMESPACE    "app_cfg"
 #define KEY_BONDED           "bonded"
 #define KEY_DISP_INVERT      "disp_inv"
-#define KEY_FILTER           "notif_fltr"
+#define KEY_FILTER_LEGACY    "notif_fltr"
+#define KEY_FILTER           "notif_fltr2"
 #define KEY_APP_CATALOG      "app_catalog"
 
+#define CATALOG_SCHEMA_VERSION 1U
+
 typedef struct {
+    uint32_t schema_version;
     uint32_t revision;
     bool calls_allowed;
     uint8_t reserved[3];
     notification_app_config_t entries[BOARD_NOTIFICATION_APP_CONFIG_MAX];
 } notification_app_catalog_blob_t;
 
+/* v0 layout: identical to v1 but without the schema_version prefix.
+ * Kept ONLY to migrate existing NVS blobs written before versioning. */
+typedef struct {
+    uint32_t revision;
+    bool calls_allowed;
+    uint8_t reserved[3];
+    notification_app_config_t entries[BOARD_NOTIFICATION_APP_CONFIG_MAX];
+} notification_app_catalog_blob_v0_t;
+
 static const char *TAG = BOARD_TAG_STORAGE;
 
 static nvs_handle_t s_nvs_handle;
 static SemaphoreHandle_t s_lock;
 static bool s_initialized;
+static bool s_catalog_full_warned;
 static notification_app_catalog_blob_t s_app_catalog;
 
 static esp_err_t storage_manager_read_u8(const char *key, uint8_t default_value, uint8_t *value)
@@ -75,7 +89,7 @@ static size_t storage_manager_find_notification_app_slot_locked(void)
         }
     }
 
-    return BOARD_NOTIFICATION_APP_CONFIG_MAX - 1U;
+    return SIZE_MAX;
 }
 
 static esp_err_t storage_manager_write_catalog_locked(void)
@@ -93,31 +107,61 @@ static esp_err_t storage_manager_write_catalog_locked(void)
 static void storage_manager_init_catalog_defaults(void)
 {
     memset(&s_app_catalog, 0, sizeof(s_app_catalog));
+    s_app_catalog.schema_version = CATALOG_SCHEMA_VERSION;
     s_app_catalog.calls_allowed = true;
+    s_catalog_full_warned = false;
 }
 
 static esp_err_t storage_manager_load_catalog_locked(void)
 {
-    notification_app_catalog_blob_t blob = {0};
-    size_t size = sizeof(blob);
+    size_t size = 0;
     esp_err_t rc;
 
     storage_manager_init_catalog_defaults();
 
-    rc = nvs_get_blob(s_nvs_handle, KEY_APP_CATALOG, &blob, &size);
+    rc = nvs_get_blob(s_nvs_handle, KEY_APP_CATALOG, NULL, &size);
     if (rc == ESP_ERR_NVS_NOT_FOUND) {
         return ESP_OK;
     }
     if (rc != ESP_OK) {
         return rc;
     }
-    if (size != sizeof(blob)) {
-        ESP_LOGW(TAG, "notification app catalog size mismatch=%u, resetting", (unsigned)size);
-        storage_manager_init_catalog_defaults();
+
+    if (size == sizeof(notification_app_catalog_blob_t)) {
+        notification_app_catalog_blob_t blob = {0};
+        size_t read_size = sizeof(blob);
+        rc = nvs_get_blob(s_nvs_handle, KEY_APP_CATALOG, &blob, &read_size);
+        if (rc != ESP_OK) {
+            return rc;
+        }
+        if (blob.schema_version != CATALOG_SCHEMA_VERSION) {
+            ESP_LOGW(TAG, "catalog schema_version=%u unknown (expected %u), resetting",
+                     (unsigned)blob.schema_version, (unsigned)CATALOG_SCHEMA_VERSION);
+            storage_manager_init_catalog_defaults();
+            return ESP_OK;
+        }
+        s_app_catalog = blob;
         return ESP_OK;
     }
 
-    s_app_catalog = blob;
+    if (size == sizeof(notification_app_catalog_blob_v0_t)) {
+        notification_app_catalog_blob_v0_t v0 = {0};
+        size_t read_size = sizeof(v0);
+        rc = nvs_get_blob(s_nvs_handle, KEY_APP_CATALOG, &v0, &read_size);
+        if (rc != ESP_OK) {
+            return rc;
+        }
+        ESP_LOGI(TAG, "migrating notification app catalog v0 -> v%u", (unsigned)CATALOG_SCHEMA_VERSION);
+        s_app_catalog.schema_version = CATALOG_SCHEMA_VERSION;
+        s_app_catalog.revision = v0.revision;
+        s_app_catalog.calls_allowed = v0.calls_allowed;
+        memcpy(s_app_catalog.reserved, v0.reserved, sizeof(s_app_catalog.reserved));
+        memcpy(s_app_catalog.entries, v0.entries, sizeof(s_app_catalog.entries));
+        return storage_manager_write_catalog_locked();
+    }
+
+    ESP_LOGW(TAG, "notification app catalog size mismatch=%u, resetting", (unsigned)size);
+    storage_manager_init_catalog_defaults();
     return ESP_OK;
 }
 
@@ -143,6 +187,16 @@ esp_err_t storage_manager_init(void)
     ESP_RETURN_ON_ERROR(nvs_open(STORAGE_NAMESPACE, NVS_READWRITE, &s_nvs_handle), TAG, "nvs_open failed");
     xSemaphoreTake(s_lock, portMAX_DELAY);
     rc = storage_manager_load_catalog_locked();
+    /* One-time migration: drop legacy filter key. Old enum had 5 values
+     * (ALL/CALLS/MESSAGES_SOCIAL/IMPORTANT_ONLY/NAVIGATION); new enum has 3
+     * (ALL/CALLS/NAVIGATION). Erase to avoid silent re-mapping of old values. */
+    esp_err_t erase_rc = nvs_erase_key(s_nvs_handle, KEY_FILTER_LEGACY);
+    if (erase_rc == ESP_OK) {
+        ESP_LOGI(TAG, "erased legacy filter key '%s'", KEY_FILTER_LEGACY);
+        nvs_commit(s_nvs_handle);
+    } else if (erase_rc != ESP_ERR_NVS_NOT_FOUND) {
+        ESP_LOGW(TAG, "failed to erase legacy filter key: %s", esp_err_to_name(erase_rc));
+    }
     xSemaphoreGive(s_lock);
     ESP_RETURN_ON_ERROR(rc, TAG, "failed to load notification app catalog");
     s_initialized = true;
@@ -246,15 +300,22 @@ esp_err_t storage_manager_track_notification_app(const char *app_id, bool allowe
     index = storage_manager_find_notification_app_index_locked(app_id);
     if (index < 0) {
         slot = storage_manager_find_notification_app_slot_locked();
-        memset(&s_app_catalog.entries[slot], 0, sizeof(s_app_catalog.entries[slot]));
-        strlcpy(s_app_catalog.entries[slot].app_id, app_id, sizeof(s_app_catalog.entries[slot].app_id));
-        s_app_catalog.entries[slot].allowed = allowed_if_new;
-        s_app_catalog.entries[slot].valid = true;
-        s_app_catalog.revision++;
-        rc = storage_manager_write_catalog_locked();
-        inserted = (rc == ESP_OK);
-        if (rc == ESP_OK) {
-            ESP_LOGI(TAG, "tracked notification app %s allowed=%d", app_id, allowed_if_new);
+        if (slot == SIZE_MAX) {
+            if (!s_catalog_full_warned) {
+                ESP_LOGW(TAG, "notification app catalog full, leaving new apps untracked");
+                s_catalog_full_warned = true;
+            }
+        } else {
+            memset(&s_app_catalog.entries[slot], 0, sizeof(s_app_catalog.entries[slot]));
+            strlcpy(s_app_catalog.entries[slot].app_id, app_id, sizeof(s_app_catalog.entries[slot].app_id));
+            s_app_catalog.entries[slot].allowed = allowed_if_new;
+            s_app_catalog.entries[slot].valid = true;
+            s_app_catalog.revision++;
+            rc = storage_manager_write_catalog_locked();
+            inserted = (rc == ESP_OK);
+            if (rc == ESP_OK) {
+                ESP_LOGI(TAG, "tracked notification app %s allowed=%d", app_id, allowed_if_new);
+            }
         }
     }
     xSemaphoreGive(s_lock);
@@ -298,12 +359,17 @@ esp_err_t storage_manager_set_notification_app_allowed(const char *app_id, bool 
     index = storage_manager_find_notification_app_index_locked(app_id);
     if (index < 0) {
         slot = storage_manager_find_notification_app_slot_locked();
-        memset(&s_app_catalog.entries[slot], 0, sizeof(s_app_catalog.entries[slot]));
-        strlcpy(s_app_catalog.entries[slot].app_id, app_id, sizeof(s_app_catalog.entries[slot].app_id));
-        s_app_catalog.entries[slot].valid = true;
-        s_app_catalog.entries[slot].allowed = allowed;
-        s_app_catalog.revision++;
-        rc = storage_manager_write_catalog_locked();
+        if (slot == SIZE_MAX) {
+            rc = ESP_ERR_NO_MEM;
+            ESP_LOGW(TAG, "notification app catalog full, refusing to insert %s", app_id);
+        } else {
+            memset(&s_app_catalog.entries[slot], 0, sizeof(s_app_catalog.entries[slot]));
+            strlcpy(s_app_catalog.entries[slot].app_id, app_id, sizeof(s_app_catalog.entries[slot].app_id));
+            s_app_catalog.entries[slot].valid = true;
+            s_app_catalog.entries[slot].allowed = allowed;
+            s_app_catalog.revision++;
+            rc = storage_manager_write_catalog_locked();
+        }
     } else if (s_app_catalog.entries[index].allowed != allowed) {
         s_app_catalog.entries[index].allowed = allowed;
         s_app_catalog.revision++;

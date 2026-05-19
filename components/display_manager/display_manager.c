@@ -41,6 +41,7 @@ static const display_app_name_map_t s_app_name_map[] = {
     { "com.apple.mobilemail", "Mail" },
     { "com.apple.Preferences", "Settings" },
     { "com.apple.Maps", "Maps" },
+    { "com.google.Maps", "Google Maps" },
     { "com.apple.calculator", "Calculator" },
     { "com.apple.weather", "Weather" },
     { "com.google.Gmail", "Gmail" },
@@ -48,6 +49,7 @@ static const display_app_name_map_t s_app_name_map[] = {
     { "net.whatsapp.WhatsApp", "WhatsApp" },
     { "org.telegram.messenger", "Telegram" },
     { "org.whispersystems.signal", "Signal" },
+    { "com.waze.iphone", "Waze" },
 };
 
 static esp_err_t display_flush_locked(display_handle_t handle)
@@ -187,6 +189,19 @@ static void display_append_text(char *out, size_t out_size, size_t *offset, cons
 
     while (*text != '\0' && *offset < (out_size - 1U)) {
         out[(*offset)++] = *text++;
+    }
+    out[*offset] = '\0';
+}
+
+static void display_append_bytes(char *out, size_t out_size, size_t *offset, const uint8_t *bytes, size_t len)
+{
+    if (out == NULL || offset == NULL || bytes == NULL || out_size == 0) {
+        return;
+    }
+
+    while (len > 0U && *offset < (out_size - 1U)) {
+        out[(*offset)++] = (char)*bytes++;
+        len--;
     }
     out[*offset] = '\0';
 }
@@ -410,6 +425,7 @@ static void display_sanitize_text(const char *input, char *out, size_t out_size)
         uint32_t cp = 0;
         size_t consumed = 1;
         const char *replacement = NULL;
+        const uint8_t *seq_start = p;
 
         display_decode_utf8_char(p, &consumed, &cp);
         p += consumed;
@@ -435,6 +451,12 @@ static void display_sanitize_text(const char *input, char *out, size_t out_size)
             }
 
             display_append_char(out, out_size, &offset, c);
+            continue;
+        }
+
+        if (text_renderer_can_render_codepoint(cp)) {
+            last_was_space = false;
+            display_append_bytes(out, out_size, &offset, seq_start, consumed);
             continue;
         }
 
@@ -531,6 +553,15 @@ static void display_prepare_app_label(const char *app, char *out, size_t out_siz
     if (out[0] == '\0') {
         strlcpy(out, "Notification", out_size);
     }
+}
+
+static void display_log_screen_text(const char *screen, const char *line0, const char *line1, const char *line2)
+{
+    ESP_LOGI(TAG, "screen=%s line0=\"%s\" line1=\"%s\" line2=\"%s\"",
+             display_safe_text(screen),
+             display_safe_text(line0),
+             display_safe_text(line1),
+             display_safe_text(line2));
 }
 
 esp_err_t display_init(display_handle_t *out_handle)
@@ -637,6 +668,12 @@ esp_err_t display_set_inverted(display_handle_t handle, bool inverted)
     return esp_lcd_panel_invert_color(handle->panel_handle, inverted);
 }
 
+esp_err_t display_set_active(display_handle_t handle, bool active)
+{
+    ESP_RETURN_ON_FALSE(handle != NULL, ESP_ERR_INVALID_ARG, TAG, "handle is null");
+    return esp_lcd_panel_disp_on_off(handle->panel_handle, active);
+}
+
 esp_err_t display_show_status(display_handle_t handle, const char *status)
 {
     text_renderer_box_t status_box = {
@@ -645,21 +682,27 @@ esp_err_t display_show_status(display_handle_t handle, const char *status)
         .width = BOARD_SH1106_WIDTH,
         .height = 24,
     };
+    char status_line[BOARD_ANCS_MESSAGE_MAX_LEN];
 
     ESP_RETURN_ON_FALSE(handle != NULL, ESP_ERR_INVALID_ARG, TAG, "handle is null");
+
+    display_sanitize_text(status, status_line, sizeof(status_line));
+    display_log_screen_text("status", "ESP32-C3 ANCS", status_line, "");
 
     xSemaphoreTake(handle->lock, portMAX_DELAY);
     text_renderer_clear(handle->framebuffer, sizeof(handle->framebuffer), false);
     text_renderer_draw_string(handle->framebuffer, BOARD_SH1106_WIDTH, BOARD_SH1106_HEIGHT, 0, 0, "ESP32-C3 ANCS");
     text_renderer_draw_wrapped_text(handle->framebuffer, BOARD_SH1106_WIDTH, BOARD_SH1106_HEIGHT,
-                                    &status_box, display_safe_text(status), false);
+                                    &status_box, status_line, false);
     esp_err_t rc = display_flush_locked(handle);
     xSemaphoreGive(handle->lock);
     return rc;
 }
 
-esp_err_t display_show_notification(display_handle_t handle, const char *app, const char *title, const char *message)
+esp_err_t display_show_notification(display_handle_t handle, const char *app, const char *title,
+                                    const char *message, nav_icon_t icon)
 {
+    /* Khi có icon nav, message_box thu hẹp ngang để chừa chỗ icon top-right */
     text_renderer_box_t message_box = {
         .x = 0,
         .y = 24,
@@ -670,6 +713,8 @@ esp_err_t display_show_notification(display_handle_t handle, const char *app, co
     char line1[BOARD_ANCS_TITLE_MAX_LEN];
     char line2[BOARD_ANCS_MESSAGE_MAX_LEN];
 
+    ESP_RETURN_ON_FALSE(handle != NULL, ESP_ERR_INVALID_ARG, TAG, "handle is null");
+
     display_prepare_app_label(app, line0, sizeof(line0));
     display_sanitize_text(title, line1, sizeof(line1));
     display_sanitize_text(message, line2, sizeof(line2));
@@ -678,7 +723,7 @@ esp_err_t display_show_notification(display_handle_t handle, const char *app, co
         strlcpy(line1, "(no title)", sizeof(line1));
     }
 
-    ESP_RETURN_ON_FALSE(handle != NULL, ESP_ERR_INVALID_ARG, TAG, "handle is null");
+    display_log_screen_text("notification", line0, line1, line2);
 
     xSemaphoreTake(handle->lock, portMAX_DELAY);
     text_renderer_clear(handle->framebuffer, sizeof(handle->framebuffer), false);
@@ -686,6 +731,125 @@ esp_err_t display_show_notification(display_handle_t handle, const char *app, co
     text_renderer_draw_string(handle->framebuffer, BOARD_SH1106_WIDTH, BOARD_SH1106_HEIGHT, 0, 8, line1);
     text_renderer_draw_wrapped_text(handle->framebuffer, BOARD_SH1106_WIDTH, BOARD_SH1106_HEIGHT,
                                     &message_box, line2, true);
+    if (icon != NAV_ICON_NONE) {
+        text_renderer_draw_nav_icon(handle->framebuffer, BOARD_SH1106_WIDTH, BOARD_SH1106_HEIGHT,
+                                    BOARD_SH1106_WIDTH - 18, 0, icon);
+    }
+    esp_err_t rc = display_flush_locked(handle);
+    xSemaphoreGive(handle->lock);
+    return rc;
+}
+
+esp_err_t display_show_navigation(display_handle_t handle, const char *source, const char *title,
+                                  const char *instruction, const char *distance, const char *eta,
+                                  nav_icon_t icon)
+{
+    text_renderer_box_t instruction_box = {
+        .x = 0,
+        .y = 24,
+        .width = BOARD_SH1106_WIDTH,
+        .height = BOARD_SH1106_HEIGHT - 24,
+    };
+    char line0[BOARD_NAV_SOURCE_MAX_LEN];
+    char line1[BOARD_ANCS_TITLE_MAX_LEN];
+    char line2[BOARD_ANCS_MESSAGE_MAX_LEN];
+    char nav_distance[BOARD_NAV_DISTANCE_MAX_LEN];
+    char nav_eta[BOARD_NAV_ETA_MAX_LEN];
+    char footer[BOARD_NAV_DISTANCE_MAX_LEN + BOARD_NAV_ETA_MAX_LEN + 8];
+
+    ESP_RETURN_ON_FALSE(handle != NULL, ESP_ERR_INVALID_ARG, TAG, "handle is null");
+
+    display_sanitize_text(source, line0, sizeof(line0));
+    display_sanitize_text(title, line1, sizeof(line1));
+    display_sanitize_text(instruction, line2, sizeof(line2));
+    display_sanitize_text(distance, nav_distance, sizeof(nav_distance));
+    display_sanitize_text(eta, nav_eta, sizeof(nav_eta));
+
+    if (line0[0] == '\0') {
+        strlcpy(line0, "Navigation", sizeof(line0));
+    }
+    if (line1[0] == '\0') {
+        strlcpy(line1, "(waiting)", sizeof(line1));
+    }
+
+    footer[0] = '\0';
+    if (nav_distance[0] != '\0') {
+        strlcpy(footer, nav_distance, sizeof(footer));
+    }
+    if (nav_eta[0] != '\0') {
+        if (footer[0] != '\0') {
+            strlcat(footer, " | ", sizeof(footer));
+        }
+        strlcat(footer, nav_eta, sizeof(footer));
+    }
+    if (footer[0] != '\0') {
+        if (line2[0] != '\0') {
+            strlcat(line2, "\n", sizeof(line2));
+        }
+        strlcat(line2, footer, sizeof(line2));
+    }
+
+    display_log_screen_text("navigation", line0, line1, line2);
+
+    xSemaphoreTake(handle->lock, portMAX_DELAY);
+    text_renderer_clear(handle->framebuffer, sizeof(handle->framebuffer), false);
+    text_renderer_draw_string(handle->framebuffer, BOARD_SH1106_WIDTH, BOARD_SH1106_HEIGHT, 0, 0, line0);
+    text_renderer_draw_string(handle->framebuffer, BOARD_SH1106_WIDTH, BOARD_SH1106_HEIGHT, 0, 8, line1);
+    text_renderer_draw_wrapped_text(handle->framebuffer, BOARD_SH1106_WIDTH, BOARD_SH1106_HEIGHT,
+                                    &instruction_box, line2, true);
+    if (icon != NAV_ICON_NONE) {
+        text_renderer_draw_nav_icon(handle->framebuffer, BOARD_SH1106_WIDTH, BOARD_SH1106_HEIGHT,
+                                    BOARD_SH1106_WIDTH - 18, 0, icon);
+    }
+    esp_err_t rc = display_flush_locked(handle);
+    xSemaphoreGive(handle->lock);
+    return rc;
+}
+
+esp_err_t display_show_watchface(display_handle_t handle, const char *time_str, const char *date_str,
+                                 const char *battery_str, const char *source_str)
+{
+    char time_line[16];
+    char date_line[24];
+    char status_line[32];
+    int x_time;
+    int time_text_width;
+
+    ESP_RETURN_ON_FALSE(handle != NULL, ESP_ERR_INVALID_ARG, TAG, "handle is null");
+
+    display_sanitize_text(time_str ? time_str : "--:--", time_line, sizeof(time_line));
+    display_sanitize_text(date_str ? date_str : "", date_line, sizeof(date_line));
+
+    status_line[0] = '\0';
+    if (battery_str != NULL && battery_str[0] != '\0') {
+        strlcpy(status_line, battery_str, sizeof(status_line));
+    }
+    if (source_str != NULL && source_str[0] != '\0') {
+        if (status_line[0] != '\0') {
+            strlcat(status_line, " ", sizeof(status_line));
+        }
+        strlcat(status_line, source_str, sizeof(status_line));
+    }
+
+    display_log_screen_text("watchface", time_line, date_line, status_line);
+
+    /* Center HH:MM at row y=20 (mid screen). Font is 6px wide per glyph incl spacing. */
+    time_text_width = (int)strlen(time_line) * 6;
+    x_time = (BOARD_SH1106_WIDTH - time_text_width) / 2;
+    if (x_time < 0) x_time = 0;
+
+    xSemaphoreTake(handle->lock, portMAX_DELAY);
+    text_renderer_clear(handle->framebuffer, sizeof(handle->framebuffer), false);
+    if (date_line[0] != '\0') {
+        text_renderer_draw_string(handle->framebuffer, BOARD_SH1106_WIDTH, BOARD_SH1106_HEIGHT,
+                                  0, 0, date_line);
+    }
+    text_renderer_draw_string(handle->framebuffer, BOARD_SH1106_WIDTH, BOARD_SH1106_HEIGHT,
+                              x_time, 24, time_line);
+    if (status_line[0] != '\0') {
+        text_renderer_draw_string(handle->framebuffer, BOARD_SH1106_WIDTH, BOARD_SH1106_HEIGHT,
+                                  0, 56, status_line);
+    }
     esp_err_t rc = display_flush_locked(handle);
     xSemaphoreGive(handle->lock);
     return rc;

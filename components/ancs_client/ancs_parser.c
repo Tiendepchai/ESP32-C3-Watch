@@ -1,11 +1,81 @@
 #include "ancs_parser.h"
 
 #include <string.h>
+#include <time.h>
 #include "board_config.h"
 #include "esp_check.h"
 #include "esp_log.h"
 
 static const char *TAG = BOARD_TAG_ANCS_PARSER;
+
+static bool ancs_read_decimal(const uint8_t *data, size_t offset, size_t count, int *out_value)
+{
+    int value = 0;
+
+    if (data == NULL || out_value == NULL || count == 0U) {
+        return false;
+    }
+
+    for (size_t i = 0; i < count; ++i) {
+        uint8_t c = data[offset + i];
+        if (c < '0' || c > '9') {
+            return false;
+        }
+        value = (value * 10) + (int)(c - '0');
+    }
+
+    *out_value = value;
+    return true;
+}
+
+static bool ancs_parse_date_timestamp_ms(const uint8_t *payload, uint16_t len, uint64_t *out_timestamp_ms)
+{
+    int year;
+    int month;
+    int day;
+    int hour;
+    int minute;
+    int second;
+    struct tm tm_local = {0};
+    time_t epoch;
+
+    if (payload == NULL || out_timestamp_ms == NULL || len < 15U || payload[8] != 'T') {
+        return false;
+    }
+    if (!ancs_read_decimal(payload, 0, 4, &year) ||
+        !ancs_read_decimal(payload, 4, 2, &month) ||
+        !ancs_read_decimal(payload, 6, 2, &day) ||
+        !ancs_read_decimal(payload, 9, 2, &hour) ||
+        !ancs_read_decimal(payload, 11, 2, &minute) ||
+        !ancs_read_decimal(payload, 13, 2, &second)) {
+        return false;
+    }
+
+    if (year < 2020 || year > 2100 ||
+        month < 1 || month > 12 ||
+        day < 1 || day > 31 ||
+        hour < 0 || hour > 23 ||
+        minute < 0 || minute > 59 ||
+        second < 0 || second > 60) {
+        return false;
+    }
+
+    tm_local.tm_year = year - 1900;
+    tm_local.tm_mon = month - 1;
+    tm_local.tm_mday = day;
+    tm_local.tm_hour = hour;
+    tm_local.tm_min = minute;
+    tm_local.tm_sec = second;
+    tm_local.tm_isdst = -1;
+
+    epoch = mktime(&tm_local);
+    if (epoch == (time_t)-1) {
+        return false;
+    }
+
+    *out_timestamp_ms = (uint64_t)epoch * 1000ULL;
+    return true;
+}
 
 static void ancs_safe_copy(char *dst, size_t dst_size, const uint8_t *src, size_t src_len)
 {
@@ -189,6 +259,11 @@ esp_err_t ancs_parse_notification_attrs(const uint8_t *data, size_t len, notific
             break;
         case ANCS_ATTR_ID_MESSAGE:
             ancs_safe_copy(out_record->message, sizeof(out_record->message), payload, attr_len);
+            break;
+        case ANCS_ATTR_ID_DATE:
+            if (!ancs_parse_date_timestamp_ms(payload, attr_len, &out_record->timestamp_ms)) {
+                ESP_LOGW(TAG, "invalid ANCS date attribute len=%u", attr_len);
+            }
             break;
         default:
             break;

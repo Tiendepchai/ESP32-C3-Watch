@@ -33,6 +33,7 @@ esp_err_t notification_store_push(notification_store_handle_t handle, const noti
 esp_err_t notification_store_upsert(notification_store_handle_t handle, const notification_record_t *record);
 bool notification_store_get_latest(notification_store_handle_t handle, notification_record_t *out_record);
 size_t notification_store_get_all(notification_store_handle_t handle, notification_record_t *out_records, size_t max_records);
+size_t notification_store_snapshot_uids(notification_store_handle_t handle, uint32_t *out_uids, size_t max_uids);
 bool notification_store_find_by_uid(notification_store_handle_t handle, uint32_t uid, notification_record_t *out_record);
 bool notification_store_remove_by_uid(notification_store_handle_t handle, uint32_t uid);
 void notification_store_clear(notification_store_handle_t handle);

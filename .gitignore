@@ -1,6 +1,10 @@
 /build/
-/.DS_Store
+*.DS_Store
 /.codex
+/.deriveddata/
+/.swift-module-cache/
+/screenlog.*
+/sdkconfig
 
 /ios/ANCSWatchConfig/*.xcodeproj
 /ios/ANCSWatchConfig/*.xcworkspace
