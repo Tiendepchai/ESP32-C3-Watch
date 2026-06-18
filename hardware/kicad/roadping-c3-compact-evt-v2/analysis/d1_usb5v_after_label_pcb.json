@@ -1,0 +1,4372 @@
+{
+  "analyzer_type": "pcb",
+  "schema_version": "1.3.0",
+  "file": "/Users/allah-computer/Documents/RoadPing-C3/hardware/kicad/roadping-c3-compact-evt-v2/roadping-c3-compact-evt-v2.kicad_pcb",
+  "kicad_version": "10.0",
+  "file_version": "20260206",
+  "statistics": {
+    "footprint_count": 34,
+    "front_side": 18,
+    "back_side": 16,
+    "smd_count": 17,
+    "tht_count": 5,
+    "copper_layers_used": 2,
+    "copper_layer_names": [
+      "B.Cu",
+      "F.Cu"
+    ],
+    "track_segments": 0,
+    "via_count": 7,
+    "zone_count": 8,
+    "total_track_length_mm": 0,
+    "board_width_mm": 51.4,
+    "board_height_mm": 40.9,
+    "board_area_mm2": 2102.3,
+    "net_count": 22,
+    "routing_complete": false,
+    "unrouted_net_count": 12
+  },
+  "layers": [
+    {
+      "number": 0,
+      "name": "F.Cu",
+      "type": "signal",
+      "alias": null
+    },
+    {
+      "number": 2,
+      "name": "B.Cu",
+      "type": "signal",
+      "alias": null
+    },
+    {
+      "number": 9,
+      "name": "F.Adhes",
+      "type": "user",
+      "alias": "F.Adhesive"
+    },
+    {
+      "number": 11,
+      "name": "B.Adhes",
+      "type": "user",
+      "alias": "B.Adhesive"
+    },
+    {
+      "number": 13,
+      "name": "F.Paste",
+      "type": "user",
+      "alias": null
+    },
+    {
+      "number": 15,
+      "name": "B.Paste",
+      "type": "user",
+      "alias": null
+    },
+    {
+      "number": 5,
+      "name": "F.SilkS",
+      "type": "user",
+      "alias": "F.Silkscreen"
+    },
+    {
+      "number": 7,
+      "name": "B.SilkS",
+      "type": "user",
+      "alias": "B.Silkscreen"
+    },
+    {
+      "number": 1,
+      "name": "F.Mask",
+      "type": "user",
+      "alias": null
+    },
+    {
+      "number": 3,
+      "name": "B.Mask",
+      "type": "user",
+      "alias": null
+    },
+    {
+      "number": 17,
+      "name": "Dwgs.User",
+      "type": "user",
+      "alias": "User.Drawings"
+    },
+    {
+      "number": 19,
+      "name": "Cmts.User",
+      "type": "user",
+      "alias": "User.Comments"
+    },
+    {
+      "number": 21,
+      "name": "Eco1.User",
+      "type": "user",
+      "alias": "User.Eco1"
+    },
+    {
+      "number": 23,
+      "name": "Eco2.User",
+      "type": "user",
+      "alias": "User.Eco2"
+    },
+    {
+      "number": 25,
+      "name": "Edge.Cuts",
+      "type": "user",
+      "alias": null
+    },
+    {
+      "number": 27,
+      "name": "Margin",
+      "type": "user",
+      "alias": null
+    },
+    {
+      "number": 31,
+      "name": "F.CrtYd",
+      "type": "user",
+      "alias": "F.Courtyard"
+    },
+    {
+      "number": 29,
+      "name": "B.CrtYd",
+      "type": "user",
+      "alias": "B.Courtyard"
+    },
+    {
+      "number": 35,
+      "name": "F.Fab",
+      "type": "user",
+      "alias": null
+    },
+    {
+      "number": 33,
+      "name": "B.Fab",
+      "type": "user",
+      "alias": null
+    }
+  ],
+  "setup": {
+    "board_thickness_mm": 1.6,
+    "stackup": [
+      {
+        "name": "F.SilkS",
+        "type": "Top Silk Screen"
+      },
+      {
+        "name": "F.Paste",
+        "type": "Top Solder Paste"
+      },
+      {
+        "name": "F.Mask",
+        "type": "Top Solder Mask",
+        "color": "Green",
+        "thickness": 0.01
+      },
+      {
+        "name": "F.Cu",
+        "type": "copper",
+        "thickness": 0.035
+      },
+      {
+        "name": "dielectric 1",
+        "type": "core",
+        "thickness": 1.51,
+        "material": "FR4",
+        "epsilon_r": 4.5,
+        "loss_tangent": 0.02
+      },
+      {
+        "name": "B.Cu",
+        "type": "copper",
+        "thickness": 0.035
+      },
+      {
+        "name": "B.Mask",
+        "type": "Bottom Solder Mask",
+        "color": "Green",
+        "thickness": 0.01
+      },
+      {
+        "name": "B.Paste",
+        "type": "Bottom Solder Paste"
+      },
+      {
+        "name": "B.SilkS",
+        "type": "Bottom Silk Screen"
+      }
+    ],
+    "pad_to_mask_clearance": 0.0,
+    "copper_finish": "None",
+    "dielectric_constraints": "no",
+    "legacy_teardrops": "no",
+    "allow_soldermask_bridges": "no"
+  },
+  "nets": {
+    "1": "/3V3",
+    "2": "/BAT_ADC",
+    "3": "/BAT_CONN+",
+    "4": "/ENC_A",
+    "5": "/ENC_B",
+    "6": "/ENC_SW",
+    "7": "/GND",
+    "8": "/I2C_SCL",
+    "9": "/I2C_SDA",
+    "10": "/SYS_RAW",
+    "11": "/UART_RX",
+    "12": "/UART_TX",
+    "13": "/USB_5V",
+    "14": "/USB_5V_IN",
+    "15": "/VBAT",
+    "16": "unconnected-(U2-NC-Pad4)",
+    "17": "unconnected-(U3-GPIO1-Pad1)",
+    "18": "unconnected-(U3-GPIO5-Pad5)",
+    "19": "unconnected-(U3-GPIO6-Pad6)",
+    "20": "unconnected-(U3-GPIO7-Pad7)",
+    "21": "unconnected-(U3-GPIO9-Pad9)",
+    "22": "unconnected-(U3-Pad5V)"
+  },
+  "net_name_to_id": {
+    "/3V3": 1,
+    "/BAT_ADC": 2,
+    "/BAT_CONN+": 3,
+    "/ENC_A": 4,
+    "/ENC_B": 5,
+    "/ENC_SW": 6,
+    "/GND": 7,
+    "/I2C_SCL": 8,
+    "/I2C_SDA": 9,
+    "/SYS_RAW": 10,
+    "/UART_RX": 11,
+    "/UART_TX": 12,
+    "/USB_5V": 13,
+    "/USB_5V_IN": 14,
+    "/VBAT": 15,
+    "unconnected-(U2-NC-Pad4)": 16,
+    "unconnected-(U3-GPIO1-Pad1)": 17,
+    "unconnected-(U3-GPIO5-Pad5)": 18,
+    "unconnected-(U3-GPIO6-Pad6)": 19,
+    "unconnected-(U3-GPIO7-Pad7)": 20,
+    "unconnected-(U3-GPIO9-Pad9)": 21,
+    "unconnected-(U3-Pad5V)": 22
+  },
+  "board_outline": {
+    "edge_count": 4,
+    "edges": [
+      {
+        "type": "line",
+        "start": [
+          12.6,
+          12.8
+        ],
+        "end": [
+          64.0,
+          12.8
+        ]
+      },
+      {
+        "type": "line",
+        "start": [
+          12.6,
+          53.7
+        ],
+        "end": [
+          12.6,
+          12.8
+        ]
+      },
+      {
+        "type": "line",
+        "start": [
+          64.0,
+          12.8
+        ],
+        "end": [
+          64.0,
+          53.7
+        ]
+      },
+      {
+        "type": "line",
+        "start": [
+          64.0,
+          53.7
+        ],
+        "end": [
+          12.6,
+          53.7
+        ]
+      }
+    ],
+    "bounding_box": {
+      "min_x": 12.6,
+      "min_y": 12.8,
+      "max_x": 64.0,
+      "max_y": 53.7,
+      "width": 51.4,
+      "height": 40.9
+    }
+  },
+  "component_groups": {
+    "C": {
+      "count": 6,
+      "references": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C9"
+      ]
+    },
+    "D": {
+      "count": 1,
+      "references": [
+        "D1"
+      ]
+    },
+    "DS": {
+      "count": 1,
+      "references": [
+        "DS1"
+      ]
+    },
+    "F": {
+      "count": 2,
+      "references": [
+        "F1",
+        "F2"
+      ]
+    },
+    "J": {
+      "count": 3,
+      "references": [
+        "J1",
+        "J2",
+        "J3"
+      ]
+    },
+    "MH": {
+      "count": 2,
+      "references": [
+        "MH1",
+        "MH3"
+      ]
+    },
+    "R": {
+      "count": 5,
+      "references": [
+        "R3",
+        "R4",
+        "R5",
+        "R6",
+        "R7"
+      ]
+    },
+    "SW": {
+      "count": 1,
+      "references": [
+        "SW1"
+      ]
+    },
+    "TP": {
+      "count": 10,
+      "references": [
+        "TP1",
+        "TP10",
+        "TP11",
+        "TP12",
+        "TP13",
+        "TP14",
+        "TP2",
+        "TP3",
+        "TP5",
+        "TP8"
+      ]
+    },
+    "U": {
+      "count": 3,
+      "references": [
+        "U1",
+        "U2",
+        "U3"
+      ]
+    }
+  },
+  "footprints": [
+    {
+      "library": "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical",
+      "reference": "J2",
+      "value": "JST_PH_2PIN_LIPO",
+      "mpn": "",
+      "x": 52.4,
+      "y": 16.5,
+      "angle": -90.0,
+      "layer": "F.Cu",
+      "type": "through_hole",
+      "pad_count": 2,
+      "sch_path": "/34e57219-756f-4d52-a270-d087438a1810",
+      "description": "EVT LiPo connector: JST-PH 2.0mm 2-pin; pin 1 VBAT/BAT+, pin 2 GND/BAT-. Check polarity before connecting battery.",
+      "models_3d": [
+        "${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical.step"
+      ],
+      "courtyard": {
+        "min_x": 49.1,
+        "min_y": 14.05,
+        "max_x": 54.6,
+        "max_y": 20.95
+      },
+      "footprint": "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical",
+      "pad_nets": {
+        "1": {
+          "net": "/BAT_CONN+",
+          "pin": "BAT+_1"
+        },
+        "2": {
+          "net": "/GND",
+          "pin": "BAT-_2"
+        }
+      },
+      "connected_nets": [
+        "/BAT_CONN+",
+        "/GND"
+      ]
+    },
+    {
+      "library": "MountingHole_M2_NPTH_5mmKeepout",
+      "reference": "MH3",
+      "value": "M2_NPTH",
+      "mpn": "",
+      "x": 58.5,
+      "y": 16.0,
+      "angle": 0.0,
+      "layer": "F.Cu",
+      "type": "board_only",
+      "pad_count": 1,
+      "board_only": true,
+      "exclude_from_bom": true,
+      "exclude_from_pos": true,
+      "courtyard": {
+        "min_x": 58.5,
+        "min_y": 16.0,
+        "max_x": 61.0,
+        "max_y": 16.0
+      },
+      "footprint": "MountingHole_M2_NPTH_5mmKeepout",
+      "pad_nets": {},
+      "connected_nets": []
+    },
+    {
+      "library": "roadping-c3:TP_Round_1.0mm",
+      "reference": "TP1",
+      "value": "USB_5V",
+      "mpn": "",
+      "x": 55.0,
+      "y": 46.3,
+      "angle": 180.0,
+      "layer": "F.Cu",
+      "type": "exclude_from_pos_files",
+      "pad_count": 1,
+      "dnp": true,
+      "exclude_from_bom": true,
+      "exclude_from_pos": true,
+      "sch_path": "/cae2bbbd-d0cc-4f16-9f9d-ba6915873631",
+      "description": "Test point for USB_5V",
+      "courtyard": {
+        "min_x": 54.15,
+        "min_y": 46.3,
+        "max_x": 55.0,
+        "max_y": 46.3
+      },
+      "footprint": "roadping-c3:TP_Round_1.0mm",
+      "pad_nets": {
+        "1": {
+          "net": "/USB_5V",
+          "pin": "1_1"
+        }
+      },
+      "connected_nets": [
+        "/USB_5V"
+      ]
+    },
+    {
+      "library": "roadping-c3:TP_Round_1.0mm",
+      "reference": "TP13",
+      "value": "BAT_ADC",
+      "mpn": "",
+      "x": 45.4,
+      "y": 46.3,
+      "angle": 180.0,
+      "layer": "F.Cu",
+      "type": "exclude_from_pos_files",
+      "pad_count": 1,
+      "exclude_from_bom": true,
+      "exclude_from_pos": true,
+      "sch_path": "/45f454fe-0099-4eba-b9ea-3a4df23b4b1f",
+      "description": "Test point for BAT_ADC",
+      "courtyard": {
+        "min_x": 44.55,
+        "min_y": 46.3,
+        "max_x": 45.4,
+        "max_y": 46.3
+      },
+      "footprint": "roadping-c3:TP_Round_1.0mm",
+      "pad_nets": {
+        "1": {
+          "net": "/BAT_ADC",
+          "pin": "1_1"
+        }
+      },
+      "connected_nets": [
+        "/BAT_ADC"
+      ]
+    },
+    {
+      "library": "roadping-c3:OLED_4PIN_VDD_GND_SCK_SDA_2.54MM",
+      "reference": "DS1",
+      "value": "SH1106_I2C_OLED",
+      "mpn": "",
+      "x": 38.5,
+      "y": 40.27,
+      "angle": -90.0,
+      "layer": "F.Cu",
+      "type": "through_hole",
+      "pad_count": 4,
+      "sch_path": "/358c6d23-4f55-4765-b62a-7bfef4274e8d",
+      "description": "128x64 I2C OLED module, SH1106 firmware driver",
+      "courtyard": {
+        "min_x": 36.65,
+        "min_y": 34.52,
+        "max_x": 40.35,
+        "max_y": 46.02
+      },
+      "footprint": "roadping-c3:OLED_4PIN_VDD_GND_SCK_SDA_2.54MM",
+      "pad_nets": {
+        "1": {
+          "net": "/3V3",
+          "pin": "VDD_1"
+        },
+        "2": {
+          "net": "/GND",
+          "pin": "GND_2"
+        },
+        "3": {
+          "net": "/I2C_SCL",
+          "pin": "SCK_3"
+        },
+        "4": {
+          "net": "/I2C_SDA",
+          "pin": "SDA_4"
+        }
+      },
+      "connected_nets": [
+        "/3V3",
+        "/GND",
+        "/I2C_SCL",
+        "/I2C_SDA"
+      ]
+    },
+    {
+      "library": "roadping-c3:TP_Round_1.0mm",
+      "reference": "TP12",
+      "value": "ENC_SW",
+      "mpn": "",
+      "x": 62.2,
+      "y": 46.3,
+      "angle": 180.0,
+      "layer": "F.Cu",
+      "type": "exclude_from_pos_files",
+      "pad_count": 1,
+      "dnp": true,
+      "exclude_from_bom": true,
+      "exclude_from_pos": true,
+      "sch_path": "/164c7f6c-43b9-4af9-91d6-410521796f55",
+      "description": "Test point for ENC_SW",
+      "courtyard": {
+        "min_x": 61.35,
+        "min_y": 46.3,
+        "max_x": 62.2,
+        "max_y": 46.3
+      },
+      "footprint": "roadping-c3:TP_Round_1.0mm",
+      "pad_nets": {
+        "1": {
+          "net": "/ENC_SW",
+          "pin": "1_1"
+        }
+      },
+      "connected_nets": [
+        "/ENC_SW"
+      ]
+    },
+    {
+      "library": "roadping-c3:TP_Round_1.0mm",
+      "reference": "TP8",
+      "value": "I2C_SDA",
+      "mpn": "",
+      "x": 43.0,
+      "y": 46.3,
+      "angle": 180.0,
+      "layer": "F.Cu",
+      "type": "exclude_from_pos_files",
+      "pad_count": 1,
+      "exclude_from_bom": true,
+      "exclude_from_pos": true,
+      "sch_path": "/d94696e3-34ff-4e81-bcf2-a913c1d66ca1",
+      "description": "Test point for I2C_SDA",
+      "courtyard": {
+        "min_x": 42.15,
+        "min_y": 46.3,
+        "max_x": 43.0,
+        "max_y": 46.3
+      },
+      "footprint": "roadping-c3:TP_Round_1.0mm",
+      "pad_nets": {
+        "1": {
+          "net": "/I2C_SDA",
+          "pin": "1_1"
+        }
+      },
+      "connected_nets": [
+        "/I2C_SDA"
+      ]
+    },
+    {
+      "library": "roadping-c3:TP_Round_1.0mm",
+      "reference": "TP2",
+      "value": "BAT_CONN+",
+      "mpn": "",
+      "x": 50.2,
+      "y": 46.3,
+      "angle": 180.0,
+      "layer": "F.Cu",
+      "type": "exclude_from_pos_files",
+      "pad_count": 1,
+      "exclude_from_bom": true,
+      "exclude_from_pos": true,
+      "sch_path": "/324a3fc1-f1e0-49ef-ba83-1f706d7782bc",
+      "description": "Raw LiPo connector positive test point before F2 battery PTC; check polarity before use.",
+      "courtyard": {
+        "min_x": 49.35,
+        "min_y": 46.3,
+        "max_x": 50.2,
+        "max_y": 46.3
+      },
+      "footprint": "roadping-c3:TP_Round_1.0mm",
+      "pad_nets": {
+        "1": {
+          "net": "/BAT_CONN+",
+          "pin": "1_1"
+        }
+      },
+      "connected_nets": [
+        "/BAT_CONN+"
+      ]
+    },
+    {
+      "library": "roadping-c3:MODULE_ESP32-C3_SUPERMINI_TH",
+      "reference": "U3",
+      "value": "ESP32-C3_SUPERMINI_TH",
+      "mpn": "",
+      "x": 24.5,
+      "y": 43.5,
+      "angle": -90.0,
+      "layer": "F.Cu",
+      "type": "through_hole",
+      "pad_count": 16,
+      "sch_path": "/56b4913f-110b-4d04-92ca-7974b3712817",
+      "description": "ESP32-C3 Super Mini module; pinout and 22.52 mm x 18.00 mm size verified for EVT; I2C_SCL moved to GPIO10 to avoid GPIO9 boot-strapping risk; verify pitch, antenna keepout, and EN/RST.",
+      "models_3d": [
+        "${KIPRJMOD}/roadping-c3.3dshapes/ESP32-C3_SUPERMINI_TH.step"
+      ],
+      "courtyard": {
+        "min_x": 12.99,
+        "min_y": 34.25,
+        "max_x": 36.01,
+        "max_y": 52.75
+      },
+      "footprint": "roadping-c3:MODULE_ESP32-C3_SUPERMINI_TH",
+      "pad_nets": {
+        "0": {
+          "net": "/BAT_ADC",
+          "pin": "GPIO0_0"
+        },
+        "1": {
+          "net": "unconnected-(U3-GPIO1-Pad1)",
+          "pin": "GPIO1_1"
+        },
+        "2": {
+          "net": "/ENC_A",
+          "pin": "GPIO2_2"
+        },
+        "3": {
+          "net": "/ENC_B",
+          "pin": "GPIO3_3"
+        },
+        "3.3": {
+          "net": "/3V3",
+          "pin": "3V3_3.3"
+        },
+        "4": {
+          "net": "/ENC_SW",
+          "pin": "GPIO4_4"
+        },
+        "5": {
+          "net": "unconnected-(U3-GPIO5-Pad5)",
+          "pin": "GPIO5_5"
+        },
+        "5V": {
+          "net": "unconnected-(U3-Pad5V)",
+          "pin": "5V_5V"
+        },
+        "6": {
+          "net": "unconnected-(U3-GPIO6-Pad6)",
+          "pin": "GPIO6_6"
+        },
+        "7": {
+          "net": "unconnected-(U3-GPIO7-Pad7)",
+          "pin": "GPIO7_7"
+        },
+        "8": {
+          "net": "/I2C_SDA",
+          "pin": "GPIO8_8"
+        },
+        "9": {
+          "net": "unconnected-(U3-GPIO9-Pad9)",
+          "pin": "GPIO9_9"
+        },
+        "10": {
+          "net": "/I2C_SCL",
+          "pin": "GPIO10_10"
+        },
+        "20": {
+          "net": "/UART_RX",
+          "pin": "GPIO20_20"
+        },
+        "21": {
+          "net": "/UART_TX",
+          "pin": "GPIO21_21"
+        },
+        "G": {
+          "net": "/GND",
+          "pin": "GND_G"
+        }
+      },
+      "connected_nets": [
+        "/3V3",
+        "/BAT_ADC",
+        "/ENC_A",
+        "/ENC_B",
+        "/ENC_SW",
+        "/GND",
+        "/I2C_SCL",
+        "/I2C_SDA",
+        "/UART_RX",
+        "/UART_TX",
+        "unconnected-(U3-GPIO1-Pad1)",
+        "unconnected-(U3-GPIO5-Pad5)",
+        "unconnected-(U3-GPIO6-Pad6)",
+        "unconnected-(U3-GPIO7-Pad7)",
+        "unconnected-(U3-GPIO9-Pad9)",
+        "unconnected-(U3-Pad5V)"
+      ]
+    },
+    {
+      "library": "MountingHole_M2_NPTH_5mmKeepout",
+      "reference": "MH1",
+      "value": "M2_NPTH",
+      "mpn": "",
+      "x": 40.8,
+      "y": 50.3,
+      "angle": 0.0,
+      "layer": "F.Cu",
+      "type": "board_only",
+      "pad_count": 1,
+      "board_only": true,
+      "exclude_from_bom": true,
+      "exclude_from_pos": true,
+      "courtyard": {
+        "min_x": 40.8,
+        "min_y": 50.3,
+        "max_x": 43.3,
+        "max_y": 50.3
+      },
+      "footprint": "MountingHole_M2_NPTH_5mmKeepout",
+      "pad_nets": {},
+      "connected_nets": []
+    },
+    {
+      "library": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "reference": "J1",
+      "value": "USB_5V_INPUT",
+      "mpn": "",
+      "x": 46.8,
+      "y": 14.65,
+      "angle": 90.0,
+      "layer": "F.Cu",
+      "type": "through_hole",
+      "pad_count": 2,
+      "sch_path": "/222a37a6-d677-44ca-8caa-3a2ef7ad70de",
+      "description": "Optional input pads feeding TP4056 IN+/IN-",
+      "models_3d": [
+        "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x02_P2.54mm_Vertical.step"
+      ],
+      "courtyard": {
+        "min_x": 45.03,
+        "min_y": 12.88,
+        "max_x": 51.12,
+        "max_y": 16.42
+      },
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "pad_nets": {
+        "1": {
+          "net": "/USB_5V_IN",
+          "pin": "Pin_1_1"
+        },
+        "2": {
+          "net": "/GND",
+          "pin": "Pin_2_2"
+        }
+      },
+      "connected_nets": [
+        "/GND",
+        "/USB_5V_IN"
+      ]
+    },
+    {
+      "library": "roadping-c3:TP_Round_1.0mm",
+      "reference": "TP5",
+      "value": "GND",
+      "mpn": "",
+      "x": 52.6,
+      "y": 46.3,
+      "angle": 180.0,
+      "layer": "F.Cu",
+      "type": "exclude_from_pos_files",
+      "pad_count": 1,
+      "exclude_from_bom": true,
+      "exclude_from_pos": true,
+      "sch_path": "/754fbbe9-a2f1-4aec-8012-967dd0f4e537",
+      "description": "Test point for GND",
+      "courtyard": {
+        "min_x": 51.75,
+        "min_y": 46.3,
+        "max_x": 52.6,
+        "max_y": 46.3
+      },
+      "footprint": "roadping-c3:TP_Round_1.0mm",
+      "pad_nets": {
+        "1": {
+          "net": "/GND",
+          "pin": "1_1"
+        }
+      },
+      "connected_nets": [
+        "/GND"
+      ]
+    },
+    {
+      "library": "roadping-c3:TP_Round_1.0mm",
+      "reference": "TP3",
+      "value": "SYS_RAW",
+      "mpn": "",
+      "x": 47.8,
+      "y": 46.3,
+      "angle": 180.0,
+      "layer": "F.Cu",
+      "type": "exclude_from_pos_files",
+      "pad_count": 1,
+      "exclude_from_bom": true,
+      "exclude_from_pos": true,
+      "sch_path": "/0c6c7506-df37-47a5-a300-cd7f3e5f2cf6",
+      "description": "Test point for SYS_RAW",
+      "courtyard": {
+        "min_x": 46.95,
+        "min_y": 46.3,
+        "max_x": 47.8,
+        "max_y": 46.3
+      },
+      "footprint": "roadping-c3:TP_Round_1.0mm",
+      "pad_nets": {
+        "1": {
+          "net": "/SYS_RAW",
+          "pin": "1_1"
+        }
+      },
+      "connected_nets": [
+        "/SYS_RAW"
+      ]
+    },
+    {
+      "library": "roadping-c3:TP4056-Module",
+      "reference": "U1",
+      "value": "TP4056-Module",
+      "mpn": "",
+      "x": 13.6,
+      "y": 31.4,
+      "angle": 0.0,
+      "layer": "F.Cu",
+      "type": "smd",
+      "pad_count": 6,
+      "sch_path": "/f50c24f8-b5e5-40ae-a959-483887823f16",
+      "description": "TP4056 charger module; verify OUT+/OUT- protection/load-output behavior",
+      "courtyard": {
+        "min_x": 13.6,
+        "min_y": 14.2,
+        "max_x": 41.6,
+        "max_y": 31.4
+      },
+      "footprint": "roadping-c3:TP4056-Module",
+      "pad_nets": {
+        "1": {
+          "net": "/USB_5V",
+          "pin": "IN+_1"
+        },
+        "2": {
+          "net": "/GND",
+          "pin": "IN-_2"
+        },
+        "3": {
+          "net": "/SYS_RAW",
+          "pin": "OUT+_3"
+        },
+        "4": {
+          "net": "/GND",
+          "pin": "OUT-_4"
+        },
+        "5": {
+          "net": "/VBAT",
+          "pin": "B+_5"
+        },
+        "6": {
+          "net": "/GND",
+          "pin": "B-_6"
+        }
+      },
+      "connected_nets": [
+        "/GND",
+        "/SYS_RAW",
+        "/USB_5V",
+        "/VBAT"
+      ]
+    },
+    {
+      "library": "roadping-c3:TP_Round_1.0mm",
+      "reference": "TP11",
+      "value": "ENC_B",
+      "mpn": "",
+      "x": 59.8,
+      "y": 46.3,
+      "angle": 180.0,
+      "layer": "F.Cu",
+      "type": "exclude_from_pos_files",
+      "pad_count": 1,
+      "dnp": true,
+      "exclude_from_bom": true,
+      "exclude_from_pos": true,
+      "sch_path": "/ddcaf24e-8ae4-4208-a34b-6e962d6f2397",
+      "description": "Test point for ENC_B",
+      "courtyard": {
+        "min_x": 58.95,
+        "min_y": 46.3,
+        "max_x": 59.8,
+        "max_y": 46.3
+      },
+      "footprint": "roadping-c3:TP_Round_1.0mm",
+      "pad_nets": {
+        "1": {
+          "net": "/ENC_B",
+          "pin": "1_1"
+        }
+      },
+      "connected_nets": [
+        "/ENC_B"
+      ]
+    },
+    {
+      "library": "roadping-c3:TP_Round_1.0mm",
+      "reference": "TP10",
+      "value": "ENC_A",
+      "mpn": "",
+      "x": 57.4,
+      "y": 46.3,
+      "angle": 180.0,
+      "layer": "F.Cu",
+      "type": "exclude_from_pos_files",
+      "pad_count": 1,
+      "dnp": true,
+      "exclude_from_bom": true,
+      "exclude_from_pos": true,
+      "sch_path": "/bd77c5ea-3704-4a5f-9133-927fb486fe69",
+      "description": "Test point for ENC_A",
+      "courtyard": {
+        "min_x": 56.55,
+        "min_y": 46.3,
+        "max_x": 57.4,
+        "max_y": 46.3
+      },
+      "footprint": "roadping-c3:TP_Round_1.0mm",
+      "pad_nets": {
+        "1": {
+          "net": "/ENC_A",
+          "pin": "1_1"
+        }
+      },
+      "connected_nets": [
+        "/ENC_A"
+      ]
+    },
+    {
+      "library": "roadping-c3:TESTPADS_1X06_2.54MM_EVT",
+      "reference": "J3",
+      "value": "UART_DEBUG_PROGRAM",
+      "mpn": "",
+      "x": 60.0,
+      "y": 51.7,
+      "angle": 180.0,
+      "layer": "F.Cu",
+      "type": "smd",
+      "pad_count": 6,
+      "exclude_from_pos": true,
+      "sch_path": "/f8b81255-79b5-4f17-9170-1408e420d80e",
+      "description": "Compact EVT v2 bottom-edge debug row: pin 1 GND, pin 2 3V3, pin 3 UART_TX/GPIO21, pin 4 UART_RX/GPIO20, pin 5 I2C_SCL/GPIO10, pin 6 GND. SYS_RAW/VBAT/SDA/BAT_ADC use adjacent round pads.",
+      "courtyard": {
+        "min_x": 44.0,
+        "min_y": 50.7,
+        "max_x": 61.0,
+        "max_y": 52.7
+      },
+      "footprint": "roadping-c3:TESTPADS_1X06_2.54MM_EVT",
+      "pad_nets": {
+        "1": {
+          "net": "/GND",
+          "pin": "Pin_1_1"
+        },
+        "2": {
+          "net": "/3V3",
+          "pin": "Pin_2_2"
+        },
+        "3": {
+          "net": "/UART_TX",
+          "pin": "Pin_3_3"
+        },
+        "4": {
+          "net": "/UART_RX",
+          "pin": "Pin_4_4"
+        },
+        "5": {
+          "net": "/I2C_SCL",
+          "pin": "Pin_5_5"
+        },
+        "6": {
+          "net": "/GND",
+          "pin": "Pin_6_6"
+        }
+      },
+      "connected_nets": [
+        "/3V3",
+        "/GND",
+        "/I2C_SCL",
+        "/UART_RX",
+        "/UART_TX"
+      ]
+    },
+    {
+      "library": "roadping-c3:XDCR_PEC11R-4215F-S0024",
+      "reference": "SW1",
+      "value": "PEC11R-4215F-S0024",
+      "mpn": "",
+      "x": 51.5,
+      "y": 34.0,
+      "angle": 0.0,
+      "layer": "F.Cu",
+      "type": "through_hole",
+      "pad_count": 7,
+      "sch_path": "/50a2c49f-48aa-4578-a038-73feac8ea70e",
+      "description": "Bourns PEC11R-4215F-S0024 12mm encoder, 24 detents, 24 PPR, 15mm flatted shaft, push switch",
+      "models_3d": [
+        "${KIPRJMOD}/roadping-c3.3dshapes/PEC11R-4215F-S0024.step"
+      ],
+      "courtyard": {
+        "min_x": 44.05,
+        "min_y": 25.9,
+        "max_x": 58.95,
+        "max_y": 42.6
+      },
+      "footprint": "roadping-c3:XDCR_PEC11R-4215F-S0024",
+      "pad_nets": {
+        "1": {
+          "net": "/GND",
+          "pin": "SW1_1"
+        },
+        "2": {
+          "net": "/ENC_SW",
+          "pin": "SW2_2"
+        },
+        "A": {
+          "net": "/ENC_A",
+          "pin": "A_A"
+        },
+        "B": {
+          "net": "/ENC_B",
+          "pin": "B_B"
+        },
+        "C": {
+          "net": "/GND",
+          "pin": "C_C"
+        },
+        "S1": {
+          "net": "/GND",
+          "pin": "SHIELD1_S1"
+        },
+        "S2": {
+          "net": "/GND",
+          "pin": "SHIELD2_S2"
+        }
+      },
+      "connected_nets": [
+        "/ENC_A",
+        "/ENC_B",
+        "/ENC_SW",
+        "/GND"
+      ]
+    },
+    {
+      "library": "Capacitor_SMD:C_0603_1608Metric",
+      "reference": "C1",
+      "value": "1uF",
+      "mpn": "",
+      "x": 34.0,
+      "y": 44.2,
+      "angle": 90.0,
+      "layer": "B.Cu",
+      "type": "smd",
+      "pad_count": 2,
+      "sch_path": "/7db996f0-44cf-40e8-bdd5-b5f1b9af9dbe",
+      "description": "AP2112 input capacitor close to VIN/GND",
+      "models_3d": [
+        "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+      ],
+      "courtyard": {
+        "min_x": 33.27,
+        "min_y": 42.72,
+        "max_x": 34.73,
+        "max_y": 45.68
+      },
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pad_nets": {
+        "1": {
+          "net": "/SYS_RAW",
+          "pin": "1_1"
+        },
+        "2": {
+          "net": "/GND",
+          "pin": "2_2"
+        }
+      },
+      "connected_nets": [
+        "/GND",
+        "/SYS_RAW"
+      ]
+    },
+    {
+      "library": "Capacitor_SMD:C_0603_1608Metric",
+      "reference": "C3",
+      "value": "10uF",
+      "mpn": "",
+      "x": 33.8,
+      "y": 47.2,
+      "angle": 90.0,
+      "layer": "B.Cu",
+      "type": "smd",
+      "pad_count": 2,
+      "sch_path": "/10b1f887-588d-4598-a418-13c924d9f7f4",
+      "description": "Bulk capacitance near ESP32-C3 power input",
+      "models_3d": [
+        "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+      ],
+      "courtyard": {
+        "min_x": 33.07,
+        "min_y": 45.72,
+        "max_x": 34.53,
+        "max_y": 48.68
+      },
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pad_nets": {
+        "1": {
+          "net": "/3V3",
+          "pin": "1_1"
+        },
+        "2": {
+          "net": "/GND",
+          "pin": "2_2"
+        }
+      },
+      "connected_nets": [
+        "/3V3",
+        "/GND"
+      ]
+    },
+    {
+      "library": "Resistor_SMD:R_0603_1608Metric",
+      "reference": "R4",
+      "value": "10k",
+      "mpn": "",
+      "x": 54.0,
+      "y": 38.7,
+      "angle": -90.0,
+      "layer": "B.Cu",
+      "type": "smd",
+      "pad_count": 2,
+      "sch_path": "/a1430422-25d7-49f8-870e-13fb440fd683",
+      "description": "Encoder/push-button pull-up to 3V3",
+      "models_3d": [
+        "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+      ],
+      "courtyard": {
+        "min_x": 53.27,
+        "min_y": 37.22,
+        "max_x": 54.73,
+        "max_y": 40.18
+      },
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pad_nets": {
+        "1": {
+          "net": "/3V3",
+          "pin": "1_1"
+        },
+        "2": {
+          "net": "/ENC_B",
+          "pin": "2_2"
+        }
+      },
+      "connected_nets": [
+        "/3V3",
+        "/ENC_B"
+      ]
+    },
+    {
+      "library": "Fuse:Fuse_1206_3216Metric",
+      "reference": "F1",
+      "value": "PTC_USB_5V_1A",
+      "mpn": "1206L110SLWR",
+      "x": 44.4,
+      "y": 20.7,
+      "angle": 90.0,
+      "layer": "B.Cu",
+      "type": "smd",
+      "pad_count": 2,
+      "sch_path": "/296bc32d-0c8a-4cef-97d7-0f6be9d79be5",
+      "manufacturer": "Littelfuse",
+      "description": "Resettable PTC in series with user-accessible USB_5V input before TP4056 IN+.",
+      "models_3d": [
+        "${KICAD10_3DMODEL_DIR}/Fuse.3dshapes/Fuse_1206_3216Metric.step"
+      ],
+      "courtyard": {
+        "min_x": 43.27,
+        "min_y": 18.42,
+        "max_x": 45.53,
+        "max_y": 22.98
+      },
+      "footprint": "Fuse:Fuse_1206_3216Metric",
+      "pad_nets": {
+        "1": {
+          "net": "/USB_5V_IN"
+        },
+        "2": {
+          "net": "/USB_5V"
+        }
+      },
+      "connected_nets": [
+        "/USB_5V",
+        "/USB_5V_IN"
+      ]
+    },
+    {
+      "library": "Capacitor_SMD:C_0603_1608Metric",
+      "reference": "C4",
+      "value": "100nF",
+      "mpn": "",
+      "x": 30.6,
+      "y": 48.4,
+      "angle": 0.0,
+      "layer": "B.Cu",
+      "type": "smd",
+      "pad_count": 2,
+      "sch_path": "/096e904a-c7e3-4e0c-8b0a-7a9c536b9ae5",
+      "description": "ESP32-C3 local decoupling",
+      "models_3d": [
+        "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+      ],
+      "courtyard": {
+        "min_x": 29.12,
+        "min_y": 47.67,
+        "max_x": 32.08,
+        "max_y": 49.13
+      },
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pad_nets": {
+        "1": {
+          "net": "/3V3",
+          "pin": "1_1"
+        },
+        "2": {
+          "net": "/GND",
+          "pin": "2_2"
+        }
+      },
+      "connected_nets": [
+        "/3V3",
+        "/GND"
+      ]
+    },
+    {
+      "library": "Capacitor_SMD:C_0603_1608Metric",
+      "reference": "C9",
+      "value": "100nF",
+      "mpn": "",
+      "x": 22.5,
+      "y": 47.4,
+      "angle": 90.0,
+      "layer": "B.Cu",
+      "type": "smd",
+      "pad_count": 2,
+      "sch_path": "/2d2c9a8d-25d0-4746-afed-0a566b142a1e",
+      "description": "ADC low-pass capacitor at BAT_ADC",
+      "models_3d": [
+        "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+      ],
+      "courtyard": {
+        "min_x": 21.77,
+        "min_y": 45.92,
+        "max_x": 23.23,
+        "max_y": 48.88
+      },
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pad_nets": {
+        "1": {
+          "net": "/BAT_ADC",
+          "pin": "1_1"
+        },
+        "2": {
+          "net": "/GND",
+          "pin": "2_2"
+        }
+      },
+      "connected_nets": [
+        "/BAT_ADC",
+        "/GND"
+      ]
+    },
+    {
+      "library": "Capacitor_SMD:C_0603_1608Metric",
+      "reference": "C2",
+      "value": "1uF",
+      "mpn": "",
+      "x": 27.5,
+      "y": 46.5,
+      "angle": 0.0,
+      "layer": "B.Cu",
+      "type": "smd",
+      "pad_count": 2,
+      "sch_path": "/b827e69f-f2e9-4a1d-8da7-d6f79626646f",
+      "description": "AP2112 output capacitor close to VOUT/GND",
+      "models_3d": [
+        "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+      ],
+      "courtyard": {
+        "min_x": 26.02,
+        "min_y": 45.77,
+        "max_x": 28.98,
+        "max_y": 47.23
+      },
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pad_nets": {
+        "1": {
+          "net": "/3V3",
+          "pin": "1_1"
+        },
+        "2": {
+          "net": "/GND",
+          "pin": "2_2"
+        }
+      },
+      "connected_nets": [
+        "/3V3",
+        "/GND"
+      ]
+    },
+    {
+      "library": "Resistor_SMD:R_0603_1608Metric",
+      "reference": "R6",
+      "value": "220k",
+      "mpn": "",
+      "x": 17.7,
+      "y": 47.4,
+      "angle": 90.0,
+      "layer": "B.Cu",
+      "type": "smd",
+      "pad_count": 2,
+      "sch_path": "/e58421e6-84fd-45a0-9898-ad6ef9d0f934",
+      "description": "Battery divider top resistor from VBAT to BAT_ADC",
+      "models_3d": [
+        "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+      ],
+      "courtyard": {
+        "min_x": 16.97,
+        "min_y": 45.92,
+        "max_x": 18.43,
+        "max_y": 48.88
+      },
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pad_nets": {
+        "1": {
+          "net": "/VBAT",
+          "pin": "1_1"
+        },
+        "2": {
+          "net": "/BAT_ADC",
+          "pin": "2_2"
+        }
+      },
+      "connected_nets": [
+        "/BAT_ADC",
+        "/VBAT"
+      ]
+    },
+    {
+      "library": "Resistor_SMD:R_0603_1608Metric",
+      "reference": "R7",
+      "value": "100k",
+      "mpn": "",
+      "x": 20.1,
+      "y": 47.4,
+      "angle": 90.0,
+      "layer": "B.Cu",
+      "type": "smd",
+      "pad_count": 2,
+      "sch_path": "/07c71924-0228-42aa-852d-57276c70dc41",
+      "description": "Battery divider bottom resistor from BAT_ADC to GND",
+      "models_3d": [
+        "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+      ],
+      "courtyard": {
+        "min_x": 19.37,
+        "min_y": 45.92,
+        "max_x": 20.83,
+        "max_y": 48.88
+      },
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pad_nets": {
+        "1": {
+          "net": "/BAT_ADC",
+          "pin": "1_1"
+        },
+        "2": {
+          "net": "/GND",
+          "pin": "2_2"
+        }
+      },
+      "connected_nets": [
+        "/BAT_ADC",
+        "/GND"
+      ]
+    },
+    {
+      "library": "Resistor_SMD:R_0603_1608Metric",
+      "reference": "R5",
+      "value": "10k",
+      "mpn": "",
+      "x": 54.0,
+      "y": 30.3,
+      "angle": 90.0,
+      "layer": "B.Cu",
+      "type": "smd",
+      "pad_count": 2,
+      "sch_path": "/f2dcc734-b174-462f-bdd6-48e914c26295",
+      "description": "Encoder/push-button pull-up to 3V3",
+      "models_3d": [
+        "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+      ],
+      "courtyard": {
+        "min_x": 53.27,
+        "min_y": 28.82,
+        "max_x": 54.73,
+        "max_y": 31.78
+      },
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pad_nets": {
+        "1": {
+          "net": "/3V3",
+          "pin": "1_1"
+        },
+        "2": {
+          "net": "/ENC_SW",
+          "pin": "2_2"
+        }
+      },
+      "connected_nets": [
+        "/3V3",
+        "/ENC_SW"
+      ]
+    },
+    {
+      "library": "roadping-c3:TP_Round_1.0mm",
+      "reference": "TP14",
+      "value": "TP_USB5V",
+      "mpn": "",
+      "x": 48.4,
+      "y": 22.0,
+      "angle": 0.0,
+      "layer": "B.Cu",
+      "type": "board_only",
+      "pad_count": 1,
+      "board_only": true,
+      "exclude_from_bom": true,
+      "exclude_from_pos": true,
+      "footprint": "roadping-c3:TP_Round_1.0mm",
+      "pad_nets": {
+        "1": {
+          "net": "/USB_5V_IN"
+        }
+      },
+      "connected_nets": [
+        "/USB_5V_IN"
+      ]
+    },
+    {
+      "library": "Diode_SMD:D_SOD-323",
+      "reference": "D1",
+      "value": "USB_5V_TVS",
+      "mpn": "PESD5V0S1BA",
+      "x": 47.4,
+      "y": 18.5,
+      "angle": -90.0,
+      "layer": "B.Cu",
+      "type": "smd",
+      "pad_count": 2,
+      "sch_path": "/36128f08-648c-4406-b500-a34f81f89422",
+      "manufacturer": "Nexperia",
+      "description": "TVS diode from user-accessible USB_5V input to GND; place before USB input PTC.",
+      "models_3d": [
+        "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-323.step"
+      ],
+      "courtyard": {
+        "min_x": 46.45,
+        "min_y": 16.9,
+        "max_x": 48.35,
+        "max_y": 20.1
+      },
+      "footprint": "Diode_SMD:D_SOD-323",
+      "pad_nets": {
+        "1": {
+          "net": "/GND"
+        },
+        "2": {
+          "net": "/USB_5V_IN"
+        }
+      },
+      "connected_nets": [
+        "/GND",
+        "/USB_5V_IN"
+      ]
+    },
+    {
+      "library": "Capacitor_SMD:C_0603_1608Metric",
+      "reference": "C5",
+      "value": "100nF",
+      "mpn": "",
+      "x": 40.9,
+      "y": 37.76,
+      "angle": 90.0,
+      "layer": "B.Cu",
+      "type": "smd",
+      "pad_count": 2,
+      "sch_path": "/f051d69e-70df-4eb7-8ffc-bc07e5d9b3a4",
+      "description": "SH1106 OLED local decoupling",
+      "models_3d": [
+        "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+      ],
+      "courtyard": {
+        "min_x": 40.17,
+        "min_y": 36.28,
+        "max_x": 41.63,
+        "max_y": 39.24
+      },
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pad_nets": {
+        "1": {
+          "net": "/3V3",
+          "pin": "1_1"
+        },
+        "2": {
+          "net": "/GND",
+          "pin": "2_2"
+        }
+      },
+      "connected_nets": [
+        "/3V3",
+        "/GND"
+      ]
+    },
+    {
+      "library": "Fuse:Fuse_1206_3216Metric",
+      "reference": "F2",
+      "value": "PTC_BAT_1A",
+      "mpn": "1206L110SLWR",
+      "x": 39.9,
+      "y": 22.2,
+      "angle": 180.0,
+      "layer": "B.Cu",
+      "type": "smd",
+      "pad_count": 2,
+      "sch_path": "/4a9c200e-3c19-4e74-8cd1-db1da2ebcc18",
+      "manufacturer": "Littelfuse",
+      "description": "Resettable PTC in series with LiPo connector BAT+ before VBAT/TP4056 B+.",
+      "models_3d": [
+        "${KICAD10_3DMODEL_DIR}/Fuse.3dshapes/Fuse_1206_3216Metric.step"
+      ],
+      "courtyard": {
+        "min_x": 37.62,
+        "min_y": 21.07,
+        "max_x": 42.18,
+        "max_y": 23.33
+      },
+      "footprint": "Fuse:Fuse_1206_3216Metric",
+      "pad_nets": {
+        "1": {
+          "net": "/BAT_CONN+"
+        },
+        "2": {
+          "net": "/VBAT"
+        }
+      },
+      "connected_nets": [
+        "/BAT_CONN+",
+        "/VBAT"
+      ]
+    },
+    {
+      "library": "Resistor_SMD:R_0603_1608Metric",
+      "reference": "R3",
+      "value": "10k",
+      "mpn": "",
+      "x": 49.0,
+      "y": 38.7,
+      "angle": -90.0,
+      "layer": "B.Cu",
+      "type": "smd",
+      "pad_count": 2,
+      "sch_path": "/b7bbdd3b-8fd0-40c0-b2cc-8c3d77b8e785",
+      "description": "Encoder/push-button pull-up to 3V3",
+      "models_3d": [
+        "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+      ],
+      "courtyard": {
+        "min_x": 48.27,
+        "min_y": 37.22,
+        "max_x": 49.73,
+        "max_y": 40.18
+      },
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pad_nets": {
+        "1": {
+          "net": "/3V3",
+          "pin": "1_1"
+        },
+        "2": {
+          "net": "/ENC_A",
+          "pin": "2_2"
+        }
+      },
+      "connected_nets": [
+        "/3V3",
+        "/ENC_A"
+      ]
+    },
+    {
+      "library": "Package_TO_SOT_SMD:SOT-23-5",
+      "reference": "U2",
+      "value": "AP2112K-3.3",
+      "mpn": "AP2112K-3.3TRG1",
+      "x": 31.2,
+      "y": 44.2,
+      "angle": -90.0,
+      "layer": "B.Cu",
+      "type": "smd",
+      "pad_count": 5,
+      "sch_path": "/c9747581-18c3-4916-a660-6c2742a90a29",
+      "manufacturer": "Diodes Incorporated",
+      "description": "3.3 V fixed LDO, SOT-23-5",
+      "models_3d": [
+        "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23-5.step"
+      ],
+      "courtyard": {
+        "min_x": 29.5,
+        "min_y": 42.15,
+        "max_x": 32.9,
+        "max_y": 46.25
+      },
+      "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+      "pad_nets": {
+        "1": {
+          "net": "/SYS_RAW",
+          "pin": "VIN_1"
+        },
+        "2": {
+          "net": "/GND",
+          "pin": "GND_2"
+        },
+        "3": {
+          "net": "/SYS_RAW",
+          "pin": "EN_3"
+        },
+        "4": {
+          "net": "unconnected-(U2-NC-Pad4)",
+          "pin": "NC_4"
+        },
+        "5": {
+          "net": "/3V3",
+          "pin": "VOUT_5"
+        }
+      },
+      "connected_nets": [
+        "/3V3",
+        "/GND",
+        "/SYS_RAW",
+        "unconnected-(U2-NC-Pad4)"
+      ]
+    }
+  ],
+  "tracks": {
+    "segment_count": 0,
+    "arc_count": 0,
+    "width_distribution": {},
+    "layer_distribution": {}
+  },
+  "vias": {
+    "count": 7,
+    "size_distribution": {
+      "0.6/0.3": 7
+    },
+    "via_analysis": {
+      "type_breakdown": {
+        "through": {
+          "count": 7,
+          "size_distribution": {
+            "0.6/0.3": 7
+          }
+        }
+      },
+      "annular_ring": {
+        "min_mm": 0.15,
+        "max_mm": 0.15,
+        "distribution": {
+          "0.15": 7
+        }
+      },
+      "current_capacity": {
+        "drill_size_distribution": {
+          "0.3": 7
+        },
+        "min_drill_mm": 0.3,
+        "max_drill_mm": 0.3,
+        "total_vias": 7,
+        "ratings": [
+          {
+            "drill_mm": 0.3,
+            "count": 7,
+            "plating_area_mm2": 0.0236,
+            "approx_current_A": 7.9
+          }
+        ]
+      }
+    }
+  },
+  "zones": [
+    {
+      "net": 7,
+      "net_name": "/GND",
+      "layers": [
+        "F.Cu"
+      ],
+      "clearance": 0.254,
+      "min_thickness": 0.254,
+      "thermal_gap": 0.5,
+      "thermal_bridge_width": 0.5,
+      "outline_points": 7,
+      "outline_area_mm2": 1997.47,
+      "is_filled": false,
+      "outline_bbox": [
+        13.1,
+        13.22,
+        64.0,
+        53.5
+      ],
+      "name": "EVT_V2_GND_ZONE_FRONT",
+      "pad_connection": "yes"
+    },
+    {
+      "net": 0,
+      "net_name": "",
+      "layers": [
+        "F.Cu"
+      ],
+      "clearance": 0.0,
+      "min_thickness": 0.25,
+      "thermal_gap": 0.5,
+      "thermal_bridge_width": 0.5,
+      "outline_points": 4,
+      "outline_area_mm2": 36.0,
+      "is_filled": false,
+      "outline_bbox": [
+        37.8,
+        47.3,
+        43.8,
+        53.3
+      ],
+      "is_keepout": true,
+      "keepout": {
+        "tracks": "not_allowed",
+        "vias": "not_allowed",
+        "pads": "allowed",
+        "copperpour": "not_allowed",
+        "footprints": "allowed"
+      },
+      "name": "MH1_ROUTE_KEEPOUT_FRONT"
+    },
+    {
+      "net": 0,
+      "net_name": "",
+      "layers": [
+        "F.Cu"
+      ],
+      "clearance": 0.0,
+      "min_thickness": 0.25,
+      "thermal_gap": 0.5,
+      "thermal_bridge_width": 0.5,
+      "outline_points": 4,
+      "outline_area_mm2": 36.0,
+      "is_filled": false,
+      "outline_bbox": [
+        55.4,
+        13.3,
+        61.4,
+        19.3
+      ],
+      "is_keepout": true,
+      "keepout": {
+        "tracks": "not_allowed",
+        "vias": "not_allowed",
+        "pads": "allowed",
+        "copperpour": "not_allowed",
+        "footprints": "allowed"
+      },
+      "name": "MH3_ROUTE_KEEPOUT_FRONT"
+    },
+    {
+      "net": 0,
+      "net_name": "",
+      "layers": [
+        "F.Cu"
+      ],
+      "clearance": 0.0,
+      "min_thickness": 0.25,
+      "thermal_gap": 0.5,
+      "thermal_bridge_width": 0.5,
+      "outline_points": 4,
+      "outline_area_mm2": 52.78,
+      "is_filled": false,
+      "outline_bbox": [
+        13.1,
+        33.2,
+        15.7,
+        53.5
+      ],
+      "is_keepout": true,
+      "keepout": {
+        "tracks": "not_allowed",
+        "vias": "not_allowed",
+        "pads": "not_allowed",
+        "copperpour": "not_allowed",
+        "footprints": "allowed"
+      },
+      "name": "U3_ANTENNA_KEEPOUT_FRONT"
+    },
+    {
+      "net": 0,
+      "net_name": "",
+      "layers": [
+        "B.Cu"
+      ],
+      "clearance": 0.0,
+      "min_thickness": 0.25,
+      "thermal_gap": 0.5,
+      "thermal_bridge_width": 0.5,
+      "outline_points": 4,
+      "outline_area_mm2": 52.78,
+      "is_filled": false,
+      "outline_bbox": [
+        13.1,
+        33.2,
+        15.7,
+        53.5
+      ],
+      "is_keepout": true,
+      "keepout": {
+        "tracks": "not_allowed",
+        "vias": "not_allowed",
+        "pads": "not_allowed",
+        "copperpour": "not_allowed",
+        "footprints": "allowed"
+      },
+      "name": "U3_ANTENNA_KEEPOUT_BACK"
+    },
+    {
+      "net": 0,
+      "net_name": "",
+      "layers": [
+        "B.Cu"
+      ],
+      "clearance": 0.0,
+      "min_thickness": 0.25,
+      "thermal_gap": 0.5,
+      "thermal_bridge_width": 0.5,
+      "outline_points": 4,
+      "outline_area_mm2": 36.0,
+      "is_filled": false,
+      "outline_bbox": [
+        55.4,
+        13.3,
+        61.4,
+        19.3
+      ],
+      "is_keepout": true,
+      "keepout": {
+        "tracks": "not_allowed",
+        "vias": "not_allowed",
+        "pads": "allowed",
+        "copperpour": "not_allowed",
+        "footprints": "allowed"
+      },
+      "name": "MH3_ROUTE_KEEPOUT_BACK"
+    },
+    {
+      "net": 0,
+      "net_name": "",
+      "layers": [
+        "B.Cu"
+      ],
+      "clearance": 0.0,
+      "min_thickness": 0.25,
+      "thermal_gap": 0.5,
+      "thermal_bridge_width": 0.5,
+      "outline_points": 4,
+      "outline_area_mm2": 36.0,
+      "is_filled": false,
+      "outline_bbox": [
+        37.8,
+        47.3,
+        43.8,
+        53.3
+      ],
+      "is_keepout": true,
+      "keepout": {
+        "tracks": "not_allowed",
+        "vias": "not_allowed",
+        "pads": "allowed",
+        "copperpour": "not_allowed",
+        "footprints": "allowed"
+      },
+      "name": "MH1_ROUTE_KEEPOUT_BACK"
+    },
+    {
+      "net": 7,
+      "net_name": "/GND",
+      "layers": [
+        "B.Cu"
+      ],
+      "clearance": 0.254,
+      "min_thickness": 0.254,
+      "thermal_gap": 0.5,
+      "thermal_bridge_width": 0.5,
+      "outline_points": 7,
+      "outline_area_mm2": 1997.47,
+      "is_filled": false,
+      "outline_bbox": [
+        13.1,
+        13.22,
+        64.0,
+        53.5
+      ],
+      "name": "EVT_V2_GND_ZONE_BACK",
+      "pad_connection": "yes"
+    }
+  ],
+  "keepout_zones": [
+    {
+      "name": "MH1_ROUTE_KEEPOUT_FRONT",
+      "layers": [
+        "F.Cu"
+      ],
+      "restrictions": {
+        "tracks": "not_allowed",
+        "vias": "not_allowed",
+        "pads": "allowed",
+        "copperpour": "not_allowed",
+        "footprints": "allowed"
+      },
+      "bounding_box": [
+        37.8,
+        47.3,
+        43.8,
+        53.3
+      ],
+      "area_mm2": 36.0,
+      "nearby_components": [
+        "C1",
+        "C3",
+        "MH1",
+        "TP13",
+        "TP3",
+        "TP8"
+      ]
+    },
+    {
+      "name": "MH3_ROUTE_KEEPOUT_FRONT",
+      "layers": [
+        "F.Cu"
+      ],
+      "restrictions": {
+        "tracks": "not_allowed",
+        "vias": "not_allowed",
+        "pads": "allowed",
+        "copperpour": "not_allowed",
+        "footprints": "allowed"
+      },
+      "bounding_box": [
+        55.4,
+        13.3,
+        61.4,
+        19.3
+      ],
+      "area_mm2": 36.0,
+      "nearby_components": [
+        "J2",
+        "MH3"
+      ]
+    },
+    {
+      "name": "U3_ANTENNA_KEEPOUT_FRONT",
+      "layers": [
+        "F.Cu"
+      ],
+      "restrictions": {
+        "tracks": "not_allowed",
+        "vias": "not_allowed",
+        "pads": "not_allowed",
+        "copperpour": "not_allowed",
+        "footprints": "allowed"
+      },
+      "bounding_box": [
+        13.1,
+        33.2,
+        15.7,
+        53.5
+      ],
+      "area_mm2": 52.78,
+      "nearby_components": [
+        "R6",
+        "R7",
+        "U1"
+      ]
+    },
+    {
+      "name": "U3_ANTENNA_KEEPOUT_BACK",
+      "layers": [
+        "B.Cu"
+      ],
+      "restrictions": {
+        "tracks": "not_allowed",
+        "vias": "not_allowed",
+        "pads": "not_allowed",
+        "copperpour": "not_allowed",
+        "footprints": "allowed"
+      },
+      "bounding_box": [
+        13.1,
+        33.2,
+        15.7,
+        53.5
+      ],
+      "area_mm2": 52.78,
+      "nearby_components": [
+        "R6",
+        "R7",
+        "U1"
+      ]
+    },
+    {
+      "name": "MH3_ROUTE_KEEPOUT_BACK",
+      "layers": [
+        "B.Cu"
+      ],
+      "restrictions": {
+        "tracks": "not_allowed",
+        "vias": "not_allowed",
+        "pads": "allowed",
+        "copperpour": "not_allowed",
+        "footprints": "allowed"
+      },
+      "bounding_box": [
+        55.4,
+        13.3,
+        61.4,
+        19.3
+      ],
+      "area_mm2": 36.0,
+      "nearby_components": [
+        "J2",
+        "MH3"
+      ]
+    },
+    {
+      "name": "MH1_ROUTE_KEEPOUT_BACK",
+      "layers": [
+        "B.Cu"
+      ],
+      "restrictions": {
+        "tracks": "not_allowed",
+        "vias": "not_allowed",
+        "pads": "allowed",
+        "copperpour": "not_allowed",
+        "footprints": "allowed"
+      },
+      "bounding_box": [
+        37.8,
+        47.3,
+        43.8,
+        53.3
+      ],
+      "area_mm2": 36.0,
+      "nearby_components": [
+        "C1",
+        "C3",
+        "MH1",
+        "TP13",
+        "TP3",
+        "TP8"
+      ]
+    }
+  ],
+  "connectivity": {
+    "total_nets_with_pads": 22,
+    "routed_nets": 3,
+    "unrouted_count": 12,
+    "routing_complete": false
+  },
+  "net_lengths": [
+    {
+      "net": "/GND",
+      "net_number": 7,
+      "total_length_mm": 0.0,
+      "segment_count": 0,
+      "via_count": 5,
+      "layers": {}
+    },
+    {
+      "net": "/3V3",
+      "net_number": 1,
+      "total_length_mm": 0.0,
+      "segment_count": 0,
+      "via_count": 1,
+      "layers": {}
+    },
+    {
+      "net": "/SYS_RAW",
+      "net_number": 10,
+      "total_length_mm": 0.0,
+      "segment_count": 0,
+      "via_count": 1,
+      "layers": {}
+    }
+  ],
+  "decoupling_placement": [
+    {
+      "ic": "U3",
+      "value": "ESP32-C3_SUPERMINI_TH",
+      "layer": "F.Cu",
+      "nearby_caps": [
+        {
+          "cap": "C4",
+          "value": "100nF",
+          "distance_mm": 2.76,
+          "shared_nets": [
+            "/3V3",
+            "/GND"
+          ],
+          "same_side": false
+        },
+        {
+          "cap": "C3",
+          "value": "10uF",
+          "distance_mm": 3.2,
+          "shared_nets": [
+            "/3V3",
+            "/GND"
+          ],
+          "same_side": false
+        },
+        {
+          "cap": "C2",
+          "value": "1uF",
+          "distance_mm": 4.74,
+          "shared_nets": [
+            "/3V3",
+            "/GND"
+          ],
+          "same_side": false
+        },
+        {
+          "cap": "C1",
+          "value": "1uF",
+          "distance_mm": 6.16,
+          "shared_nets": [
+            "/GND"
+          ],
+          "same_side": false
+        },
+        {
+          "cap": "C9",
+          "value": "100nF",
+          "distance_mm": 7.43,
+          "shared_nets": [
+            "/BAT_ADC",
+            "/GND"
+          ],
+          "same_side": false
+        }
+      ],
+      "closest_cap_mm": 2.76
+    },
+    {
+      "ic": "U1",
+      "value": "TP4056-Module",
+      "layer": "F.Cu",
+      "nearby_caps": [
+        {
+          "cap": "C5",
+          "value": "100nF",
+          "distance_mm": 7.41,
+          "shared_nets": [
+            "/GND"
+          ],
+          "same_side": false
+        }
+      ],
+      "closest_cap_mm": 7.41
+    },
+    {
+      "ic": "U2",
+      "value": "AP2112K-3.3",
+      "layer": "B.Cu",
+      "nearby_caps": [
+        {
+          "cap": "C2",
+          "value": "1uF",
+          "distance_mm": 2.29,
+          "shared_nets": [
+            "/3V3",
+            "/GND"
+          ],
+          "same_side": true
+        },
+        {
+          "cap": "C1",
+          "value": "1uF",
+          "distance_mm": 2.82,
+          "shared_nets": [
+            "/GND",
+            "/SYS_RAW"
+          ],
+          "same_side": true
+        },
+        {
+          "cap": "C4",
+          "value": "100nF",
+          "distance_mm": 3.09,
+          "shared_nets": [
+            "/3V3",
+            "/GND"
+          ],
+          "same_side": true
+        },
+        {
+          "cap": "C3",
+          "value": "10uF",
+          "distance_mm": 3.71,
+          "shared_nets": [
+            "/3V3",
+            "/GND"
+          ],
+          "same_side": true
+        },
+        {
+          "cap": "C9",
+          "value": "100nF",
+          "distance_mm": 7.86,
+          "shared_nets": [
+            "/GND"
+          ],
+          "same_side": true
+        }
+      ],
+      "closest_cap_mm": 2.29
+    }
+  ],
+  "decoupling_proximity": [
+    {
+      "ic_ref": "U3",
+      "cap_ref": "C4",
+      "distance_mm": 2.76,
+      "cap_value": "100nF",
+      "same_side": false,
+      "shared_nets": [
+        "/3V3",
+        "/GND"
+      ]
+    },
+    {
+      "ic_ref": "U3",
+      "cap_ref": "C3",
+      "distance_mm": 3.2,
+      "cap_value": "10uF",
+      "same_side": false,
+      "shared_nets": [
+        "/3V3",
+        "/GND"
+      ]
+    },
+    {
+      "ic_ref": "U3",
+      "cap_ref": "C2",
+      "distance_mm": 4.74,
+      "cap_value": "1uF",
+      "same_side": false,
+      "shared_nets": [
+        "/3V3",
+        "/GND"
+      ]
+    },
+    {
+      "ic_ref": "U3",
+      "cap_ref": "C1",
+      "distance_mm": 6.16,
+      "cap_value": "1uF",
+      "same_side": false,
+      "shared_nets": [
+        "/GND"
+      ]
+    },
+    {
+      "ic_ref": "U3",
+      "cap_ref": "C9",
+      "distance_mm": 7.43,
+      "cap_value": "100nF",
+      "same_side": false,
+      "shared_nets": [
+        "/BAT_ADC",
+        "/GND"
+      ]
+    },
+    {
+      "ic_ref": "U1",
+      "cap_ref": "C5",
+      "distance_mm": 7.41,
+      "cap_value": "100nF",
+      "same_side": false,
+      "shared_nets": [
+        "/GND"
+      ]
+    },
+    {
+      "ic_ref": "U2",
+      "cap_ref": "C2",
+      "distance_mm": 2.29,
+      "cap_value": "1uF",
+      "same_side": true,
+      "shared_nets": [
+        "/3V3",
+        "/GND"
+      ]
+    },
+    {
+      "ic_ref": "U2",
+      "cap_ref": "C1",
+      "distance_mm": 2.82,
+      "cap_value": "1uF",
+      "same_side": true,
+      "shared_nets": [
+        "/GND",
+        "/SYS_RAW"
+      ]
+    },
+    {
+      "ic_ref": "U2",
+      "cap_ref": "C4",
+      "distance_mm": 3.09,
+      "cap_value": "100nF",
+      "same_side": true,
+      "shared_nets": [
+        "/3V3",
+        "/GND"
+      ]
+    },
+    {
+      "ic_ref": "U2",
+      "cap_ref": "C3",
+      "distance_mm": 3.71,
+      "cap_value": "10uF",
+      "same_side": true,
+      "shared_nets": [
+        "/3V3",
+        "/GND"
+      ]
+    },
+    {
+      "ic_ref": "U2",
+      "cap_ref": "C9",
+      "distance_mm": 7.86,
+      "cap_value": "100nF",
+      "same_side": true,
+      "shared_nets": [
+        "/GND"
+      ]
+    }
+  ],
+  "ground_domains": {
+    "domain_count": 1,
+    "domains": [
+      {
+        "net": "/GND",
+        "net_number": 7,
+        "component_count": 17,
+        "components": [
+          "C1",
+          "C2",
+          "C3",
+          "C4",
+          "C5",
+          "C9",
+          "D1",
+          "DS1",
+          "J1",
+          "J2",
+          "J3",
+          "R7",
+          "SW1",
+          "TP5",
+          "U1",
+          "U2",
+          "U3"
+        ],
+        "has_zone": true,
+        "zone_layers": [
+          "B.Cu",
+          "F.Cu"
+        ]
+      }
+    ],
+    "multi_domain_components": []
+  },
+  "silkscreen": {
+    "board_text_count": 26,
+    "refs_visible_on_silk": 1,
+    "refs_hidden_on_silk": 33,
+    "board_texts": [
+      {
+        "text": "D1K",
+        "layer": "F.SilkS",
+        "x": 25.1,
+        "y": 21.7
+      },
+      {
+        "text": "SDA",
+        "layer": "F.SilkS",
+        "x": 43.0,
+        "y": 47.75
+      },
+      {
+        "text": "ADC",
+        "layer": "F.SilkS",
+        "x": 45.4,
+        "y": 47.75
+      },
+      {
+        "text": "RAW",
+        "layer": "F.SilkS",
+        "x": 47.8,
+        "y": 47.75
+      },
+      {
+        "text": "BAT",
+        "layer": "F.SilkS",
+        "x": 50.2,
+        "y": 47.75
+      },
+      {
+        "text": "GND",
+        "layer": "F.SilkS",
+        "x": 52.6,
+        "y": 47.75
+      },
+      {
+        "text": "5V",
+        "layer": "F.SilkS",
+        "x": 55.0,
+        "y": 47.75
+      },
+      {
+        "text": "A",
+        "layer": "F.SilkS",
+        "x": 57.4,
+        "y": 47.75
+      },
+      {
+        "text": "B",
+        "layer": "F.SilkS",
+        "x": 59.8,
+        "y": 47.75
+      },
+      {
+        "text": "SW",
+        "layer": "F.SilkS",
+        "x": 62.2,
+        "y": 47.75
+      },
+      {
+        "text": "USB EDGE",
+        "layer": "F.SilkS",
+        "x": 45.6,
+        "y": 13.35
+      },
+      {
+        "text": "5V",
+        "layer": "F.SilkS",
+        "x": 46.35,
+        "y": 16.45
+      },
+      {
+        "text": "GND",
+        "layer": "F.SilkS",
+        "x": 49.05,
+        "y": 16.45
+      },
+      {
+        "text": "BAT+",
+        "layer": "F.SilkS",
+        "x": 54.45,
+        "y": 15.2
+      },
+      {
+        "text": "BAT-",
+        "layer": "F.SilkS",
+        "x": 54.45,
+        "y": 19.8
+      },
+      {
+        "text": "BOOT",
+        "layer": "F.SilkS",
+        "x": 25.94,
+        "y": 32.7
+      },
+      {
+        "text": "3V3",
+        "layer": "F.SilkS",
+        "x": 41.2,
+        "y": 36.46
+      },
+      {
+        "text": "GND",
+        "layer": "F.SilkS",
+        "x": 41.2,
+        "y": 39.0
+      },
+      {
+        "text": "SCL",
+        "layer": "F.SilkS",
+        "x": 41.2,
+        "y": 41.54
+      },
+      {
+        "text": "SDA",
+        "layer": "F.SilkS",
+        "x": 41.2,
+        "y": 44.08
+      },
+      {
+        "text": "OLED",
+        "layer": "F.SilkS",
+        "x": 41.2,
+        "y": 35.01
+      },
+      {
+        "text": "ROADPING C3 EVT2",
+        "layer": "F.SilkS",
+        "x": 42.0,
+        "y": 52.95
+      },
+      {
+        "text": "F1 USB",
+        "layer": "B.SilkS",
+        "x": 43.1,
+        "y": 23.35
+      },
+      {
+        "text": "D1 TVS",
+        "layer": "B.SilkS",
+        "x": 47.8,
+        "y": 20.55
+      },
+      {
+        "text": "5V_IN",
+        "layer": "B.SilkS",
+        "x": 49.5,
+        "y": 22.0
+      },
+      {
+        "text": "F2 BAT",
+        "layer": "B.SilkS",
+        "x": 39.9,
+        "y": 25.0
+      }
+    ],
+    "hidden_refs": [
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C5",
+      "C9",
+      "D1",
+      "DS1",
+      "F1",
+      "F2",
+      "J1",
+      "J2",
+      "J3",
+      "MH1",
+      "MH3",
+      "R3",
+      "R4",
+      "R5",
+      "R6",
+      "R7",
+      "SW1",
+      "TP1",
+      "TP10",
+      "TP11",
+      "TP12",
+      "TP13",
+      "TP2",
+      "TP3",
+      "TP5",
+      "TP8"
+    ],
+    "documentation_warnings": [
+      {
+        "type": "missing_switch_labels",
+        "severity": "warning",
+        "components": [
+          "SW1"
+        ],
+        "message": "Switches without function labels on silkscreen: ['SW1']. Add ON/OFF, RESET, BOOT, or function description near each switch."
+      },
+      {
+        "type": "missing_connector_labels",
+        "severity": "suggestion",
+        "components": [
+          "J3"
+        ],
+        "message": "Connectors (3+ pins) without silkscreen labels: ['J3']. Consider adding pin names, signal names, or connector function labels."
+      }
+    ],
+    "fab_notes_completeness": {
+      "checks": {
+        "ipc_class": false,
+        "surface_finish": false,
+        "board_thickness": false,
+        "copper_weight": false,
+        "solder_mask": false,
+        "material": false
+      },
+      "missing": [
+        "ipc class",
+        "surface finish",
+        "board thickness",
+        "copper weight",
+        "solder mask",
+        "material"
+      ],
+      "completeness_pct": 0,
+      "status": "warning"
+    },
+    "silkscreen_completeness": {
+      "checks": {
+        "revision_marking": true,
+        "board_name": true,
+        "ref_designators_visible": false,
+        "connector_labels": false,
+        "polarity_markers": true
+      },
+      "missing": [
+        "ref designators visible",
+        "connector labels"
+      ],
+      "completeness_pct": 60,
+      "status": "warning"
+    }
+  },
+  "board_metadata": {
+    "paper": "A4",
+    "title": "RoadPing C3",
+    "date": "2026-05-30",
+    "rev": "placement-draft"
+  },
+  "net_classes": [
+    {
+      "name": "Default",
+      "clearance": 0.2,
+      "track_width": 0.2,
+      "via_diameter": 0.6,
+      "via_drill": 0.3,
+      "diff_pair_width": 0.2,
+      "diff_pair_gap": 0.25
+    },
+    {
+      "name": "ADC_ANALOG",
+      "clearance": 0.2,
+      "track_width": 0.25,
+      "via_diameter": 0.6,
+      "via_drill": 0.3,
+      "diff_pair_width": 0.2,
+      "diff_pair_gap": 0.25,
+      "nets": [
+        "/BAT_ADC"
+      ]
+    },
+    {
+      "name": "BATTERY_CHARGE",
+      "clearance": 0.2,
+      "track_width": 0.5,
+      "via_diameter": 0.6,
+      "via_drill": 0.3,
+      "diff_pair_width": 0.2,
+      "diff_pair_gap": 0.25,
+      "nets": [
+        "/BAT_CONN+",
+        "/VBAT"
+      ]
+    },
+    {
+      "name": "GND",
+      "clearance": 0.2,
+      "track_width": 0.4,
+      "via_diameter": 0.6,
+      "via_drill": 0.3,
+      "diff_pair_width": 0.2,
+      "diff_pair_gap": 0.25,
+      "nets": [
+        "/GND"
+      ]
+    },
+    {
+      "name": "I2C",
+      "clearance": 0.2,
+      "track_width": 0.25,
+      "via_diameter": 0.6,
+      "via_drill": 0.3,
+      "diff_pair_width": 0.2,
+      "diff_pair_gap": 0.25,
+      "nets": [
+        "/I2C_SCL",
+        "/I2C_SDA"
+      ]
+    },
+    {
+      "name": "POWER_3V3",
+      "clearance": 0.2,
+      "track_width": 0.4,
+      "via_diameter": 0.6,
+      "via_drill": 0.3,
+      "diff_pair_width": 0.2,
+      "diff_pair_gap": 0.25,
+      "nets": [
+        "/3V3"
+      ]
+    },
+    {
+      "name": "POWER_HIGH",
+      "clearance": 0.2,
+      "track_width": 0.5,
+      "via_diameter": 0.6,
+      "via_drill": 0.3,
+      "diff_pair_width": 0.2,
+      "diff_pair_gap": 0.25,
+      "nets": [
+        "/USB_5V_IN",
+        "/USB_5V",
+        "/SYS_RAW"
+      ]
+    },
+    {
+      "name": "SIGNAL",
+      "clearance": 0.2,
+      "track_width": 0.25,
+      "via_diameter": 0.6,
+      "via_drill": 0.3,
+      "diff_pair_width": 0.2,
+      "diff_pair_gap": 0.25,
+      "nets": [
+        "/ENC_A",
+        "/ENC_B",
+        "/ENC_SW"
+      ]
+    },
+    {
+      "name": "UART_DEBUG",
+      "clearance": 0.2,
+      "track_width": 0.25,
+      "via_diameter": 0.6,
+      "via_drill": 0.3,
+      "diff_pair_width": 0.2,
+      "diff_pair_gap": 0.25,
+      "nets": [
+        "/UART_TX",
+        "/UART_RX"
+      ]
+    }
+  ],
+  "project_settings": {
+    "source": "roadping-c3-compact-evt-v2.kicad_pro",
+    "net_classes": [
+      {
+        "name": "Default",
+        "clearance": 0.2,
+        "track_width": 0.2,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "diff_pair_width": 0.2,
+        "diff_pair_gap": 0.25
+      },
+      {
+        "name": "ADC_ANALOG",
+        "clearance": 0.2,
+        "track_width": 0.25,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "diff_pair_width": 0.2,
+        "diff_pair_gap": 0.25,
+        "nets": [
+          "/BAT_ADC"
+        ]
+      },
+      {
+        "name": "BATTERY_CHARGE",
+        "clearance": 0.2,
+        "track_width": 0.5,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "diff_pair_width": 0.2,
+        "diff_pair_gap": 0.25,
+        "nets": [
+          "/BAT_CONN+",
+          "/VBAT"
+        ]
+      },
+      {
+        "name": "GND",
+        "clearance": 0.2,
+        "track_width": 0.4,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "diff_pair_width": 0.2,
+        "diff_pair_gap": 0.25,
+        "nets": [
+          "/GND"
+        ]
+      },
+      {
+        "name": "I2C",
+        "clearance": 0.2,
+        "track_width": 0.25,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "diff_pair_width": 0.2,
+        "diff_pair_gap": 0.25,
+        "nets": [
+          "/I2C_SCL",
+          "/I2C_SDA"
+        ]
+      },
+      {
+        "name": "POWER_3V3",
+        "clearance": 0.2,
+        "track_width": 0.4,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "diff_pair_width": 0.2,
+        "diff_pair_gap": 0.25,
+        "nets": [
+          "/3V3"
+        ]
+      },
+      {
+        "name": "POWER_HIGH",
+        "clearance": 0.2,
+        "track_width": 0.5,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "diff_pair_width": 0.2,
+        "diff_pair_gap": 0.25,
+        "nets": [
+          "/USB_5V_IN",
+          "/USB_5V",
+          "/SYS_RAW"
+        ]
+      },
+      {
+        "name": "SIGNAL",
+        "clearance": 0.2,
+        "track_width": 0.25,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "diff_pair_width": 0.2,
+        "diff_pair_gap": 0.25,
+        "nets": [
+          "/ENC_A",
+          "/ENC_B",
+          "/ENC_SW"
+        ]
+      },
+      {
+        "name": "UART_DEBUG",
+        "clearance": 0.2,
+        "track_width": 0.25,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "diff_pair_width": 0.2,
+        "diff_pair_gap": 0.25,
+        "nets": [
+          "/UART_TX",
+          "/UART_RX"
+        ]
+      }
+    ],
+    "design_rules": {
+      "min_clearance": 0.0,
+      "min_connection": 0.0,
+      "min_copper_edge_clearance": 0.5,
+      "min_groove_width": 0.0,
+      "min_hole_clearance": 0.25,
+      "min_hole_to_hole": 0.25,
+      "min_microvia_diameter": 0.2,
+      "min_microvia_drill": 0.1,
+      "min_resolved_spokes": 2,
+      "min_silk_clearance": 0.0,
+      "min_text_height": 0.8,
+      "min_text_thickness": 0.08,
+      "min_through_hole_diameter": 0.3,
+      "min_track_width": 0.2,
+      "min_via_annular_width": 0.1,
+      "min_via_diameter": 0.5
+    },
+    "footprint_libs": [
+      {
+        "name": "roadping-c3",
+        "type": "KiCad",
+        "uri": "${KIPRJMOD}/roadping-c3.pretty",
+        "descr": "RoadPing-C3 project footprints"
+      }
+    ]
+  },
+  "design_rule_compliance": {
+    "compliant": true,
+    "rules_checked": 2,
+    "rules_source": "roadping-c3-compact-evt-v2.kicad_pro",
+    "net_class_summary": [
+      {
+        "name": "ADC_ANALOG",
+        "track_width_mm": 0.25,
+        "clearance_mm": 0.2,
+        "diff_pair_width_mm": 0.2,
+        "diff_pair_gap_mm": 0.25,
+        "nets_matched": 1
+      },
+      {
+        "name": "BATTERY_CHARGE",
+        "track_width_mm": 0.5,
+        "clearance_mm": 0.2,
+        "diff_pair_width_mm": 0.2,
+        "diff_pair_gap_mm": 0.25,
+        "nets_matched": 2
+      },
+      {
+        "name": "GND",
+        "track_width_mm": 0.4,
+        "clearance_mm": 0.2,
+        "diff_pair_width_mm": 0.2,
+        "diff_pair_gap_mm": 0.25,
+        "nets_matched": 1
+      },
+      {
+        "name": "I2C",
+        "track_width_mm": 0.25,
+        "clearance_mm": 0.2,
+        "diff_pair_width_mm": 0.2,
+        "diff_pair_gap_mm": 0.25,
+        "nets_matched": 2
+      },
+      {
+        "name": "POWER_3V3",
+        "track_width_mm": 0.4,
+        "clearance_mm": 0.2,
+        "diff_pair_width_mm": 0.2,
+        "diff_pair_gap_mm": 0.25,
+        "nets_matched": 1
+      },
+      {
+        "name": "POWER_HIGH",
+        "track_width_mm": 0.5,
+        "clearance_mm": 0.2,
+        "diff_pair_width_mm": 0.2,
+        "diff_pair_gap_mm": 0.25,
+        "nets_matched": 3
+      },
+      {
+        "name": "SIGNAL",
+        "track_width_mm": 0.25,
+        "clearance_mm": 0.2,
+        "diff_pair_width_mm": 0.2,
+        "diff_pair_gap_mm": 0.25,
+        "nets_matched": 3
+      },
+      {
+        "name": "UART_DEBUG",
+        "track_width_mm": 0.25,
+        "clearance_mm": 0.2,
+        "diff_pair_width_mm": 0.2,
+        "diff_pair_gap_mm": 0.25,
+        "nets_matched": 2
+      }
+    ]
+  },
+  "dfm_summary": {
+    "dfm_tier": "standard",
+    "metrics": {
+      "min_drill_mm": 0.3,
+      "min_annular_ring_mm": 0.15,
+      "board_width_mm": 51.4,
+      "board_height_mm": 40.9
+    },
+    "violation_count": 0
+  },
+  "placement_density": {
+    "board_area_cm2": 21.02,
+    "front_density_per_cm2": 0.9,
+    "back_density_per_cm2": 0.8
+  },
+  "findings": [
+    {
+      "side": "B.Cu",
+      "fiducial_count": 0,
+      "fiducial_refs": [],
+      "smd_component_count": 16,
+      "finest_smd_pad_dim_mm": 0.45,
+      "detector": "analyze_fiducials",
+      "rule_id": "FD-001",
+      "category": "assembly",
+      "severity": "warning",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "No fiducials on B.Cu (16 SMD components) (finest pad dim 0.45mm \u2014 medium-pitch part present)",
+      "description": "B.Cu has 0 fiducial(s) but 16 SMD components. Assembly machines need >= 3 fiducials for accurate placement.",
+      "components": [],
+      "nets": [],
+      "pins": [],
+      "recommendation": "Add fiducial markers for pick-and-place alignment (3 per side with SMD).",
+      "report_context": {
+        "section": "Assembly",
+        "impact": "Pick-and-place alignment",
+        "standard_ref": "IPC-7351"
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "side": "F.Cu",
+      "fiducial_count": 0,
+      "fiducial_refs": [],
+      "smd_component_count": 10,
+      "finest_smd_pad_dim_mm": 1.3,
+      "detector": "analyze_fiducials",
+      "rule_id": "FD-001",
+      "category": "assembly",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "No fiducials on F.Cu (10 SMD components) (finest pad dim 1.30mm \u2014 coarse pitch only)",
+      "description": "F.Cu has 0 fiducial(s) but 10 SMD components. Assembly machines need >= 3 fiducials for accurate placement.",
+      "components": [],
+      "nets": [],
+      "pins": [],
+      "recommendation": "Add fiducial markers for pick-and-place alignment (3 per side with SMD).",
+      "report_context": {
+        "section": "Assembly",
+        "impact": "Pick-and-place alignment",
+        "standard_ref": "IPC-7351"
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "component": "MH1",
+      "keepout_name": "MH1_ROUTE_KEEPOUT_FRONT",
+      "keepout_layers": [
+        "F.Cu"
+      ],
+      "detector": "analyze_keepout_violations",
+      "rule_id": "KO-001",
+      "category": "placement",
+      "severity": "error",
+      "confidence": "heuristic",
+      "evidence_source": "topology",
+      "summary": "Keepout violation: MH1 inside keepout zone MH1_ROUTE_KEEPOUT_FRONT",
+      "description": "Component MH1 center is inside keepout zone MH1_ROUTE_KEEPOUT_FRONT (bbox check).",
+      "components": [
+        "MH1"
+      ],
+      "nets": [],
+      "pins": [],
+      "recommendation": "Move MH1 outside the keepout zone.",
+      "report_context": {
+        "section": "Placement",
+        "impact": "Design rule violation",
+        "standard_ref": ""
+      },
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "component": "MH3",
+      "keepout_name": "MH3_ROUTE_KEEPOUT_FRONT",
+      "keepout_layers": [
+        "F.Cu"
+      ],
+      "detector": "analyze_keepout_violations",
+      "rule_id": "KO-001",
+      "category": "placement",
+      "severity": "error",
+      "confidence": "heuristic",
+      "evidence_source": "topology",
+      "summary": "Keepout violation: MH3 inside keepout zone MH3_ROUTE_KEEPOUT_FRONT",
+      "description": "Component MH3 center is inside keepout zone MH3_ROUTE_KEEPOUT_FRONT (bbox check).",
+      "components": [
+        "MH3"
+      ],
+      "nets": [],
+      "pins": [],
+      "recommendation": "Move MH3 outside the keepout zone.",
+      "report_context": {
+        "section": "Placement",
+        "impact": "Design rule violation",
+        "standard_ref": ""
+      },
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "side": "B.Cu",
+      "total_passives": 11,
+      "majority_angle": 90,
+      "majority_count": 9,
+      "deviator_count": 2,
+      "deviator_refs": [
+        "C4",
+        "C2"
+      ],
+      "detector": "analyze_orientation_consistency",
+      "rule_id": "OR-001",
+      "category": "assembly",
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "topology",
+      "summary": "Orientation: 2 passives on B.Cu deviate from 90 deg majority",
+      "description": "2 of 11 passives on B.Cu are not at the majority 90 deg orientation.",
+      "components": [
+        "C2",
+        "C4"
+      ],
+      "nets": [],
+      "pins": [],
+      "recommendation": "Align passive component orientations for consistent pick-and-place.",
+      "report_context": {
+        "section": "Assembly",
+        "impact": "Pick-and-place efficiency",
+        "standard_ref": ""
+      },
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "component_a": "J2",
+      "component_b": "J1",
+      "layer": "F.Cu",
+      "overlap_mm2": 4.787,
+      "detector": "analyze_placement",
+      "rule_id": "PM-001",
+      "category": "placement",
+      "severity": "error",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "Courtyard overlap between J2 and J1 (4.787mm\u00b2)",
+      "description": "Components J2 and J1 have overlapping courtyards on F.Cu (4.787mm\u00b2 overlap area).",
+      "components": [
+        "J1",
+        "J2"
+      ],
+      "nets": [],
+      "pins": [],
+      "recommendation": "Resolve courtyard overlap between J2 and J1 \u2014 move components apart or adjust courtyard geometry",
+      "report_context": {
+        "section": "Placement",
+        "impact": "assembly",
+        "standard_ref": ""
+      },
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "component": "J1",
+      "layer": "F.Cu",
+      "edge_clearance_mm": 0.08,
+      "detector": "analyze_placement",
+      "rule_id": "PM-002",
+      "category": "placement",
+      "severity": "error",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "J1 is 0.08mm from board edge",
+      "description": "Component J1 on F.Cu is only 0.08mm from the board edge, risking damage during depaneling or handling.",
+      "components": [
+        "J1"
+      ],
+      "nets": [],
+      "pins": [],
+      "recommendation": "Move J1 further from board edge (currently 0.08mm, recommend >= 1.0mm)",
+      "report_context": {
+        "section": "Placement",
+        "impact": "manufacturability",
+        "standard_ref": ""
+      },
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "component": "U3",
+      "layer": "F.Cu",
+      "edge_clearance_mm": 0.39,
+      "detector": "analyze_placement",
+      "rule_id": "PM-002",
+      "category": "placement",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "U3 is 0.39mm from board edge (RF module antenna at board edge \u2014 verify antenna clearance, not a body collision)",
+      "description": "Component U3 on F.Cu is only 0.39mm from the board edge, risking damage during depaneling or handling.",
+      "components": [
+        "U3"
+      ],
+      "nets": [],
+      "pins": [],
+      "recommendation": "Move U3 further from board edge (currently 0.39mm, recommend >= 1.0mm)",
+      "report_context": {
+        "section": "Placement",
+        "impact": "manufacturability",
+        "standard_ref": ""
+      },
+      "stages": [
+        "layout"
+      ]
+    },
+    {
+      "net_number": 2,
+      "net_name": "/BAT_ADC",
+      "pad_count": 5,
+      "pads": [
+        "TP13.1",
+        "U3.0",
+        "C9.1",
+        "R6.2",
+        "R7.1"
+      ],
+      "detector": "analyze_connectivity",
+      "rule_id": "RT-001",
+      "category": "connectivity",
+      "severity": "error",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "Unrouted net /BAT_ADC (5 pads)",
+      "description": "Net /BAT_ADC has 5 pads but no routing (tracks, vias, or zones).",
+      "components": [
+        "C9",
+        "R6",
+        "R7",
+        "TP13",
+        "U3"
+      ],
+      "nets": [
+        "/BAT_ADC"
+      ],
+      "pins": [],
+      "recommendation": "Route net /BAT_ADC to connect 5 pads",
+      "report_context": {
+        "section": "Connectivity",
+        "impact": "functionality",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "net_number": 14,
+      "net_name": "/USB_5V_IN",
+      "pad_count": 4,
+      "pads": [
+        "J1.1",
+        "F1.1",
+        "TP14.1",
+        "D1.2"
+      ],
+      "detector": "analyze_connectivity",
+      "rule_id": "RT-001",
+      "category": "connectivity",
+      "severity": "error",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "Unrouted net /USB_5V_IN (4 pads)",
+      "description": "Net /USB_5V_IN has 4 pads but no routing (tracks, vias, or zones).",
+      "components": [
+        "D1",
+        "F1",
+        "J1",
+        "TP14"
+      ],
+      "nets": [
+        "/USB_5V_IN"
+      ],
+      "pins": [],
+      "recommendation": "Route net /USB_5V_IN to connect 4 pads",
+      "report_context": {
+        "section": "Connectivity",
+        "impact": "functionality",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "net_number": 8,
+      "net_name": "/I2C_SCL",
+      "pad_count": 3,
+      "pads": [
+        "DS1.3",
+        "U3.10",
+        "J3.5"
+      ],
+      "detector": "analyze_connectivity",
+      "rule_id": "RT-001",
+      "category": "connectivity",
+      "severity": "error",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "Unrouted net /I2C_SCL (3 pads)",
+      "description": "Net /I2C_SCL has 3 pads but no routing (tracks, vias, or zones).",
+      "components": [
+        "DS1",
+        "J3",
+        "U3"
+      ],
+      "nets": [
+        "/I2C_SCL"
+      ],
+      "pins": [],
+      "recommendation": "Route net /I2C_SCL to connect 3 pads",
+      "report_context": {
+        "section": "Connectivity",
+        "impact": "functionality",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "net_number": 9,
+      "net_name": "/I2C_SDA",
+      "pad_count": 3,
+      "pads": [
+        "DS1.4",
+        "TP8.1",
+        "U3.8"
+      ],
+      "detector": "analyze_connectivity",
+      "rule_id": "RT-001",
+      "category": "connectivity",
+      "severity": "error",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "Unrouted net /I2C_SDA (3 pads)",
+      "description": "Net /I2C_SDA has 3 pads but no routing (tracks, vias, or zones).",
+      "components": [
+        "DS1",
+        "TP8",
+        "U3"
+      ],
+      "nets": [
+        "/I2C_SDA"
+      ],
+      "pins": [],
+      "recommendation": "Route net /I2C_SDA to connect 3 pads",
+      "report_context": {
+        "section": "Connectivity",
+        "impact": "functionality",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "net_number": 13,
+      "net_name": "/USB_5V",
+      "pad_count": 3,
+      "pads": [
+        "TP1.1",
+        "U1.1",
+        "F1.2"
+      ],
+      "detector": "analyze_connectivity",
+      "rule_id": "RT-001",
+      "category": "connectivity",
+      "severity": "error",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "Unrouted net /USB_5V (3 pads)",
+      "description": "Net /USB_5V has 3 pads but no routing (tracks, vias, or zones).",
+      "components": [
+        "F1",
+        "TP1",
+        "U1"
+      ],
+      "nets": [
+        "/USB_5V"
+      ],
+      "pins": [],
+      "recommendation": "Route net /USB_5V to connect 3 pads",
+      "report_context": {
+        "section": "Connectivity",
+        "impact": "functionality",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "net_number": 3,
+      "net_name": "/BAT_CONN+",
+      "pad_count": 3,
+      "pads": [
+        "J2.1",
+        "TP2.1",
+        "F2.1"
+      ],
+      "detector": "analyze_connectivity",
+      "rule_id": "RT-001",
+      "category": "connectivity",
+      "severity": "error",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "Unrouted net /BAT_CONN+ (3 pads)",
+      "description": "Net /BAT_CONN+ has 3 pads but no routing (tracks, vias, or zones).",
+      "components": [
+        "F2",
+        "J2",
+        "TP2"
+      ],
+      "nets": [
+        "/BAT_CONN+"
+      ],
+      "pins": [],
+      "recommendation": "Route net /BAT_CONN+ to connect 3 pads",
+      "report_context": {
+        "section": "Connectivity",
+        "impact": "functionality",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "net_number": 15,
+      "net_name": "/VBAT",
+      "pad_count": 3,
+      "pads": [
+        "U1.5",
+        "R6.1",
+        "F2.2"
+      ],
+      "detector": "analyze_connectivity",
+      "rule_id": "RT-001",
+      "category": "connectivity",
+      "severity": "error",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "Unrouted net /VBAT (3 pads)",
+      "description": "Net /VBAT has 3 pads but no routing (tracks, vias, or zones).",
+      "components": [
+        "F2",
+        "R6",
+        "U1"
+      ],
+      "nets": [
+        "/VBAT"
+      ],
+      "pins": [],
+      "recommendation": "Route net /VBAT to connect 3 pads",
+      "report_context": {
+        "section": "Connectivity",
+        "impact": "functionality",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "net_number": 11,
+      "net_name": "/UART_RX",
+      "pad_count": 2,
+      "pads": [
+        "U3.20",
+        "J3.4"
+      ],
+      "detector": "analyze_connectivity",
+      "rule_id": "RT-001",
+      "category": "connectivity",
+      "severity": "error",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "Unrouted net /UART_RX (2 pads)",
+      "description": "Net /UART_RX has 2 pads but no routing (tracks, vias, or zones).",
+      "components": [
+        "J3",
+        "U3"
+      ],
+      "nets": [
+        "/UART_RX"
+      ],
+      "pins": [],
+      "recommendation": "Route net /UART_RX to connect 2 pads",
+      "report_context": {
+        "section": "Connectivity",
+        "impact": "functionality",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "net_number": 12,
+      "net_name": "/UART_TX",
+      "pad_count": 2,
+      "pads": [
+        "U3.21",
+        "J3.3"
+      ],
+      "detector": "analyze_connectivity",
+      "rule_id": "RT-001",
+      "category": "connectivity",
+      "severity": "error",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "Unrouted net /UART_TX (2 pads)",
+      "description": "Net /UART_TX has 2 pads but no routing (tracks, vias, or zones).",
+      "components": [
+        "J3",
+        "U3"
+      ],
+      "nets": [
+        "/UART_TX"
+      ],
+      "pins": [],
+      "recommendation": "Route net /UART_TX to connect 2 pads",
+      "report_context": {
+        "section": "Connectivity",
+        "impact": "functionality",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "net_number": 4,
+      "net_name": "/ENC_A",
+      "pad_count": 4,
+      "pads": [
+        "U3.2",
+        "TP10.1",
+        "SW1.A",
+        "R3.2"
+      ],
+      "detector": "analyze_connectivity",
+      "rule_id": "RT-001",
+      "category": "connectivity",
+      "severity": "error",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "Unrouted net /ENC_A (4 pads)",
+      "description": "Net /ENC_A has 4 pads but no routing (tracks, vias, or zones).",
+      "components": [
+        "R3",
+        "SW1",
+        "TP10",
+        "U3"
+      ],
+      "nets": [
+        "/ENC_A"
+      ],
+      "pins": [],
+      "recommendation": "Route net /ENC_A to connect 4 pads",
+      "report_context": {
+        "section": "Connectivity",
+        "impact": "functionality",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "net_number": 5,
+      "net_name": "/ENC_B",
+      "pad_count": 4,
+      "pads": [
+        "U3.3",
+        "TP11.1",
+        "SW1.B",
+        "R4.2"
+      ],
+      "detector": "analyze_connectivity",
+      "rule_id": "RT-001",
+      "category": "connectivity",
+      "severity": "error",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "Unrouted net /ENC_B (4 pads)",
+      "description": "Net /ENC_B has 4 pads but no routing (tracks, vias, or zones).",
+      "components": [
+        "R4",
+        "SW1",
+        "TP11",
+        "U3"
+      ],
+      "nets": [
+        "/ENC_B"
+      ],
+      "pins": [],
+      "recommendation": "Route net /ENC_B to connect 4 pads",
+      "report_context": {
+        "section": "Connectivity",
+        "impact": "functionality",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "net_number": 6,
+      "net_name": "/ENC_SW",
+      "pad_count": 4,
+      "pads": [
+        "TP12.1",
+        "U3.4",
+        "SW1.2",
+        "R5.2"
+      ],
+      "detector": "analyze_connectivity",
+      "rule_id": "RT-001",
+      "category": "connectivity",
+      "severity": "error",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "Unrouted net /ENC_SW (4 pads)",
+      "description": "Net /ENC_SW has 4 pads but no routing (tracks, vias, or zones).",
+      "components": [
+        "R5",
+        "SW1",
+        "TP12",
+        "U3"
+      ],
+      "nets": [
+        "/ENC_SW"
+      ],
+      "pins": [],
+      "recommendation": "Route net /ENC_SW to connect 4 pads",
+      "report_context": {
+        "section": "Connectivity",
+        "impact": "functionality",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "total_signal_nets": 22,
+      "nets_with_test_points": 10,
+      "coverage_pct": 45.5,
+      "test_point_count": 10,
+      "detector": "analyze_test_point_coverage",
+      "rule_id": "TE-001",
+      "category": "testability",
+      "severity": "warning",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "Test point coverage: 10/22 nets (45%)",
+      "description": "10 of 22 signal nets have test points (45% coverage).",
+      "components": [],
+      "nets": [],
+      "pins": [],
+      "recommendation": "Add test points to improve ICT/flying probe coverage.",
+      "report_context": {
+        "section": "Testability",
+        "impact": "ICT accessibility",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "net": "/GND",
+      "zone_layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "zone_area_mm2": 3994.9,
+      "via_count": 5,
+      "via_density_per_cm2": 0.1,
+      "drill_sizes_mm": [
+        0.3
+      ],
+      "detector": "analyze_thermal_vias",
+      "rule_id": "TS-DET",
+      "category": "thermal",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "Zone stitching: /GND 5 vias",
+      "description": "Zone stitching on net /GND: 5 vias across layers ['B.Cu', 'F.Cu'].",
+      "components": [],
+      "nets": [
+        "/GND"
+      ],
+      "pins": [],
+      "recommendation": "",
+      "report_context": {
+        "section": "Thermal",
+        "impact": "Thermal/ground plane connectivity",
+        "standard_ref": ""
+      },
+      "stages": [
+        "layout"
+      ]
+    }
+  ],
+  "trust_summary": {
+    "total_findings": 22,
+    "trust_level": "high",
+    "by_confidence": {
+      "deterministic": 19,
+      "heuristic": 3,
+      "datasheet-backed": 0
+    },
+    "by_evidence_source": {
+      "datasheet": 0,
+      "topology": 22,
+      "heuristic_rule": 0,
+      "symbol_footprint": 0,
+      "bom": 0,
+      "geometry": 0,
+      "api_lookup": 0
+    },
+    "provenance_coverage_pct": 0.0
+  },
+  "summary": {
+    "total_findings": 22,
+    "by_severity": {
+      "error": 16,
+      "warning": 2,
+      "info": 4
+    }
+  },
+  "design_intent": {
+    "product_class": "prototype",
+    "ipc_class": 2,
+    "target_market": "hobby",
+    "expected_lifetime_years": 5,
+    "operating_temp_range": [
+      -10,
+      70
+    ],
+    "preferred_passive_size": "0603",
+    "test_coverage_target": 0.85,
+    "approved_manufacturers": [],
+    "confidence": 0.5,
+    "detection_signals": [
+      "controlled impedance net classes present",
+      "10 test points (TP*) detected"
+    ],
+    "source": {
+      "ipc_class": "auto",
+      "product_class": "auto",
+      "target_market": "auto",
+      "expected_lifetime_years": "auto",
+      "operating_temp_range": "auto",
+      "preferred_passive_size": "auto",
+      "test_coverage_target": "auto",
+      "approved_manufacturers": "auto"
+    }
+  },
+  "audience_summary": {
+    "designer": {
+      "total_findings": 22,
+      "by_severity": {
+        "error": 16,
+        "warning": 2,
+        "info": 4
+      },
+      "by_category": {
+        "assembly": 3,
+        "placement": 5,
+        "connectivity": 12,
+        "testability": 1,
+        "thermal": 1
+      },
+      "top_issues": [
+        {
+          "component": "MH1",
+          "keepout_name": "MH1_ROUTE_KEEPOUT_FRONT",
+          "keepout_layers": [
+            "F.Cu"
+          ],
+          "detector": "analyze_keepout_violations",
+          "rule_id": "KO-001",
+          "category": "placement",
+          "severity": "error",
+          "confidence": "heuristic",
+          "evidence_source": "topology",
+          "summary": "Keepout violation: MH1 inside keepout zone MH1_ROUTE_KEEPOUT_FRONT",
+          "description": "Component MH1 center is inside keepout zone MH1_ROUTE_KEEPOUT_FRONT (bbox check).",
+          "components": [
+            "MH1"
+          ],
+          "nets": [],
+          "pins": [],
+          "recommendation": "Move MH1 outside the keepout zone.",
+          "report_context": {
+            "section": "Placement",
+            "impact": "Design rule violation",
+            "standard_ref": ""
+          },
+          "stages": [
+            "layout"
+          ]
+        },
+        {
+          "component": "MH3",
+          "keepout_name": "MH3_ROUTE_KEEPOUT_FRONT",
+          "keepout_layers": [
+            "F.Cu"
+          ],
+          "detector": "analyze_keepout_violations",
+          "rule_id": "KO-001",
+          "category": "placement",
+          "severity": "error",
+          "confidence": "heuristic",
+          "evidence_source": "topology",
+          "summary": "Keepout violation: MH3 inside keepout zone MH3_ROUTE_KEEPOUT_FRONT",
+          "description": "Component MH3 center is inside keepout zone MH3_ROUTE_KEEPOUT_FRONT (bbox check).",
+          "components": [
+            "MH3"
+          ],
+          "nets": [],
+          "pins": [],
+          "recommendation": "Move MH3 outside the keepout zone.",
+          "report_context": {
+            "section": "Placement",
+            "impact": "Design rule violation",
+            "standard_ref": ""
+          },
+          "stages": [
+            "layout"
+          ]
+        },
+        {
+          "component_a": "J2",
+          "component_b": "J1",
+          "layer": "F.Cu",
+          "overlap_mm2": 4.787,
+          "detector": "analyze_placement",
+          "rule_id": "PM-001",
+          "category": "placement",
+          "severity": "error",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "summary": "Courtyard overlap between J2 and J1 (4.787mm\u00b2)",
+          "description": "Components J2 and J1 have overlapping courtyards on F.Cu (4.787mm\u00b2 overlap area).",
+          "components": [
+            "J1",
+            "J2"
+          ],
+          "nets": [],
+          "pins": [],
+          "recommendation": "Resolve courtyard overlap between J2 and J1 \u2014 move components apart or adjust courtyard geometry",
+          "report_context": {
+            "section": "Placement",
+            "impact": "assembly",
+            "standard_ref": ""
+          },
+          "stages": [
+            "layout"
+          ]
+        },
+        {
+          "component": "J1",
+          "layer": "F.Cu",
+          "edge_clearance_mm": 0.08,
+          "detector": "analyze_placement",
+          "rule_id": "PM-002",
+          "category": "placement",
+          "severity": "error",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "summary": "J1 is 0.08mm from board edge",
+          "description": "Component J1 on F.Cu is only 0.08mm from the board edge, risking damage during depaneling or handling.",
+          "components": [
+            "J1"
+          ],
+          "nets": [],
+          "pins": [],
+          "recommendation": "Move J1 further from board edge (currently 0.08mm, recommend >= 1.0mm)",
+          "report_context": {
+            "section": "Placement",
+            "impact": "manufacturability",
+            "standard_ref": ""
+          },
+          "stages": [
+            "layout"
+          ]
+        },
+        {
+          "net_number": 2,
+          "net_name": "/BAT_ADC",
+          "pad_count": 5,
+          "pads": [
+            "TP13.1",
+            "U3.0",
+            "C9.1",
+            "R6.2",
+            "R7.1"
+          ],
+          "detector": "analyze_connectivity",
+          "rule_id": "RT-001",
+          "category": "connectivity",
+          "severity": "error",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "summary": "Unrouted net /BAT_ADC (5 pads)",
+          "description": "Net /BAT_ADC has 5 pads but no routing (tracks, vias, or zones).",
+          "components": [
+            "C9",
+            "R6",
+            "R7",
+            "TP13",
+            "U3"
+          ],
+          "nets": [
+            "/BAT_ADC"
+          ],
+          "pins": [],
+          "recommendation": "Route net /BAT_ADC to connect 5 pads",
+          "report_context": {
+            "section": "Connectivity",
+            "impact": "functionality",
+            "standard_ref": ""
+          },
+          "stages": [
+            "pre_fab"
+          ]
+        },
+        {
+          "net_number": 14,
+          "net_name": "/USB_5V_IN",
+          "pad_count": 4,
+          "pads": [
+            "J1.1",
+            "F1.1",
+            "TP14.1",
+            "D1.2"
+          ],
+          "detector": "analyze_connectivity",
+          "rule_id": "RT-001",
+          "category": "connectivity",
+          "severity": "error",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "summary": "Unrouted net /USB_5V_IN (4 pads)",
+          "description": "Net /USB_5V_IN has 4 pads but no routing (tracks, vias, or zones).",
+          "components": [
+            "D1",
+            "F1",
+            "J1",
+            "TP14"
+          ],
+          "nets": [
+            "/USB_5V_IN"
+          ],
+          "pins": [],
+          "recommendation": "Route net /USB_5V_IN to connect 4 pads",
+          "report_context": {
+            "section": "Connectivity",
+            "impact": "functionality",
+            "standard_ref": ""
+          },
+          "stages": [
+            "pre_fab"
+          ]
+        },
+        {
+          "net_number": 8,
+          "net_name": "/I2C_SCL",
+          "pad_count": 3,
+          "pads": [
+            "DS1.3",
+            "U3.10",
+            "J3.5"
+          ],
+          "detector": "analyze_connectivity",
+          "rule_id": "RT-001",
+          "category": "connectivity",
+          "severity": "error",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "summary": "Unrouted net /I2C_SCL (3 pads)",
+          "description": "Net /I2C_SCL has 3 pads but no routing (tracks, vias, or zones).",
+          "components": [
+            "DS1",
+            "J3",
+            "U3"
+          ],
+          "nets": [
+            "/I2C_SCL"
+          ],
+          "pins": [],
+          "recommendation": "Route net /I2C_SCL to connect 3 pads",
+          "report_context": {
+            "section": "Connectivity",
+            "impact": "functionality",
+            "standard_ref": ""
+          },
+          "stages": [
+            "pre_fab"
+          ]
+        },
+        {
+          "net_number": 9,
+          "net_name": "/I2C_SDA",
+          "pad_count": 3,
+          "pads": [
+            "DS1.4",
+            "TP8.1",
+            "U3.8"
+          ],
+          "detector": "analyze_connectivity",
+          "rule_id": "RT-001",
+          "category": "connectivity",
+          "severity": "error",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "summary": "Unrouted net /I2C_SDA (3 pads)",
+          "description": "Net /I2C_SDA has 3 pads but no routing (tracks, vias, or zones).",
+          "components": [
+            "DS1",
+            "TP8",
+            "U3"
+          ],
+          "nets": [
+            "/I2C_SDA"
+          ],
+          "pins": [],
+          "recommendation": "Route net /I2C_SDA to connect 3 pads",
+          "report_context": {
+            "section": "Connectivity",
+            "impact": "functionality",
+            "standard_ref": ""
+          },
+          "stages": [
+            "pre_fab"
+          ]
+        },
+        {
+          "net_number": 13,
+          "net_name": "/USB_5V",
+          "pad_count": 3,
+          "pads": [
+            "TP1.1",
+            "U1.1",
+            "F1.2"
+          ],
+          "detector": "analyze_connectivity",
+          "rule_id": "RT-001",
+          "category": "connectivity",
+          "severity": "error",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "summary": "Unrouted net /USB_5V (3 pads)",
+          "description": "Net /USB_5V has 3 pads but no routing (tracks, vias, or zones).",
+          "components": [
+            "F1",
+            "TP1",
+            "U1"
+          ],
+          "nets": [
+            "/USB_5V"
+          ],
+          "pins": [],
+          "recommendation": "Route net /USB_5V to connect 3 pads",
+          "report_context": {
+            "section": "Connectivity",
+            "impact": "functionality",
+            "standard_ref": ""
+          },
+          "stages": [
+            "pre_fab"
+          ]
+        },
+        {
+          "net_number": 3,
+          "net_name": "/BAT_CONN+",
+          "pad_count": 3,
+          "pads": [
+            "J2.1",
+            "TP2.1",
+            "F2.1"
+          ],
+          "detector": "analyze_connectivity",
+          "rule_id": "RT-001",
+          "category": "connectivity",
+          "severity": "error",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "summary": "Unrouted net /BAT_CONN+ (3 pads)",
+          "description": "Net /BAT_CONN+ has 3 pads but no routing (tracks, vias, or zones).",
+          "components": [
+            "F2",
+            "J2",
+            "TP2"
+          ],
+          "nets": [
+            "/BAT_CONN+"
+          ],
+          "pins": [],
+          "recommendation": "Route net /BAT_CONN+ to connect 3 pads",
+          "report_context": {
+            "section": "Connectivity",
+            "impact": "functionality",
+            "standard_ref": ""
+          },
+          "stages": [
+            "pre_fab"
+          ]
+        }
+      ]
+    },
+    "reviewer": {
+      "total_findings": 18,
+      "by_category": {
+        "assembly": 1,
+        "placement": 4,
+        "connectivity": 12,
+        "testability": 1
+      },
+      "top_issues": [
+        {
+          "rule_id": "KO-001",
+          "severity": "error",
+          "summary": "Keepout violation: MH1 inside keepout zone MH1_ROUTE_KEEPOUT_FRONT",
+          "recommendation": "Move MH1 outside the keepout zone.",
+          "category": "placement"
+        },
+        {
+          "rule_id": "KO-001",
+          "severity": "error",
+          "summary": "Keepout violation: MH3 inside keepout zone MH3_ROUTE_KEEPOUT_FRONT",
+          "recommendation": "Move MH3 outside the keepout zone.",
+          "category": "placement"
+        },
+        {
+          "rule_id": "PM-001",
+          "severity": "error",
+          "summary": "Courtyard overlap between J2 and J1 (4.787mm\u00b2)",
+          "recommendation": "Resolve courtyard overlap between J2 and J1 \u2014 move components apart or adjust courtyard geometry",
+          "category": "placement"
+        },
+        {
+          "rule_id": "PM-002",
+          "severity": "error",
+          "summary": "J1 is 0.08mm from board edge",
+          "recommendation": "Move J1 further from board edge (currently 0.08mm, recommend >= 1.0mm)",
+          "category": "placement"
+        },
+        {
+          "rule_id": "RT-001",
+          "severity": "error",
+          "summary": "Unrouted net /BAT_ADC (5 pads)",
+          "recommendation": "Route net /BAT_ADC to connect 5 pads",
+          "category": "connectivity"
+        },
+        {
+          "rule_id": "RT-001",
+          "severity": "error",
+          "summary": "Unrouted net /USB_5V_IN (4 pads)",
+          "recommendation": "Route net /USB_5V_IN to connect 4 pads",
+          "category": "connectivity"
+        },
+        {
+          "rule_id": "RT-001",
+          "severity": "error",
+          "summary": "Unrouted net /I2C_SCL (3 pads)",
+          "recommendation": "Route net /I2C_SCL to connect 3 pads",
+          "category": "connectivity"
+        },
+        {
+          "rule_id": "RT-001",
+          "severity": "error",
+          "summary": "Unrouted net /I2C_SDA (3 pads)",
+          "recommendation": "Route net /I2C_SDA to connect 3 pads",
+          "category": "connectivity"
+        },
+        {
+          "rule_id": "RT-001",
+          "severity": "error",
+          "summary": "Unrouted net /USB_5V (3 pads)",
+          "recommendation": "Route net /USB_5V to connect 3 pads",
+          "category": "connectivity"
+        },
+        {
+          "rule_id": "RT-001",
+          "severity": "error",
+          "summary": "Unrouted net /BAT_CONN+ (3 pads)",
+          "recommendation": "Route net /BAT_CONN+ to connect 3 pads",
+          "category": "connectivity"
+        },
+        {
+          "rule_id": "RT-001",
+          "severity": "error",
+          "summary": "Unrouted net /VBAT (3 pads)",
+          "recommendation": "Route net /VBAT to connect 3 pads",
+          "category": "connectivity"
+        },
+        {
+          "rule_id": "RT-001",
+          "severity": "error",
+          "summary": "Unrouted net /UART_RX (2 pads)",
+          "recommendation": "Route net /UART_RX to connect 2 pads",
+          "category": "connectivity"
+        },
+        {
+          "rule_id": "RT-001",
+          "severity": "error",
+          "summary": "Unrouted net /UART_TX (2 pads)",
+          "recommendation": "Route net /UART_TX to connect 2 pads",
+          "category": "connectivity"
+        },
+        {
+          "rule_id": "RT-001",
+          "severity": "error",
+          "summary": "Unrouted net /ENC_A (4 pads)",
+          "recommendation": "Route net /ENC_A to connect 4 pads",
+          "category": "connectivity"
+        },
+        {
+          "rule_id": "RT-001",
+          "severity": "error",
+          "summary": "Unrouted net /ENC_B (4 pads)",
+          "recommendation": "Route net /ENC_B to connect 4 pads",
+          "category": "connectivity"
+        },
+        {
+          "rule_id": "RT-001",
+          "severity": "error",
+          "summary": "Unrouted net /ENC_SW (4 pads)",
+          "recommendation": "Route net /ENC_SW to connect 4 pads",
+          "category": "connectivity"
+        },
+        {
+          "rule_id": "FD-001",
+          "severity": "warning",
+          "summary": "No fiducials on B.Cu (16 SMD components) (finest pad dim 0.45mm \u2014 medium-pitch part present)",
+          "recommendation": "Add fiducial markers for pick-and-place alignment (3 per side with SMD).",
+          "category": "assembly"
+        },
+        {
+          "rule_id": "TE-001",
+          "severity": "warning",
+          "summary": "Test point coverage: 10/22 nets (45%)",
+          "recommendation": "Add test points to improve ICT/flying probe coverage.",
+          "category": "testability"
+        }
+      ]
+    },
+    "manager": {
+      "risk_level": "high",
+      "blocker_count": 16,
+      "warning_count": 2,
+      "stage_readiness": {
+        "schematic": "pass",
+        "layout": "needs_work",
+        "pre_fab": "needs_work",
+        "bring_up": "pass"
+      },
+      "one_liner": "16 errors, 2 warnings across 4 categories. Layout, pre-fab stages have blockers."
+    }
+  }
+}

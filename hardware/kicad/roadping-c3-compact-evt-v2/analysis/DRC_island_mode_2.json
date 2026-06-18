@@ -1,0 +1,1070 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-06-12T09:22:35",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.1",
+    "schematic_parity": [],
+    "source": "island_mode_2.kicad_pcb",
+    "unconnected_items": [
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Zone 'EVT_V2_GND_ZONE_BACK' [/GND] on B.Cu, priority 0",
+                    "pos": {
+                        "x": 13.1,
+                        "y": 13.22
+                    },
+                    "uuid": "d0f6fcdc-f0ee-4430-a704-a4f5fd844107"
+                },
+                {
+                    "description": "Zone 'EVT_V2_GND_ZONE_BACK' [/GND] on B.Cu, priority 0",
+                    "pos": {
+                        "x": 13.1,
+                        "y": 13.22
+                    },
+                    "uuid": "d0f6fcdc-f0ee-4430-a704-a4f5fd844107"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Zone 'EVT_V2_GND_ZONE_BACK' [/GND] on B.Cu, priority 0",
+                    "pos": {
+                        "x": 13.1,
+                        "y": 13.22
+                    },
+                    "uuid": "d0f6fcdc-f0ee-4430-a704-a4f5fd844107"
+                },
+                {
+                    "description": "Zone 'EVT_V2_GND_ZONE_BACK' [/GND] on B.Cu, priority 0",
+                    "pos": {
+                        "x": 13.1,
+                        "y": 13.22
+                    },
+                    "uuid": "d0f6fcdc-f0ee-4430-a704-a4f5fd844107"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Zone 'EVT_V2_GND_ZONE_BACK' [/GND] on B.Cu, priority 0",
+                    "pos": {
+                        "x": 13.1,
+                        "y": 13.22
+                    },
+                    "uuid": "d0f6fcdc-f0ee-4430-a704-a4f5fd844107"
+                },
+                {
+                    "description": "Zone 'EVT_V2_GND_ZONE_BACK' [/GND] on B.Cu, priority 0",
+                    "pos": {
+                        "x": 13.1,
+                        "y": 13.22
+                    },
+                    "uuid": "d0f6fcdc-f0ee-4430-a704-a4f5fd844107"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Zone 'EVT_V2_GND_ZONE_FRONT' [/GND] on F.Cu, priority 0",
+                    "pos": {
+                        "x": 13.1,
+                        "y": 13.22
+                    },
+                    "uuid": "4c93f959-ed6d-4754-b41c-4d069fbcce3b"
+                },
+                {
+                    "description": "Zone 'EVT_V2_GND_ZONE_BACK' [/GND] on B.Cu, priority 0",
+                    "pos": {
+                        "x": 13.1,
+                        "y": 13.22
+                    },
+                    "uuid": "d0f6fcdc-f0ee-4430-a704-a4f5fd844107"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Zone 'EVT_V2_GND_ZONE_BACK' [/GND] on B.Cu, priority 0",
+                    "pos": {
+                        "x": 13.1,
+                        "y": 13.22
+                    },
+                    "uuid": "d0f6fcdc-f0ee-4430-a704-a4f5fd844107"
+                },
+                {
+                    "description": "Zone 'EVT_V2_GND_ZONE_BACK' [/GND] on B.Cu, priority 0",
+                    "pos": {
+                        "x": 13.1,
+                        "y": 13.22
+                    },
+                    "uuid": "d0f6fcdc-f0ee-4430-a704-a4f5fd844107"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Zone 'EVT_V2_GND_ZONE_BACK' [/GND] on B.Cu, priority 0",
+                    "pos": {
+                        "x": 13.1,
+                        "y": 13.22
+                    },
+                    "uuid": "d0f6fcdc-f0ee-4430-a704-a4f5fd844107"
+                },
+                {
+                    "description": "Zone 'EVT_V2_GND_ZONE_FRONT' [/GND] on F.Cu, priority 0",
+                    "pos": {
+                        "x": 13.1,
+                        "y": 13.22
+                    },
+                    "uuid": "4c93f959-ed6d-4754-b41c-4d069fbcce3b"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Zone 'EVT_V2_GND_ZONE_FRONT' [/GND] on F.Cu, priority 0",
+                    "pos": {
+                        "x": 13.1,
+                        "y": 13.22
+                    },
+                    "uuid": "4c93f959-ed6d-4754-b41c-4d069fbcce3b"
+                },
+                {
+                    "description": "Zone 'EVT_V2_GND_ZONE_FRONT' [/GND] on F.Cu, priority 0",
+                    "pos": {
+                        "x": 13.1,
+                        "y": 13.22
+                    },
+                    "uuid": "4c93f959-ed6d-4754-b41c-4d069fbcce3b"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        }
+    ],
+    "violations": [
+        {
+            "description": "Footprint 'JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical' does not match copy in library 'Connector_JST'",
+            "items": [
+                {
+                    "description": "Footprint J2",
+                    "pos": {
+                        "x": 52.4,
+                        "y": 21.0
+                    },
+                    "uuid": "0c051a8d-c1a1-4f64-8473-6e53f2a73589"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "The footprint library 'roadping-c3' is not enabled in the current configuration",
+            "items": [
+                {
+                    "description": "Footprint TP1",
+                    "pos": {
+                        "x": 42.85,
+                        "y": 18.5
+                    },
+                    "uuid": "4133d9dc-c447-4341-a4e3-66e8dc6c8ea5"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'roadping-c3' is not enabled in the current configuration",
+            "items": [
+                {
+                    "description": "Footprint TP13",
+                    "pos": {
+                        "x": 45.4,
+                        "y": 46.3
+                    },
+                    "uuid": "62247e5f-fcc7-49b9-a637-68c38e31216a"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'roadping-c3' is not enabled in the current configuration",
+            "items": [
+                {
+                    "description": "Footprint DS1",
+                    "pos": {
+                        "x": 38.5,
+                        "y": 40.27
+                    },
+                    "uuid": "82def97f-595c-4110-93b6-78ae21cf1dd8"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'roadping-c3' is not enabled in the current configuration",
+            "items": [
+                {
+                    "description": "Footprint TP12",
+                    "pos": {
+                        "x": 62.2,
+                        "y": 46.3
+                    },
+                    "uuid": "93f0515c-68f6-440b-8029-8b48896b986f"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'roadping-c3' is not enabled in the current configuration",
+            "items": [
+                {
+                    "description": "Footprint TP8",
+                    "pos": {
+                        "x": 43.0,
+                        "y": 46.3
+                    },
+                    "uuid": "a59e5387-4786-4cef-8c84-87869736d1b8"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'roadping-c3' is not enabled in the current configuration",
+            "items": [
+                {
+                    "description": "Footprint TP2",
+                    "pos": {
+                        "x": 50.2,
+                        "y": 46.3
+                    },
+                    "uuid": "a805574a-6da7-45da-8a22-0d202c1d72b5"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'roadping-c3' is not enabled in the current configuration",
+            "items": [
+                {
+                    "description": "Footprint U3",
+                    "pos": {
+                        "x": 24.5,
+                        "y": 43.5
+                    },
+                    "uuid": "ab773a3a-706c-4143-bc6a-f19cd427fc4f"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "Footprint 'PinHeader_1x02_P2.54mm_Vertical' does not match copy in library 'Connector_PinHeader_2.54mm'",
+            "items": [
+                {
+                    "description": "Footprint J1",
+                    "pos": {
+                        "x": 46.1,
+                        "y": 14.65
+                    },
+                    "uuid": "c5d9aeb4-7f97-498d-b4fc-5801e28b91b1"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "The footprint library 'roadping-c3' is not enabled in the current configuration",
+            "items": [
+                {
+                    "description": "Footprint TP5",
+                    "pos": {
+                        "x": 52.6,
+                        "y": 46.3
+                    },
+                    "uuid": "cdbfdf36-a6f1-4fe0-a73b-8d10c5d45fe4"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'roadping-c3' is not enabled in the current configuration",
+            "items": [
+                {
+                    "description": "Footprint TP3",
+                    "pos": {
+                        "x": 47.8,
+                        "y": 46.3
+                    },
+                    "uuid": "d4b0abf1-0b0f-4ab3-833b-191806d158a1"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'roadping-c3' is not enabled in the current configuration",
+            "items": [
+                {
+                    "description": "Footprint U1",
+                    "pos": {
+                        "x": 13.6,
+                        "y": 31.4
+                    },
+                    "uuid": "e16ae701-1002-4739-88f1-1ac73946c496"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'roadping-c3' is not enabled in the current configuration",
+            "items": [
+                {
+                    "description": "Footprint TP11",
+                    "pos": {
+                        "x": 59.8,
+                        "y": 46.3
+                    },
+                    "uuid": "eb6f980c-4bef-4fdb-b899-8eabd99b4510"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'roadping-c3' is not enabled in the current configuration",
+            "items": [
+                {
+                    "description": "Footprint TP10",
+                    "pos": {
+                        "x": 57.4,
+                        "y": 46.3
+                    },
+                    "uuid": "f1c97847-8a6c-4c64-860e-d8a7c417ca07"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'roadping-c3' is not enabled in the current configuration",
+            "items": [
+                {
+                    "description": "Footprint J3",
+                    "pos": {
+                        "x": 60.0,
+                        "y": 51.7
+                    },
+                    "uuid": "facbd135-5c03-48f5-93bd-1d55ce33c940"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'roadping-c3' is not enabled in the current configuration",
+            "items": [
+                {
+                    "description": "Footprint SW1",
+                    "pos": {
+                        "x": 51.5,
+                        "y": 34.0
+                    },
+                    "uuid": "fc0a9bb4-0c46-4315-9431-e7a3725addf6"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint C1",
+                    "pos": {
+                        "x": 34.0,
+                        "y": 44.2
+                    },
+                    "uuid": "1e027afa-32d6-41de-9e8e-07f4953ddac5"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint C3",
+                    "pos": {
+                        "x": 33.8,
+                        "y": 47.2
+                    },
+                    "uuid": "3937e872-a3f2-46b1-8cac-efe5a8531855"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint R4",
+                    "pos": {
+                        "x": 54.0,
+                        "y": 38.7
+                    },
+                    "uuid": "63d72d82-18ec-425c-9de7-95956ce15512"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'Fuse_1206_3216Metric' does not match copy in library 'Fuse'",
+            "items": [
+                {
+                    "description": "Footprint F1",
+                    "pos": {
+                        "x": 44.4,
+                        "y": 20.7
+                    },
+                    "uuid": "6b1e5169-d904-430a-8712-8cea62a59f18"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint C4",
+                    "pos": {
+                        "x": 30.6,
+                        "y": 48.4
+                    },
+                    "uuid": "6b5d1865-fa77-4391-b22c-41b922b59516"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint C9",
+                    "pos": {
+                        "x": 22.5,
+                        "y": 47.4
+                    },
+                    "uuid": "8553297d-b7d6-45cf-b57a-0211854eb431"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint C2",
+                    "pos": {
+                        "x": 27.5,
+                        "y": 46.5
+                    },
+                    "uuid": "94254f1f-7428-4319-a399-1177913a1be7"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint R6",
+                    "pos": {
+                        "x": 17.7,
+                        "y": 47.4
+                    },
+                    "uuid": "9d58f867-cec0-468c-b138-b7fdc88a3ea0"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint R7",
+                    "pos": {
+                        "x": 20.1,
+                        "y": 47.4
+                    },
+                    "uuid": "c2fc1dc8-b0c5-424f-960d-52a00e8eb08d"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint R5",
+                    "pos": {
+                        "x": 54.0,
+                        "y": 30.3
+                    },
+                    "uuid": "c8fbb07f-4980-418b-bd75-118146b50e9a"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "The footprint library 'roadping-c3' is not enabled in the current configuration",
+            "items": [
+                {
+                    "description": "Footprint TP14",
+                    "pos": {
+                        "x": 48.4,
+                        "y": 22.0
+                    },
+                    "uuid": "ca4bd7af-c7ce-477f-b214-dff9c3624b11"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "Footprint 'D_SOD-323' does not match copy in library 'Diode_SMD'",
+            "items": [
+                {
+                    "description": "Footprint D1",
+                    "pos": {
+                        "x": 47.4,
+                        "y": 18.5
+                    },
+                    "uuid": "d23585f7-66a9-4825-a3c4-81bc7aebf455"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint C5",
+                    "pos": {
+                        "x": 40.9,
+                        "y": 37.76
+                    },
+                    "uuid": "d23cb46e-8d7a-4aaa-b2f6-22edecdc0d7d"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'Fuse_1206_3216Metric' does not match copy in library 'Fuse'",
+            "items": [
+                {
+                    "description": "Footprint F2",
+                    "pos": {
+                        "x": 39.9,
+                        "y": 22.2
+                    },
+                    "uuid": "e98a0758-4ab2-4016-81b5-490f5767aacb"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_0603_1608Metric' does not match copy in library 'Resistor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint R3",
+                    "pos": {
+                        "x": 49.0,
+                        "y": 38.7
+                    },
+                    "uuid": "eaf185cc-c2fb-4cd0-a930-68a8f5adcaef"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'SOT-23-5' does not match copy in library 'Package_TO_SOT_SMD'",
+            "items": [
+                {
+                    "description": "Footprint U2",
+                    "pos": {
+                        "x": 31.2,
+                        "y": 44.2
+                    },
+                    "uuid": "f0e6599f-ebdf-4b18-b8e7-d1acd4fcc9e4"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5800 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'D1K' on F.Silkscreen",
+                    "pos": {
+                        "x": 25.1,
+                        "y": 21.7
+                    },
+                    "uuid": "0dd9d1ee-8ace-4165-8c77-b0321a6b99d6"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5800 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'SDA' on F.Silkscreen",
+                    "pos": {
+                        "x": 43.0,
+                        "y": 47.75
+                    },
+                    "uuid": "5ee25a3d-ff75-4eaa-87b5-86accda149e0"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5800 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'ADC' on F.Silkscreen",
+                    "pos": {
+                        "x": 45.4,
+                        "y": 47.75
+                    },
+                    "uuid": "a61fe691-3dc3-4887-8f52-806918f7d312"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5800 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'RAW' on F.Silkscreen",
+                    "pos": {
+                        "x": 47.8,
+                        "y": 47.75
+                    },
+                    "uuid": "0d7dbbd5-03ec-45d3-bbcd-ac9e74ccb9c4"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5800 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'BAT' on F.Silkscreen",
+                    "pos": {
+                        "x": 50.2,
+                        "y": 47.75
+                    },
+                    "uuid": "10366186-7df0-41c3-91b9-88ba6401da1b"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5800 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'GND' on F.Silkscreen",
+                    "pos": {
+                        "x": 52.6,
+                        "y": 47.75
+                    },
+                    "uuid": "da686d0b-a73a-4a40-b0ef-c825d7ee7fea"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5800 mm)",
+            "items": [
+                {
+                    "description": "PCB text '5V' on F.Silkscreen",
+                    "pos": {
+                        "x": 42.85,
+                        "y": 17.15
+                    },
+                    "uuid": "db684294-11d0-456d-9a5d-1c1ac1862875"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5800 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'A' on F.Silkscreen",
+                    "pos": {
+                        "x": 57.4,
+                        "y": 47.75
+                    },
+                    "uuid": "545f920b-7520-4096-bdf0-d15575a4a987"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5800 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'B' on F.Silkscreen",
+                    "pos": {
+                        "x": 59.8,
+                        "y": 47.75
+                    },
+                    "uuid": "3368a4f1-4112-4537-9904-cbffb6ac9806"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5800 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'SW' on F.Silkscreen",
+                    "pos": {
+                        "x": 62.2,
+                        "y": 47.75
+                    },
+                    "uuid": "a52de8c7-7352-417b-b277-1a9bfb1b4b91"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6000 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'USB EDGE' on F.Silkscreen",
+                    "pos": {
+                        "x": 45.6,
+                        "y": 13.35
+                    },
+                    "uuid": "830b26b2-e861-412e-bf11-91ee3be1f74f"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6000 mm)",
+            "items": [
+                {
+                    "description": "PCB text '5V' on F.Silkscreen",
+                    "pos": {
+                        "x": 45.65,
+                        "y": 16.45
+                    },
+                    "uuid": "66a03c6e-a14a-47ec-94d9-ce7d9337bb6b"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6000 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'GND' on F.Silkscreen",
+                    "pos": {
+                        "x": 48.35,
+                        "y": 16.45
+                    },
+                    "uuid": "0934793c-f389-48df-8c8d-7bd8c7049811"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6000 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'BAT+' on F.Silkscreen",
+                    "pos": {
+                        "x": 54.45,
+                        "y": 19.7
+                    },
+                    "uuid": "258c4b69-a2ca-496f-a4fa-f806061297bc"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6000 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'BAT-' on F.Silkscreen",
+                    "pos": {
+                        "x": 54.45,
+                        "y": 24.3
+                    },
+                    "uuid": "3f090963-6dcf-4b66-ad50-62ac28f75a6d"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6200 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'BOOT' on F.Silkscreen",
+                    "pos": {
+                        "x": 25.94,
+                        "y": 32.7
+                    },
+                    "uuid": "01333b2f-d4e7-45ca-96a2-a358d382086e"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6200 mm)",
+            "items": [
+                {
+                    "description": "PCB text '3V3' on F.Silkscreen",
+                    "pos": {
+                        "x": 41.2,
+                        "y": 36.46
+                    },
+                    "uuid": "ff3efc3b-1d8a-498b-9944-c4cc315e2cbd"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6200 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'GND' on F.Silkscreen",
+                    "pos": {
+                        "x": 41.2,
+                        "y": 39.0
+                    },
+                    "uuid": "89d69bf4-cb14-455f-b8fd-cd3e3eaee934"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6200 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'SCL' on F.Silkscreen",
+                    "pos": {
+                        "x": 41.2,
+                        "y": 41.54
+                    },
+                    "uuid": "f27ac309-83e7-41e0-9db1-d4f1ae1eea27"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6200 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'SDA' on F.Silkscreen",
+                    "pos": {
+                        "x": 41.2,
+                        "y": 44.08
+                    },
+                    "uuid": "d29dfc7e-db4c-4db0-b77b-e951d42ce959"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'OLED' on F.Silkscreen",
+                    "pos": {
+                        "x": 41.2,
+                        "y": 35.01
+                    },
+                    "uuid": "bd22009b-3081-45aa-959d-4bfb8c91f3a5"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'ROADPING C3 EVT2' on F.Silkscreen",
+                    "pos": {
+                        "x": 42.0,
+                        "y": 52.95
+                    },
+                    "uuid": "9974ad9f-14ce-4487-a9eb-b6c34475fa46"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5500 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'F1 USB' on B.Silkscreen",
+                    "pos": {
+                        "x": 45.4,
+                        "y": 24.4
+                    },
+                    "uuid": "d632ef1b-2e05-487c-a3db-8ad7de08d6ed"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5500 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'D1 TVS' on B.Silkscreen",
+                    "pos": {
+                        "x": 47.8,
+                        "y": 20.55
+                    },
+                    "uuid": "ad90b7e8-42d5-48d1-bbbc-5626e7e8d1e2"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6000 mm)",
+            "items": [
+                {
+                    "description": "PCB text '5V_IN' on B.Silkscreen",
+                    "pos": {
+                        "x": 49.2,
+                        "y": 25.1
+                    },
+                    "uuid": "7880c4fa-bdcb-483b-8cde-ed4c57fca52e"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6200 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'F2 BAT' on B.Silkscreen",
+                    "pos": {
+                        "x": 39.9,
+                        "y": 25.0
+                    },
+                    "uuid": "4f5db86b-5c1b-447d-bae6-a3f560803772"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        }
+    ]
+}

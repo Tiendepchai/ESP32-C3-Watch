@@ -1,0 +1,22 @@
+Reference,Qty,Value,Footprint,MPN,Manufacturer,DigiKey,DK_Stock,Mouser,MO_Stock,LCSC,LC_Stock,Chosen_Distributor,Datasheet,Validated,DNP,Notes
+"C1,C2",2,1uF,0603,,,,,,,,,,,,,
+C3,1,10uF,0603,,,,,,,,,,,,,
+"C4,C5,C9",3,100nF,0603,,,,,,,,,,,,,
+"C6,C7",2,10nF DNP,0603,,,,,,,,,,,,yes,"Optional debounce, DNP by default"
+C8,1,100nF DNP,0603,,,,,,,,,,,,yes,"Optional debounce, DNP by default"
+D1,1,USB_5V_TVS,SOD-323,PESD5V0S1BA,Nexperia,,,,,,,,,,,
+DS1,1,SH1106_I2C_OLED,OLED_4PIN_VDD_GND_SCK_SDA_2.54MM,,,,,,,,,,,,,
+F1,1,PTC_USB_5V_1A,1206,1206L110SLWR,Littelfuse,,,,,,,,,,,
+F2,1,PTC_BAT_1A,1206,1206L110SLWR,Littelfuse,,,,,,,,,,,
+J1,1,USB_5V_INPUT,PinHeader_1x02_P2.54mm_Vertical,,,,,,,,,,,,,
+J2,1,JST_PH_2PIN_LIPO,JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical,,,,,,,,,,,,,
+J3,1,UART_DEBUG_PROGRAM,TESTPADS_1X06_2.54MM_EVT,,,,,,,,,,,,,
+"R1,R2",2,4.7k DNP,0603,,,,,,,,,,,,yes,DNP if SH1106 module has pull-ups
+"R3,R4,R5",3,10k,0603,,,,,,,,,,,,,
+R6,1,220k,0603,,,,,,,,,,,,,
+R7,1,100k,0603,,,,,,,,,,,,,
+R8,1,10k DNP,0603,,,,,,,,,,,,yes,DNP; GPIO9_BOOT_NC must not be held low during reset
+SW1,1,PEC11R-4215F-S0024,XDCR_PEC11R-4215F-S0024,,,,,,,,,,,,,
+U1,1,TP4056-Module,TP4056-Module,,,,,,,,,,,,,
+U2,1,AP2112K-3.3,SOT-23-5,AP2112K-3.3TRG1,Diodes Incorporated,,,,,,,,https://www.diodes.com/datasheet/download/AP2112.pdf,,,
+U3,1,ESP32-C3_SUPERMINI_TH,MODULE_ESP32-C3_SUPERMINI_TH,,,,,,,,,,,,,

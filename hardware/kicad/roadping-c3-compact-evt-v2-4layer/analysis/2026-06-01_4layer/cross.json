@@ -1,0 +1,116 @@
+{
+  "cross_verify_version": 1,
+  "schematic_file": "/Users/allah-computer/Documents/RoadPing-C3/hardware/kicad/roadping-c3-compact-evt-v2-4layer/roadping-c3-compact-evt-v2-4layer.kicad_sch",
+  "pcb_file": "/Users/allah-computer/Documents/RoadPing-C3/hardware/kicad/roadping-c3-compact-evt-v2-4layer/roadping-c3-compact-evt-v2-4layer.kicad_pcb",
+  "component_matching": {
+    "schematic_count": 43,
+    "pcb_count": 28,
+    "matched": 24,
+    "orphans": [
+      {
+        "ref": "MH1",
+        "pcb_value": "M2_NPTH",
+        "status": "fail",
+        "message": "MH1 in PCB but not in schematic (stale placement?)"
+      },
+      {
+        "ref": "MH2",
+        "pcb_value": "M2_NPTH",
+        "status": "fail",
+        "message": "MH2 in PCB but not in schematic (stale placement?)"
+      },
+      {
+        "ref": "MH3",
+        "pcb_value": "M2_NPTH",
+        "status": "fail",
+        "message": "MH3 in PCB but not in schematic (stale placement?)"
+      },
+      {
+        "ref": "MH4",
+        "pcb_value": "M2_NPTH",
+        "status": "fail",
+        "message": "MH4 in PCB but not in schematic (stale placement?)"
+      }
+    ],
+    "missing": [
+      {
+        "ref": "D1",
+        "sch_value": "USB_5V_TVS",
+        "sch_type": "diode",
+        "status": "fail",
+        "message": "D1 (USB_5V_TVS) in schematic but not placed in PCB"
+      },
+      {
+        "ref": "F1",
+        "sch_value": "PTC_USB_5V_1A",
+        "sch_type": "fuse",
+        "status": "fail",
+        "message": "F1 (PTC_USB_5V_1A) in schematic but not placed in PCB"
+      },
+      {
+        "ref": "F2",
+        "sch_value": "PTC_BAT_1A",
+        "sch_type": "fuse",
+        "status": "fail",
+        "message": "F2 (PTC_BAT_1A) in schematic but not placed in PCB"
+      }
+    ],
+    "value_mismatches": [
+      {
+        "ref": "TP2",
+        "sch_value": "BAT_CONN+",
+        "pcb_value": "VBAT",
+        "status": "warning",
+        "message": "TP2: schematic says 'BAT_CONN+', PCB says 'VBAT'"
+      }
+    ],
+    "dnp_conflicts": []
+  },
+  "power_trace_analysis": [
+    {
+      "regulator_ref": "U2",
+      "output_rail": "3V3",
+      "topology": "LDO",
+      "estimated_vout": 3.3,
+      "status": "info",
+      "message": "Output rail 3V3 not found in PCB power routing"
+    }
+  ],
+  "decoupling_placement": [
+    {
+      "ic_ref": "3V3",
+      "cap_ref": "C2",
+      "cap_value": "1uF",
+      "status": "info",
+      "message": "C2 or 3V3 not found in PCB placement"
+    },
+    {
+      "ic_ref": "3V3",
+      "cap_ref": "C3",
+      "cap_value": "10uF",
+      "status": "info",
+      "message": "C3 or 3V3 not found in PCB placement"
+    },
+    {
+      "ic_ref": "3V3",
+      "cap_ref": "C4",
+      "cap_value": "100nF",
+      "status": "info",
+      "message": "C4 or 3V3 not found in PCB placement"
+    },
+    {
+      "ic_ref": "3V3",
+      "cap_ref": "C5",
+      "cap_value": "100nF",
+      "status": "info",
+      "message": "C5 or 3V3 not found in PCB placement"
+    }
+  ],
+  "summary": {
+    "total_checks": 3,
+    "pass": 0,
+    "warning": 1,
+    "fail": 7,
+    "info": 5
+  }
+}

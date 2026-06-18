@@ -1,0 +1,1556 @@
+{
+  "analyzer_type": "gerber",
+  "schema_version": "1.3.0",
+  "directory": "hardware/fabrication/compact-evt-v2-4layer-evt-release-2026-06-09/review-gerber-drill-set",
+  "generator": "Pcbnew 10.0.1",
+  "layer_count": 4,
+  "board_dimensions": {
+    "width_mm": 58.21,
+    "height_mm": 50.07,
+    "area_mm2": 2914.7,
+    "source": "gbrjob"
+  },
+  "statistics": {
+    "gerber_files": 13,
+    "drill_files": 2,
+    "total_holes": 83,
+    "total_flashes": 645,
+    "total_draws": 16875
+  },
+  "completeness": {
+    "found_layers": [
+      "B.Cu",
+      "B.Mask",
+      "B.Paste",
+      "B.SilkS",
+      "Edge.Cuts",
+      "F.Cu",
+      "F.Mask",
+      "F.Paste",
+      "F.SilkS",
+      "In1.Cu",
+      "In2.Cu"
+    ],
+    "expected_layers": [
+      "Edge.Cuts"
+    ],
+    "missing": [],
+    "extra": [
+      "B.Cu",
+      "B.Mask",
+      "B.Paste",
+      "B.SilkS",
+      "F.Cu",
+      "F.Mask",
+      "F.Paste",
+      "F.SilkS",
+      "In1.Cu",
+      "In2.Cu"
+    ],
+    "has_pth_drill": true,
+    "has_npth_drill": true,
+    "complete": true,
+    "source": "gbrjob"
+  },
+  "alignment": {
+    "aligned": false,
+    "issues": [
+      "Width varies by 8.2mm across copper/edge layers",
+      "Height varies by 4.4mm across copper/edge layers"
+    ],
+    "layer_extents": {
+      "B.Cu": {
+        "width": 57.137,
+        "height": 49.021
+      },
+      "B.Mask": {
+        "width": 50.638,
+        "height": 42.0
+      },
+      "B.Paste": {
+        "width": 0,
+        "height": 0
+      },
+      "B.SilkS": {
+        "width": 50.638,
+        "height": 42.0
+      },
+      "Edge.Cuts": {
+        "width": 58.16,
+        "height": 50.022
+      },
+      "F.Cu": {
+        "width": 50.005,
+        "height": 48.0
+      },
+      "F.Mask": {
+        "width": 50.638,
+        "height": 42.55
+      },
+      "F.Paste": {
+        "width": 29.8,
+        "height": 41.05
+      },
+      "F.SilkS": {
+        "width": 56.471,
+        "height": 48.296
+      },
+      "In1.Cu": {
+        "width": 57.137,
+        "height": 49.021
+      },
+      "In2.Cu": {
+        "width": 50.005,
+        "height": 45.6
+      },
+      "drill_NPTH": {
+        "width": 41.637,
+        "height": 42.0
+      },
+      "drill_PTH": {
+        "width": 50.005,
+        "height": 45.6
+      }
+    }
+  },
+  "drill_classification": {
+    "vias": {
+      "count": 42,
+      "tools": [
+        {
+          "diameter_mm": 0.3,
+          "count": 42
+        }
+      ]
+    },
+    "component_holes": {
+      "count": 41,
+      "tools": [
+        {
+          "diameter_mm": 0.75,
+          "count": 2
+        },
+        {
+          "diameter_mm": 0.84,
+          "count": 16
+        },
+        {
+          "diameter_mm": 0.9,
+          "count": 4
+        },
+        {
+          "diameter_mm": 1.0,
+          "count": 11
+        },
+        {
+          "diameter_mm": 1.1,
+          "count": 2
+        },
+        {
+          "diameter_mm": 2.0,
+          "count": 2
+        },
+        {
+          "diameter_mm": 2.2,
+          "count": 4,
+          "type": "NPTH"
+        }
+      ]
+    },
+    "mounting_holes": {
+      "count": 0,
+      "tools": []
+    },
+    "classification_method": "x2_attributes"
+  },
+  "pad_summary": {
+    "smd_apertures": 44,
+    "via_apertures": 168,
+    "heatsink_apertures": 0,
+    "tht_holes": 41,
+    "smd_source": "x2_aperture_function",
+    "smd_ratio": 0.52
+  },
+  "trace_widths": {
+    "unique_widths_mm": [
+      0.25,
+      0.3,
+      0.4,
+      0.5
+    ],
+    "min_trace_mm": 0.25,
+    "max_trace_mm": 0.5,
+    "width_count": 4,
+    "min_feature_mm": 0.225
+  },
+  "component_analysis": {
+    "total_unique": 31,
+    "front_side": 31,
+    "back_side": 0,
+    "component_refs": [
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C5",
+      "C9",
+      "D1",
+      "DS1",
+      "F1",
+      "F2",
+      "J1",
+      "J2",
+      "J3",
+      "MH1",
+      "MH2",
+      "MH3",
+      "MH4",
+      "R3",
+      "R4",
+      "R5",
+      "R6",
+      "R7",
+      "SW1",
+      "TP13",
+      "TP2",
+      "TP3",
+      "TP5",
+      "TP8",
+      "U1",
+      "U2",
+      "U3"
+    ],
+    "has_x2_data": true,
+    "pads_per_component": {
+      "C1": 2,
+      "C2": 2,
+      "C3": 2,
+      "C4": 2,
+      "C5": 2,
+      "C9": 2,
+      "D1": 2,
+      "DS1": 4,
+      "F1": 2,
+      "F2": 2,
+      "J1": 2,
+      "J2": 2,
+      "J3": 6,
+      "MH1": 1,
+      "MH2": 1,
+      "MH3": 1,
+      "MH4": 1,
+      "R3": 2,
+      "R4": 2,
+      "R5": 2,
+      "R6": 2,
+      "R7": 2,
+      "SW1": 7,
+      "TP13": 1,
+      "TP2": 1,
+      "TP3": 1,
+      "TP5": 1,
+      "TP8": 1,
+      "U1": 6,
+      "U2": 5,
+      "U3": 16
+    },
+    "total_pads": 85
+  },
+  "net_analysis": {
+    "total_unique": 22,
+    "named_nets": 15,
+    "unnamed_nets": 7,
+    "power_nets": [],
+    "signal_nets": [
+      "/3V3",
+      "/BAT_ADC",
+      "/BAT_CONN+",
+      "/ENC_A",
+      "/ENC_B",
+      "/ENC_SW",
+      "/GND",
+      "/I2C_SCL",
+      "/I2C_SDA",
+      "/SYS_RAW",
+      "/UART_RX",
+      "/UART_TX",
+      "/USB_5V",
+      "/USB_5V_IN",
+      "/VBAT"
+    ],
+    "total_pins": 81
+  },
+  "gerbers": [
+    {
+      "filename": "roadping-c3-compact-evt-v2-4layer-B_Cu.gbl",
+      "layer_type": "B.Cu",
+      "units": "mm",
+      "aperture_count": 16,
+      "flash_count": 79,
+      "draw_count": 8377,
+      "region_count": 55,
+      "x2_attributes": {
+        "GenerationSoftware": "KiCad,Pcbnew,10.0.1",
+        "CreationDate": "2026-06-09T10:49:49+07:00",
+        "ProjectId": "roadping-c3-compact-evt-v2-4layer,726f6164-7069-46e6-972d-63332d636f6d,compact-evt-v2-4layer",
+        "SameCoordinates": "Original",
+        "FileFunction": "Copper,L4,Bot",
+        "FilePolarity": "Positive"
+      },
+      "aperture_analysis": {
+        "by_function": {
+          "ComponentPad": 11,
+          "ViaPad": 1,
+          "Conductor": 4
+        },
+        "by_function_flashes": {
+          "ComponentPad": 37,
+          "ViaPad": 42,
+          "Conductor": 0
+        },
+        "conductor_widths_mm": [
+          0.25,
+          0.3,
+          0.4,
+          0.5
+        ],
+        "min_feature_mm": 0.25
+      },
+      "x2_component_count": 0,
+      "x2_net_count": 21,
+      "x2_pin_count": 37
+    },
+    {
+      "filename": "roadping-c3-compact-evt-v2-4layer-B_Fab.gbr",
+      "layer_type": "unknown",
+      "units": "mm",
+      "aperture_count": 0,
+      "flash_count": 0,
+      "draw_count": 0,
+      "region_count": 0,
+      "x2_attributes": {
+        "GenerationSoftware": "KiCad,Pcbnew,10.0.1",
+        "CreationDate": "2026-06-09T10:49:51+07:00",
+        "ProjectId": "roadping-c3-compact-evt-v2-4layer,726f6164-7069-46e6-972d-63332d636f6d,compact-evt-v2-4layer",
+        "SameCoordinates": "Original",
+        "FileFunction": "AssemblyDrawing,Bot"
+      }
+    },
+    {
+      "filename": "roadping-c3-compact-evt-v2-4layer-B_Mask.gbs",
+      "layer_type": "B.Mask",
+      "units": "mm",
+      "aperture_count": 12,
+      "flash_count": 41,
+      "draw_count": 0,
+      "region_count": 0,
+      "x2_attributes": {
+        "GenerationSoftware": "KiCad,Pcbnew,10.0.1",
+        "CreationDate": "2026-06-09T10:49:50+07:00",
+        "ProjectId": "roadping-c3-compact-evt-v2-4layer,726f6164-7069-46e6-972d-63332d636f6d,compact-evt-v2-4layer",
+        "SameCoordinates": "Original",
+        "FileFunction": "Soldermask,Bot",
+        "FilePolarity": "Negative"
+      },
+      "aperture_analysis": {
+        "min_feature_mm": 0.204
+      },
+      "x2_component_count": 10,
+      "x2_net_count": 0,
+      "x2_pin_count": 0
+    },
+    {
+      "filename": "roadping-c3-compact-evt-v2-4layer-B_Paste.gbp",
+      "layer_type": "B.Paste",
+      "units": "mm",
+      "aperture_count": 0,
+      "flash_count": 0,
+      "draw_count": 0,
+      "region_count": 0,
+      "x2_attributes": {
+        "GenerationSoftware": "KiCad,Pcbnew,10.0.1",
+        "CreationDate": "2026-06-09T10:49:50+07:00",
+        "ProjectId": "roadping-c3-compact-evt-v2-4layer,726f6164-7069-46e6-972d-63332d636f6d,compact-evt-v2-4layer",
+        "SameCoordinates": "Original",
+        "FileFunction": "Paste,Bot",
+        "FilePolarity": "Positive"
+      }
+    },
+    {
+      "filename": "roadping-c3-compact-evt-v2-4layer-B_Silkscreen.gbo",
+      "layer_type": "B.SilkS",
+      "units": "mm",
+      "aperture_count": 12,
+      "flash_count": 41,
+      "draw_count": 0,
+      "region_count": 0,
+      "x2_attributes": {
+        "GenerationSoftware": "KiCad,Pcbnew,10.0.1",
+        "CreationDate": "2026-06-09T10:49:49+07:00",
+        "ProjectId": "roadping-c3-compact-evt-v2-4layer,726f6164-7069-46e6-972d-63332d636f6d,compact-evt-v2-4layer",
+        "SameCoordinates": "Original",
+        "FileFunction": "Legend,Bot",
+        "FilePolarity": "Positive"
+      },
+      "aperture_analysis": {
+        "min_feature_mm": 0.204
+      },
+      "x2_component_count": 10,
+      "x2_net_count": 0,
+      "x2_pin_count": 0
+    },
+    {
+      "filename": "roadping-c3-compact-evt-v2-4layer-Edge_Cuts.gm1",
+      "layer_type": "Edge.Cuts",
+      "units": "mm",
+      "aperture_count": 1,
+      "flash_count": 0,
+      "draw_count": 8,
+      "region_count": 0,
+      "x2_attributes": {
+        "GenerationSoftware": "KiCad,Pcbnew,10.0.1",
+        "CreationDate": "2026-06-09T10:49:51+07:00",
+        "ProjectId": "roadping-c3-compact-evt-v2-4layer,726f6164-7069-46e6-972d-63332d636f6d,compact-evt-v2-4layer",
+        "SameCoordinates": "Original",
+        "FileFunction": "Profile,NP"
+      },
+      "aperture_analysis": {
+        "by_function": {
+          "Profile": 1
+        },
+        "by_function_flashes": {
+          "Profile": 0
+        },
+        "min_feature_mm": 0.05
+      }
+    },
+    {
+      "filename": "roadping-c3-compact-evt-v2-4layer-F_Cu.gtl",
+      "layer_type": "F.Cu",
+      "units": "mm",
+      "aperture_count": 23,
+      "flash_count": 123,
+      "draw_count": 89,
+      "region_count": 0,
+      "x2_attributes": {
+        "GenerationSoftware": "KiCad,Pcbnew,10.0.1",
+        "CreationDate": "2026-06-09T10:49:48+07:00",
+        "ProjectId": "roadping-c3-compact-evt-v2-4layer,726f6164-7069-46e6-972d-63332d636f6d,compact-evt-v2-4layer",
+        "SameCoordinates": "Original",
+        "FileFunction": "Copper,L1,Top",
+        "FilePolarity": "Positive"
+      },
+      "aperture_analysis": {
+        "by_function": {
+          "ComponentPad": 11,
+          "SMDPad": 7,
+          "ViaPad": 1,
+          "Conductor": 4
+        },
+        "by_function_flashes": {
+          "ComponentPad": 37,
+          "SMDPad": 44,
+          "ViaPad": 42,
+          "Conductor": 0
+        },
+        "conductor_widths_mm": [
+          0.25,
+          0.3,
+          0.4,
+          0.5
+        ],
+        "min_feature_mm": 0.225
+      },
+      "x2_component_count": 0,
+      "x2_net_count": 22,
+      "x2_pin_count": 81
+    },
+    {
+      "filename": "roadping-c3-compact-evt-v2-4layer-F_Fab.gbr",
+      "layer_type": "unknown",
+      "units": "mm",
+      "aperture_count": 7,
+      "flash_count": 0,
+      "draw_count": 3212,
+      "region_count": 0,
+      "x2_attributes": {
+        "GenerationSoftware": "KiCad,Pcbnew,10.0.1",
+        "CreationDate": "2026-06-09T10:49:50+07:00",
+        "ProjectId": "roadping-c3-compact-evt-v2-4layer,726f6164-7069-46e6-972d-63332d636f6d,compact-evt-v2-4layer",
+        "SameCoordinates": "Original",
+        "FileFunction": "AssemblyDrawing,Top"
+      },
+      "aperture_analysis": {
+        "min_feature_mm": 0.06
+      },
+      "x2_component_count": 20,
+      "x2_net_count": 0,
+      "x2_pin_count": 0
+    },
+    {
+      "filename": "roadping-c3-compact-evt-v2-4layer-F_Mask.gts",
+      "layer_type": "F.Mask",
+      "units": "mm",
+      "aperture_count": 19,
+      "flash_count": 85,
+      "draw_count": 0,
+      "region_count": 0,
+      "x2_attributes": {
+        "GenerationSoftware": "KiCad,Pcbnew,10.0.1",
+        "CreationDate": "2026-06-09T10:49:49+07:00",
+        "ProjectId": "roadping-c3-compact-evt-v2-4layer,726f6164-7069-46e6-972d-63332d636f6d,compact-evt-v2-4layer",
+        "SameCoordinates": "Original",
+        "FileFunction": "Soldermask,Top",
+        "FilePolarity": "Negative"
+      },
+      "aperture_analysis": {
+        "min_feature_mm": 0.204
+      },
+      "x2_component_count": 31,
+      "x2_net_count": 0,
+      "x2_pin_count": 0
+    },
+    {
+      "filename": "roadping-c3-compact-evt-v2-4layer-F_Paste.gtp",
+      "layer_type": "F.Paste",
+      "units": "mm",
+      "aperture_count": 6,
+      "flash_count": 33,
+      "draw_count": 0,
+      "region_count": 0,
+      "x2_attributes": {
+        "GenerationSoftware": "KiCad,Pcbnew,10.0.1",
+        "CreationDate": "2026-06-09T10:49:50+07:00",
+        "ProjectId": "roadping-c3-compact-evt-v2-4layer,726f6164-7069-46e6-972d-63332d636f6d,compact-evt-v2-4layer",
+        "SameCoordinates": "Original",
+        "FileFunction": "Paste,Top",
+        "FilePolarity": "Positive"
+      },
+      "aperture_analysis": {
+        "min_feature_mm": 0.225
+      },
+      "x2_component_count": 15,
+      "x2_net_count": 0,
+      "x2_pin_count": 0
+    },
+    {
+      "filename": "roadping-c3-compact-evt-v2-4layer-F_Silkscreen.gto",
+      "layer_type": "F.SilkS",
+      "units": "mm",
+      "aperture_count": 24,
+      "flash_count": 85,
+      "draw_count": 1213,
+      "region_count": 1,
+      "x2_attributes": {
+        "GenerationSoftware": "KiCad,Pcbnew,10.0.1",
+        "CreationDate": "2026-06-09T10:49:49+07:00",
+        "ProjectId": "roadping-c3-compact-evt-v2-4layer,726f6164-7069-46e6-972d-63332d636f6d,compact-evt-v2-4layer",
+        "SameCoordinates": "Original",
+        "FileFunction": "Legend,Top",
+        "FilePolarity": "Positive"
+      },
+      "aperture_analysis": {
+        "min_feature_mm": 0.1
+      },
+      "x2_component_count": 31,
+      "x2_net_count": 0,
+      "x2_pin_count": 0
+    },
+    {
+      "filename": "roadping-c3-compact-evt-v2-4layer-In1_Cu_GND.g1",
+      "layer_type": "In1.Cu",
+      "units": "mm",
+      "aperture_count": 12,
+      "flash_count": 79,
+      "draw_count": 3968,
+      "region_count": 1,
+      "x2_attributes": {
+        "GenerationSoftware": "KiCad,Pcbnew,10.0.1",
+        "CreationDate": "2026-06-09T10:49:48+07:00",
+        "ProjectId": "roadping-c3-compact-evt-v2-4layer,726f6164-7069-46e6-972d-63332d636f6d,compact-evt-v2-4layer",
+        "SameCoordinates": "Original",
+        "FileFunction": "Copper,L2,Inr",
+        "FilePolarity": "Positive"
+      },
+      "aperture_analysis": {
+        "by_function": {
+          "ComponentPad": 11,
+          "ViaPad": 1
+        },
+        "by_function_flashes": {
+          "ComponentPad": 37,
+          "ViaPad": 42
+        },
+        "min_feature_mm": 0.5
+      },
+      "x2_component_count": 6,
+      "x2_net_count": 21,
+      "x2_pin_count": 0
+    },
+    {
+      "filename": "roadping-c3-compact-evt-v2-4layer-In2_Cu_PWR.g2",
+      "layer_type": "In2.Cu",
+      "units": "mm",
+      "aperture_count": 13,
+      "flash_count": 79,
+      "draw_count": 8,
+      "region_count": 0,
+      "x2_attributes": {
+        "GenerationSoftware": "KiCad,Pcbnew,10.0.1",
+        "CreationDate": "2026-06-09T10:49:48+07:00",
+        "ProjectId": "roadping-c3-compact-evt-v2-4layer,726f6164-7069-46e6-972d-63332d636f6d,compact-evt-v2-4layer",
+        "SameCoordinates": "Original",
+        "FileFunction": "Copper,L3,Inr",
+        "FilePolarity": "Positive"
+      },
+      "aperture_analysis": {
+        "by_function": {
+          "ComponentPad": 11,
+          "ViaPad": 1,
+          "Conductor": 1
+        },
+        "by_function_flashes": {
+          "ComponentPad": 37,
+          "ViaPad": 42,
+          "Conductor": 0
+        },
+        "conductor_widths_mm": [
+          0.5
+        ],
+        "min_feature_mm": 0.5
+      },
+      "x2_component_count": 6,
+      "x2_net_count": 21,
+      "x2_pin_count": 0
+    }
+  ],
+  "drills": [
+    {
+      "filename": "roadping-c3-compact-evt-v2-4layer-NPTH.drl",
+      "type": "NPTH",
+      "units": "mm",
+      "hole_count": 4,
+      "tools": {
+        "T1": {
+          "diameter_mm": 2.2,
+          "hole_count": 4,
+          "aper_function": "NonPlated,NPTH,ComponentDrill"
+        }
+      },
+      "layer_span": [
+        1,
+        4
+      ],
+      "x2_attributes": {
+        "CreationDate": "2026-06-09T10:49:58+07:00",
+        "GenerationSoftware": "Kicad,Pcbnew,10.0.1",
+        "FileFunction": "NonPlated,1,4,NPTH"
+      }
+    },
+    {
+      "filename": "roadping-c3-compact-evt-v2-4layer-PTH.drl",
+      "type": "PTH",
+      "units": "mm",
+      "hole_count": 79,
+      "tools": {
+        "T1": {
+          "diameter_mm": 0.3,
+          "hole_count": 42,
+          "aper_function": "Plated,PTH,ViaDrill"
+        },
+        "T2": {
+          "diameter_mm": 0.75,
+          "hole_count": 2,
+          "aper_function": "Plated,PTH,ComponentDrill"
+        },
+        "T3": {
+          "diameter_mm": 0.84,
+          "hole_count": 16,
+          "aper_function": "Plated,PTH,ComponentDrill"
+        },
+        "T4": {
+          "diameter_mm": 0.9,
+          "hole_count": 4,
+          "aper_function": "Plated,PTH,ComponentDrill"
+        },
+        "T5": {
+          "diameter_mm": 1.0,
+          "hole_count": 11,
+          "aper_function": "Plated,PTH,ComponentDrill"
+        },
+        "T6": {
+          "diameter_mm": 1.1,
+          "hole_count": 2,
+          "aper_function": "Plated,PTH,ComponentDrill"
+        },
+        "T7": {
+          "diameter_mm": 2.0,
+          "hole_count": 2,
+          "aper_function": "Plated,PTH,ComponentDrill"
+        }
+      },
+      "layer_span": [
+        1,
+        4
+      ],
+      "x2_attributes": {
+        "CreationDate": "2026-06-09T10:49:58+07:00",
+        "GenerationSoftware": "Kicad,Pcbnew,10.0.1",
+        "FileFunction": "Plated,1,4,PTH"
+      }
+    }
+  ],
+  "drill_tools": {
+    "2.2mm": {
+      "diameter_mm": 2.2,
+      "count": 4,
+      "type": "NPTH"
+    },
+    "0.3mm": {
+      "diameter_mm": 0.3,
+      "count": 42,
+      "type": "PTH"
+    },
+    "0.75mm": {
+      "diameter_mm": 0.75,
+      "count": 2,
+      "type": "PTH"
+    },
+    "0.84mm": {
+      "diameter_mm": 0.84,
+      "count": 16,
+      "type": "PTH"
+    },
+    "0.9mm": {
+      "diameter_mm": 0.9,
+      "count": 4,
+      "type": "PTH"
+    },
+    "1.0mm": {
+      "diameter_mm": 1.0,
+      "count": 11,
+      "type": "PTH"
+    },
+    "1.1mm": {
+      "diameter_mm": 1.1,
+      "count": 2,
+      "type": "PTH"
+    },
+    "2.0mm": {
+      "diameter_mm": 2.0,
+      "count": 2,
+      "type": "PTH"
+    }
+  },
+  "job_file": {
+    "generator": "Pcbnew 10.0.1",
+    "vendor": "KiCad",
+    "creation_date": "2026-06-09T10:49:51+07:00",
+    "board_width_mm": 58.2103,
+    "board_height_mm": 50.0717,
+    "layer_count": 4,
+    "board_thickness_mm": 1.6,
+    "finish": "None",
+    "project_name": "roadping-c3-compact-evt-v2-4layer",
+    "design_rules": [
+      {
+        "layers": "Outer",
+        "PadToPad": 0.2,
+        "PadToTrack": 0.2,
+        "TrackToTrack": 0.2,
+        "MinLineWidth": 0.25,
+        "TrackToRegion": 0.254,
+        "RegionToRegion": 0.254
+      },
+      {
+        "layers": "Inner",
+        "PadToPad": 0.2,
+        "PadToTrack": 0.2,
+        "TrackToTrack": 0.2,
+        "MinLineWidth": 0.5,
+        "TrackToRegion": 0.5,
+        "RegionToRegion": 0.5
+      }
+    ],
+    "expected_files": [
+      {
+        "path": "roadping-c3-compact-evt-v2-4layer-Edge_Cuts.gm1",
+        "function": "Profile",
+        "polarity": "Positive"
+      }
+    ],
+    "stackup": [
+      {
+        "type": "Legend",
+        "name": "Top Silk Screen"
+      },
+      {
+        "type": "SolderPaste",
+        "name": "Top Solder Paste"
+      },
+      {
+        "type": "SolderMask",
+        "name": "Top Solder Mask",
+        "thickness_mm": 0.01
+      },
+      {
+        "type": "Copper",
+        "name": "F.Cu",
+        "thickness_mm": 0.035
+      },
+      {
+        "type": "Dielectric",
+        "name": "F.Cu/In1.Cu_GND",
+        "thickness_mm": 0.18,
+        "material": "FR4"
+      },
+      {
+        "type": "Copper",
+        "name": "In1.Cu_GND",
+        "thickness_mm": 0.035
+      },
+      {
+        "type": "Dielectric",
+        "name": "In1.Cu_GND/In2.Cu_PWR",
+        "thickness_mm": 1.08,
+        "material": "FR4"
+      },
+      {
+        "type": "Copper",
+        "name": "In2.Cu_PWR",
+        "thickness_mm": 0.035
+      },
+      {
+        "type": "Dielectric",
+        "name": "In2.Cu_PWR/B.Cu",
+        "thickness_mm": 0.18,
+        "material": "FR4"
+      },
+      {
+        "type": "Copper",
+        "name": "B.Cu",
+        "thickness_mm": 0.035
+      },
+      {
+        "type": "SolderMask",
+        "name": "Bottom Solder Mask",
+        "thickness_mm": 0.01
+      },
+      {
+        "type": "SolderPaste",
+        "name": "Bottom Solder Paste"
+      },
+      {
+        "type": "Legend",
+        "name": "Bottom Silk Screen"
+      }
+    ]
+  },
+  "findings": [
+    {
+      "detector": "analyze_gerbers",
+      "rule_id": "GR-002",
+      "category": "gerber_alignment",
+      "severity": "warning",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "Alignment: Width varies by 8.2mm across copper/edge layers",
+      "description": "Layer alignment issue: Width varies by 8.2mm across copper/edge layers",
+      "components": [],
+      "nets": [],
+      "pins": [],
+      "recommendation": "Re-export gerbers to ensure consistent layer alignment.",
+      "report_context": {
+        "section": "Gerber Alignment",
+        "impact": "Layer misregistration",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "detector": "analyze_gerbers",
+      "rule_id": "GR-002",
+      "category": "gerber_alignment",
+      "severity": "warning",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "summary": "Alignment: Height varies by 4.4mm across copper/edge layers",
+      "description": "Layer alignment issue: Height varies by 4.4mm across copper/edge layers",
+      "components": [],
+      "nets": [],
+      "pins": [],
+      "recommendation": "Re-export gerbers to ensure consistent layer alignment.",
+      "report_context": {
+        "section": "Gerber Alignment",
+        "impact": "Layer misregistration",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "detector": "analyze_gerbers",
+      "rule_id": "GR-004",
+      "category": "gerber_completeness",
+      "severity": "warning",
+      "confidence": "heuristic",
+      "evidence_source": "topology",
+      "summary": "F paste layer: 33 flashes vs 123 copper (27%)",
+      "description": "F-side paste layer has significantly fewer flashes (33) than copper layer (123). This may indicate missing solder paste apertures.",
+      "components": [],
+      "nets": [],
+      "pins": [],
+      "recommendation": "Check solder paste aperture generation \u2014 missing apertures cause assembly defects.",
+      "report_context": {
+        "section": "Gerber Completeness",
+        "impact": "Assembly solder joint quality",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    }
+  ],
+  "summary": {
+    "total_findings": 3,
+    "by_severity": {
+      "error": 0,
+      "warning": 3,
+      "info": 0
+    }
+  },
+  "trust_summary": {
+    "total_findings": 3,
+    "trust_level": "mixed",
+    "by_confidence": {
+      "deterministic": 2,
+      "heuristic": 1,
+      "datasheet-backed": 0
+    },
+    "by_evidence_source": {
+      "datasheet": 0,
+      "topology": 3,
+      "heuristic_rule": 0,
+      "symbol_footprint": 0,
+      "bom": 0,
+      "geometry": 0,
+      "api_lookup": 0
+    },
+    "provenance_coverage_pct": 0.0
+  },
+  "connectivity": [
+    {
+      "ref": "C1",
+      "pin": "1",
+      "pin_name": "1_1",
+      "net": ""
+    },
+    {
+      "ref": "C1",
+      "pin": "2",
+      "pin_name": "2_2",
+      "net": "/SYS_RAW"
+    },
+    {
+      "ref": "C2",
+      "pin": "1",
+      "pin_name": "1_1",
+      "net": ""
+    },
+    {
+      "ref": "C2",
+      "pin": "2",
+      "pin_name": "2_2",
+      "net": "/3V3"
+    },
+    {
+      "ref": "C3",
+      "pin": "1",
+      "pin_name": "1_1",
+      "net": ""
+    },
+    {
+      "ref": "C3",
+      "pin": "2",
+      "pin_name": "2_2",
+      "net": "/3V3"
+    },
+    {
+      "ref": "C4",
+      "pin": "1",
+      "pin_name": "1_1",
+      "net": ""
+    },
+    {
+      "ref": "C4",
+      "pin": "2",
+      "pin_name": "2_2",
+      "net": "/3V3"
+    },
+    {
+      "ref": "C5",
+      "pin": "1",
+      "pin_name": "1_1",
+      "net": ""
+    },
+    {
+      "ref": "C5",
+      "pin": "2",
+      "pin_name": "2_2",
+      "net": "/3V3"
+    },
+    {
+      "ref": "C9",
+      "pin": "1",
+      "pin_name": "1_1",
+      "net": ""
+    },
+    {
+      "ref": "C9",
+      "pin": "2",
+      "pin_name": "2_2",
+      "net": "/BAT_ADC"
+    },
+    {
+      "ref": "D1",
+      "pin": "1",
+      "pin_name": "",
+      "net": ""
+    },
+    {
+      "ref": "D1",
+      "pin": "2",
+      "pin_name": "",
+      "net": "/GND"
+    },
+    {
+      "ref": "DS1",
+      "pin": "1",
+      "pin_name": "VDD_1",
+      "net": ""
+    },
+    {
+      "ref": "DS1",
+      "pin": "2",
+      "pin_name": "GND_2",
+      "net": "/3V3"
+    },
+    {
+      "ref": "DS1",
+      "pin": "3",
+      "pin_name": "SCK_3",
+      "net": "/GND"
+    },
+    {
+      "ref": "DS1",
+      "pin": "4",
+      "pin_name": "SDA_4",
+      "net": "/I2C_SCL"
+    },
+    {
+      "ref": "F1",
+      "pin": "1",
+      "pin_name": "",
+      "net": ""
+    },
+    {
+      "ref": "F1",
+      "pin": "2",
+      "pin_name": "",
+      "net": "/USB_5V_IN"
+    },
+    {
+      "ref": "F2",
+      "pin": "1",
+      "pin_name": "",
+      "net": ""
+    },
+    {
+      "ref": "F2",
+      "pin": "2",
+      "pin_name": "",
+      "net": "/BAT_CONN+"
+    },
+    {
+      "ref": "J1",
+      "pin": "1",
+      "pin_name": "Pin_1_1",
+      "net": ""
+    },
+    {
+      "ref": "J1",
+      "pin": "2",
+      "pin_name": "Pin_2_2",
+      "net": "/USB_5V_IN"
+    },
+    {
+      "ref": "J2",
+      "pin": "1",
+      "pin_name": "BAT+_1",
+      "net": ""
+    },
+    {
+      "ref": "J2",
+      "pin": "2",
+      "pin_name": "BAT-_2",
+      "net": "/BAT_CONN+"
+    },
+    {
+      "ref": "J3",
+      "pin": "1",
+      "pin_name": "Pin_1_1",
+      "net": ""
+    },
+    {
+      "ref": "J3",
+      "pin": "2",
+      "pin_name": "Pin_2_2",
+      "net": "/GND"
+    },
+    {
+      "ref": "J3",
+      "pin": "3",
+      "pin_name": "Pin_3_3",
+      "net": "/3V3"
+    },
+    {
+      "ref": "J3",
+      "pin": "4",
+      "pin_name": "Pin_4_4",
+      "net": "/UART_TX"
+    },
+    {
+      "ref": "J3",
+      "pin": "5",
+      "pin_name": "Pin_5_5",
+      "net": "/UART_RX"
+    },
+    {
+      "ref": "J3",
+      "pin": "6",
+      "pin_name": "Pin_6_6",
+      "net": "/I2C_SCL"
+    },
+    {
+      "ref": "R3",
+      "pin": "1",
+      "pin_name": "1_1",
+      "net": ""
+    },
+    {
+      "ref": "R3",
+      "pin": "2",
+      "pin_name": "2_2",
+      "net": "/3V3"
+    },
+    {
+      "ref": "R4",
+      "pin": "1",
+      "pin_name": "1_1",
+      "net": ""
+    },
+    {
+      "ref": "R4",
+      "pin": "2",
+      "pin_name": "2_2",
+      "net": "/3V3"
+    },
+    {
+      "ref": "R5",
+      "pin": "1",
+      "pin_name": "1_1",
+      "net": ""
+    },
+    {
+      "ref": "R5",
+      "pin": "2",
+      "pin_name": "2_2",
+      "net": "/3V3"
+    },
+    {
+      "ref": "R6",
+      "pin": "1",
+      "pin_name": "1_1",
+      "net": ""
+    },
+    {
+      "ref": "R6",
+      "pin": "2",
+      "pin_name": "2_2",
+      "net": "/VBAT"
+    },
+    {
+      "ref": "R7",
+      "pin": "1",
+      "pin_name": "1_1",
+      "net": ""
+    },
+    {
+      "ref": "R7",
+      "pin": "2",
+      "pin_name": "2_2",
+      "net": "/BAT_ADC"
+    },
+    {
+      "ref": "SW1",
+      "pin": "1",
+      "pin_name": "SW1_1",
+      "net": ""
+    },
+    {
+      "ref": "SW1",
+      "pin": "2",
+      "pin_name": "SW2_2",
+      "net": "/GND"
+    },
+    {
+      "ref": "SW1",
+      "pin": "A",
+      "pin_name": "A_A",
+      "net": "/ENC_SW"
+    },
+    {
+      "ref": "SW1",
+      "pin": "B",
+      "pin_name": "B_B",
+      "net": "/ENC_A"
+    },
+    {
+      "ref": "SW1",
+      "pin": "C",
+      "pin_name": "C_C",
+      "net": "/ENC_B"
+    },
+    {
+      "ref": "SW1",
+      "pin": "S1",
+      "pin_name": "SHIELD1_S1",
+      "net": "/GND"
+    },
+    {
+      "ref": "SW1",
+      "pin": "S2",
+      "pin_name": "SHIELD2_S2",
+      "net": "/GND"
+    },
+    {
+      "ref": "TP13",
+      "pin": "1",
+      "pin_name": "1_1",
+      "net": ""
+    },
+    {
+      "ref": "TP2",
+      "pin": "1",
+      "pin_name": "1_1",
+      "net": ""
+    },
+    {
+      "ref": "TP3",
+      "pin": "1",
+      "pin_name": "1_1",
+      "net": ""
+    },
+    {
+      "ref": "TP5",
+      "pin": "1",
+      "pin_name": "1_1",
+      "net": ""
+    },
+    {
+      "ref": "TP8",
+      "pin": "1",
+      "pin_name": "1_1",
+      "net": ""
+    },
+    {
+      "ref": "U1",
+      "pin": "1",
+      "pin_name": "IN+_1",
+      "net": ""
+    },
+    {
+      "ref": "U1",
+      "pin": "2",
+      "pin_name": "IN-_2",
+      "net": "/USB_5V"
+    },
+    {
+      "ref": "U1",
+      "pin": "3",
+      "pin_name": "OUT+_3",
+      "net": "/GND"
+    },
+    {
+      "ref": "U1",
+      "pin": "4",
+      "pin_name": "OUT-_4",
+      "net": "/SYS_RAW"
+    },
+    {
+      "ref": "U1",
+      "pin": "5",
+      "pin_name": "B+_5",
+      "net": "/GND"
+    },
+    {
+      "ref": "U1",
+      "pin": "6",
+      "pin_name": "B-_6",
+      "net": "/VBAT"
+    },
+    {
+      "ref": "U2",
+      "pin": "1",
+      "pin_name": "VIN_1",
+      "net": ""
+    },
+    {
+      "ref": "U2",
+      "pin": "2",
+      "pin_name": "GND_2",
+      "net": "/SYS_RAW"
+    },
+    {
+      "ref": "U2",
+      "pin": "3",
+      "pin_name": "EN_3",
+      "net": "/GND"
+    },
+    {
+      "ref": "U2",
+      "pin": "4",
+      "pin_name": "NC_4",
+      "net": "/SYS_RAW"
+    },
+    {
+      "ref": "U2",
+      "pin": "5",
+      "pin_name": "VOUT_5",
+      "net": "unconnected-(U2-NC-Pad4)"
+    },
+    {
+      "ref": "U3",
+      "pin": "0",
+      "pin_name": "GPIO0_0",
+      "net": ""
+    },
+    {
+      "ref": "U3",
+      "pin": "1",
+      "pin_name": "GPIO1_1",
+      "net": "/BAT_ADC"
+    },
+    {
+      "ref": "U3",
+      "pin": "10",
+      "pin_name": "GPIO10_10",
+      "net": "unconnected-(U3-GPIO9-Pad9)"
+    },
+    {
+      "ref": "U3",
+      "pin": "2",
+      "pin_name": "GPIO2_2",
+      "net": "unconnected-(U3-GPIO1-Pad1)"
+    },
+    {
+      "ref": "U3",
+      "pin": "20",
+      "pin_name": "GPIO20_20",
+      "net": "/I2C_SCL"
+    },
+    {
+      "ref": "U3",
+      "pin": "21",
+      "pin_name": "GPIO21_21",
+      "net": "/UART_RX"
+    },
+    {
+      "ref": "U3",
+      "pin": "3",
+      "pin_name": "GPIO3_3",
+      "net": "/ENC_A"
+    },
+    {
+      "ref": "U3",
+      "pin": "3.3",
+      "pin_name": "3V3_3.3",
+      "net": "/ENC_B"
+    },
+    {
+      "ref": "U3",
+      "pin": "4",
+      "pin_name": "GPIO4_4",
+      "net": "/3V3"
+    },
+    {
+      "ref": "U3",
+      "pin": "5",
+      "pin_name": "GPIO5_5",
+      "net": "/ENC_SW"
+    },
+    {
+      "ref": "U3",
+      "pin": "5V",
+      "pin_name": "5V_5V",
+      "net": "unconnected-(U3-GPIO5-Pad5)"
+    },
+    {
+      "ref": "U3",
+      "pin": "6",
+      "pin_name": "GPIO6_6",
+      "net": "unconnected-(U3-Pad5V)"
+    },
+    {
+      "ref": "U3",
+      "pin": "7",
+      "pin_name": "GPIO7_7",
+      "net": "unconnected-(U3-GPIO6-Pad6)"
+    },
+    {
+      "ref": "U3",
+      "pin": "8",
+      "pin_name": "GPIO8_8",
+      "net": "unconnected-(U3-GPIO7-Pad7)"
+    },
+    {
+      "ref": "U3",
+      "pin": "9",
+      "pin_name": "GPIO9_9",
+      "net": "/I2C_SDA"
+    },
+    {
+      "ref": "U3",
+      "pin": "G",
+      "pin_name": "GND_G",
+      "net": "/UART_TX"
+    }
+  ],
+  "audience_summary": {
+    "designer": {
+      "total_findings": 3,
+      "by_severity": {
+        "error": 0,
+        "warning": 3,
+        "info": 0
+      },
+      "by_category": {
+        "gerber_alignment": 2,
+        "gerber_completeness": 1
+      },
+      "top_issues": [
+        {
+          "detector": "analyze_gerbers",
+          "rule_id": "GR-002",
+          "category": "gerber_alignment",
+          "severity": "warning",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "summary": "Alignment: Width varies by 8.2mm across copper/edge layers",
+          "description": "Layer alignment issue: Width varies by 8.2mm across copper/edge layers",
+          "components": [],
+          "nets": [],
+          "pins": [],
+          "recommendation": "Re-export gerbers to ensure consistent layer alignment.",
+          "report_context": {
+            "section": "Gerber Alignment",
+            "impact": "Layer misregistration",
+            "standard_ref": ""
+          },
+          "stages": [
+            "pre_fab"
+          ]
+        },
+        {
+          "detector": "analyze_gerbers",
+          "rule_id": "GR-002",
+          "category": "gerber_alignment",
+          "severity": "warning",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "summary": "Alignment: Height varies by 4.4mm across copper/edge layers",
+          "description": "Layer alignment issue: Height varies by 4.4mm across copper/edge layers",
+          "components": [],
+          "nets": [],
+          "pins": [],
+          "recommendation": "Re-export gerbers to ensure consistent layer alignment.",
+          "report_context": {
+            "section": "Gerber Alignment",
+            "impact": "Layer misregistration",
+            "standard_ref": ""
+          },
+          "stages": [
+            "pre_fab"
+          ]
+        },
+        {
+          "detector": "analyze_gerbers",
+          "rule_id": "GR-004",
+          "category": "gerber_completeness",
+          "severity": "warning",
+          "confidence": "heuristic",
+          "evidence_source": "topology",
+          "summary": "F paste layer: 33 flashes vs 123 copper (27%)",
+          "description": "F-side paste layer has significantly fewer flashes (33) than copper layer (123). This may indicate missing solder paste apertures.",
+          "components": [],
+          "nets": [],
+          "pins": [],
+          "recommendation": "Check solder paste aperture generation \u2014 missing apertures cause assembly defects.",
+          "report_context": {
+            "section": "Gerber Completeness",
+            "impact": "Assembly solder joint quality",
+            "standard_ref": ""
+          },
+          "stages": [
+            "pre_fab"
+          ]
+        }
+      ]
+    },
+    "reviewer": {
+      "total_findings": 3,
+      "by_category": {
+        "gerber_alignment": 2,
+        "gerber_completeness": 1
+      },
+      "top_issues": [
+        {
+          "rule_id": "GR-002",
+          "severity": "warning",
+          "summary": "Alignment: Width varies by 8.2mm across copper/edge layers",
+          "recommendation": "Re-export gerbers to ensure consistent layer alignment.",
+          "category": "gerber_alignment"
+        },
+        {
+          "rule_id": "GR-002",
+          "severity": "warning",
+          "summary": "Alignment: Height varies by 4.4mm across copper/edge layers",
+          "recommendation": "Re-export gerbers to ensure consistent layer alignment.",
+          "category": "gerber_alignment"
+        },
+        {
+          "rule_id": "GR-004",
+          "severity": "warning",
+          "summary": "F paste layer: 33 flashes vs 123 copper (27%)",
+          "recommendation": "Check solder paste aperture generation \u2014 missing apertures cause assembly defects.",
+          "category": "gerber_completeness"
+        }
+      ]
+    },
+    "manager": {
+      "risk_level": "low",
+      "blocker_count": 0,
+      "warning_count": 3,
+      "stage_readiness": {
+        "schematic": "pass",
+        "layout": "pass",
+        "pre_fab": "needs_review",
+        "bring_up": "pass"
+      },
+      "one_liner": "3 warnings across 2 categories."
+    }
+  }
+}

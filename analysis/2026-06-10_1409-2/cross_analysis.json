@@ -1,0 +1,134 @@
+{
+  "analyzer_type": "cross_analysis",
+  "schema_version": "1.3.0",
+  "elapsed_s": 0.002,
+  "summary": {
+    "total_findings": 1,
+    "by_severity": {
+      "error": 0,
+      "warning": 1,
+      "info": 0
+    }
+  },
+  "findings": [
+    {
+      "detector": "check_cross_validation",
+      "rule_id": "XV-001",
+      "category": "design_sync",
+      "summary": "6 component(s) in schematic but not PCB",
+      "description": "Missing from PCB: C6, C7, C8, R1, R2, R8.",
+      "components": [
+        "C6",
+        "C7",
+        "C8",
+        "R1",
+        "R2",
+        "R8"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "warning",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Update PCB from schematic (Tools > Update PCB from Schematic).",
+      "report_context": {
+        "section": "Design Sync",
+        "impact": "Missing components on manufactured board",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    }
+  ],
+  "trust_summary": {
+    "total_findings": 1,
+    "trust_level": "high",
+    "by_confidence": {
+      "deterministic": 1,
+      "heuristic": 0,
+      "datasheet-backed": 0
+    },
+    "by_evidence_source": {
+      "datasheet": 0,
+      "topology": 1,
+      "heuristic_rule": 0,
+      "symbol_footprint": 0,
+      "bom": 0,
+      "geometry": 0,
+      "api_lookup": 0
+    },
+    "provenance_coverage_pct": 0.0
+  },
+  "audience_summary": {
+    "designer": {
+      "total_findings": 1,
+      "by_severity": {
+        "error": 0,
+        "warning": 1,
+        "info": 0
+      },
+      "by_category": {
+        "design_sync": 1
+      },
+      "top_issues": [
+        {
+          "detector": "check_cross_validation",
+          "rule_id": "XV-001",
+          "category": "design_sync",
+          "summary": "6 component(s) in schematic but not PCB",
+          "description": "Missing from PCB: C6, C7, C8, R1, R2, R8.",
+          "components": [
+            "C6",
+            "C7",
+            "C8",
+            "R1",
+            "R2",
+            "R8"
+          ],
+          "nets": [],
+          "pins": [],
+          "severity": "warning",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "recommendation": "Update PCB from schematic (Tools > Update PCB from Schematic).",
+          "report_context": {
+            "section": "Design Sync",
+            "impact": "Missing components on manufactured board",
+            "standard_ref": ""
+          },
+          "stages": [
+            "pre_fab"
+          ]
+        }
+      ]
+    },
+    "reviewer": {
+      "total_findings": 1,
+      "by_category": {
+        "design_sync": 1
+      },
+      "top_issues": [
+        {
+          "rule_id": "XV-001",
+          "severity": "warning",
+          "summary": "6 component(s) in schematic but not PCB",
+          "recommendation": "Update PCB from schematic (Tools > Update PCB from Schematic).",
+          "category": "design_sync"
+        }
+      ]
+    },
+    "manager": {
+      "risk_level": "low",
+      "blocker_count": 0,
+      "warning_count": 1,
+      "stage_readiness": {
+        "schematic": "pass",
+        "layout": "pass",
+        "pre_fab": "needs_review",
+        "bring_up": "pass"
+      },
+      "one_liner": "1 warning across 1 category."
+    }
+  }
+}
