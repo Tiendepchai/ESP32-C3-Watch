@@ -1,0 +1,25 @@
+Reference,Qty,Value,Footprint,MPN,LCSC,Manufacturer,Chosen_Distributor,Datasheet,Validated,DNP,Notes
+"C1,C2",2,1uF,,CL10A105KA8NNNC,C5673,Samsung Electro-Mechanics,LCSC,,,,
+C3,1,10uF,,CL10A106KP8NNNC,C19702,Samsung Electro-Mechanics,LCSC,,,,
+C9,1,100nF,,CL10B104KB8NNNC,C1591,Samsung Electro-Mechanics,LCSC,,,,
+D1,1,PESD5V0S1BA,,PESD5V0S1BA,C5261083,Nexperia,LCSC,,,,
+D2,1,USBLC6-2SC6,,USBLC6-2SC6,C2687116,STMicroelectronics,LCSC,,,,
+DS1,1,SH1106 OLED,,,,,LCSC,,,,"SH1106 OLED 128x64 I2C module, 4-pin header"
+"F1,F2",2,PTC 1.1A,,MF-SM013/250-2,C720650,Bourns,LCSC,,,,
+J1,1,TYPE-C-31-M-12,USB_C_Receptacle_HRO_TYPE-C-31-M-12,TYPE-C-31-M-12,C2907321,HRO,LCSC,,,,
+J2,1,JST-PH LiPo,JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical,B2B-PH-K-S,C131337,JST,LCSC,,,,
+Q1,1,BSS138,SOT-23,BSS138,C112239,ON Semiconductor,LCSC,,,,
+"R1,R2",2,5.1k,,RC0603FR-075K1L,C105580,Yageo,LCSC,,,,
+R3,1,1.1k,,RC0603FR-071K1L,C137780,Yageo,LCSC,,,,
+R4,1,2.0k,,RC0603FR-072KL,C105576,Yageo,LCSC,,,,
+"R5,R6,R7,R8,R9",5,10k,,RC0603FR-0710KL,C98220,Yageo,LCSC,,,,
+"R10,R11",2,470k,,RC0603FR-07470KL,C114622,Yageo,LCSC,,,,
+R12,1,100k,,RC0603FR-07100KL,C14675,Yageo,LCSC,,,,
+"R_CE,R_CHG,R_FLT",3,10k,,,,,LCSC,,,,
+SW1,1,PEC11R,,PEC11R-4215F-S0024,C143790,Bourns,LCSC,,,,
+SW2,1,BOOT,,PinHeader_1x02_P2.54mm,,Generic,LCSC,,,,"BOOT header, 2.54mm pin header"
+TP_RX,1,UART_RX,,,,,LCSC,,,,"Test point - no MPN needed, use any 1.3mm test pad"
+TP_TX,1,UART_TX,,,,,LCSC,,,,"Test point - no MPN needed, use any 1.3mm test pad"
+U1,1,BQ24074RGTR,WQFN-20-1EP_3.5x3.5mm_P0.5mm_EP2.7x2.7mm,BQ24074RGTR,C54313,Texas Instruments,LCSC,https://www.ti.com/lit/ds/symlink/bq24074.pdf,,,
+U2,1,AP2112K-3.3,,AP2112K-3.3TRG1,C23380830,Diodes Incorporated,LCSC,,,,
+U3,1,ESP32-C3-MINI-1-N4,,ESP32-C3-MINI-1-N4,C2838502,Espressif Systems,LCSC,,,,

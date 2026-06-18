@@ -6,6 +6,35 @@
 /screenlog.*
 /sdkconfig
 
+# ESP-IDF firmware build outputs
+/firmware/build/
+/firmware/sdkconfig
+/firmware/sdkconfig.old
+/firmware/tests/build/
+
+# Python generated files
+*.pyc
+*.pyo
+__pycache__/
+**/__pycache__/
+
+# KiCad local state, locks, and scratch backups
+*.kicad_prl
+~*.lck
+*.lck
+*.bak
+*.bak2
+*.clean.bak
+*.phase1.bak
+backups/
+*-backups/
+.history/
+
+# Local copied tooling and generated package archives
+kicad-happy/
+*.zip
+*.tar.gz
+
 /ios/ANCSWatchConfig/*.xcodeproj
 /ios/ANCSWatchConfig/*.xcworkspace
 /ios/ANCSWatchConfig/DerivedData/

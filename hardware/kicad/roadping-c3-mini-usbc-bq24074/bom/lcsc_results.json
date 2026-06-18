@@ -1,0 +1,116 @@
+{
+  "CL10A105KA8NNNC": {
+    "lcsc": "C5673",
+    "price": "$0.003971429",
+    "stock": 1865987,
+    "type": "Extended"
+  },
+  "CL10A106KP8NNNC": {
+    "lcsc": "C19702",
+    "price": "$0.0053",
+    "stock": 28665125,
+    "type": "Extended"
+  },
+  "CL10B104KB8NNNC": {
+    "lcsc": "C1591",
+    "price": "$0.002385714",
+    "stock": 45893814,
+    "type": "Extended"
+  },
+  "PESD5V0S1BA": {
+    "lcsc": "C5261083",
+    "price": "$0.013671429",
+    "stock": 165968,
+    "type": "Extended"
+  },
+  "USBLC6-2SC6": {
+    "lcsc": "C2687116",
+    "price": "$0.035",
+    "stock": 231248,
+    "type": "Extended"
+  },
+  "MF-SM013/250-2": {
+    "lcsc": "C720650",
+    "price": "$0.485714286",
+    "stock": 360,
+    "type": "Extended"
+  },
+  "TYPE-C-31-M-12": {
+    "lcsc": "C2907321",
+    "price": "$0.001128571",
+    "stock": 1157977,
+    "type": "Extended"
+  },
+  "B2B-PH-K-S": {
+    "lcsc": "C131337",
+    "price": "$0.026857143",
+    "stock": 266926,
+    "type": "Extended"
+  },
+  "BSS138": {
+    "lcsc": "C112239",
+    "price": "$0.020714286",
+    "stock": 649222,
+    "type": "Extended"
+  },
+  "RC0603FR-075K1L": {
+    "lcsc": "C105580",
+    "price": "$0.0011",
+    "stock": 684559,
+    "type": "Extended"
+  },
+  "RC0603FR-071K1L": {
+    "lcsc": "C137780",
+    "price": "$0.0011",
+    "stock": 15227,
+    "type": "Extended"
+  },
+  "RC0603FR-072KL": {
+    "lcsc": "C105576",
+    "price": "$0.001071429",
+    "stock": 912065,
+    "type": "Extended"
+  },
+  "RC0603FR-0710KL": {
+    "lcsc": "C98220",
+    "price": "$0.000957143",
+    "stock": 5570515,
+    "type": "Extended"
+  },
+  "RC0603FR-07470KL": {
+    "lcsc": "C114622",
+    "price": "$0.001",
+    "stock": 205121,
+    "type": "Extended"
+  },
+  "RC0603FR-07100KL": {
+    "lcsc": "C14675",
+    "price": "$0.000914286",
+    "stock": 1133375,
+    "type": "Extended"
+  },
+  "PEC11R-4215F-S0024": {
+    "lcsc": "C143790",
+    "price": "$2.357142857",
+    "stock": 797,
+    "type": "Extended"
+  },
+  "BQ24074RGTR": {
+    "lcsc": "C54313",
+    "price": "$1.144285714",
+    "stock": 736,
+    "type": "Extended"
+  },
+  "AP2112K-3.3TRG1": {
+    "lcsc": "C23380830",
+    "price": "$0.083857143",
+    "stock": 52879,
+    "type": "Extended"
+  },
+  "ESP32-C3-MINI-1-N4": {
+    "lcsc": "C2838502",
+    "price": "$2.79",
+    "stock": 16416,
+    "type": "Extended"
+  }
+}

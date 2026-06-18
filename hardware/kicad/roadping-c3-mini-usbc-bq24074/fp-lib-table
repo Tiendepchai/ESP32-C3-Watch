@@ -1,0 +1,9 @@
+(fp_lib_table
+	(lib
+		(name "roadping-c3")
+		(type "KiCad")
+		(uri "${KIPRJMOD}/roadping-c3.pretty")
+		(options "")
+		(descr "RoadPing C3 project custom footprints")
+	)
+)

@@ -1,0 +1,142 @@
+{
+  "C1": {
+    "MPN": "CL10A105KA8NNNC",
+    "Manufacturer": "Samsung Electro-Mechanics",
+    "Value": "1uF"
+  },
+  "C2": {
+    "MPN": "CL10A105KA8NNNC",
+    "Manufacturer": "Samsung Electro-Mechanics",
+    "Value": "1uF"
+  },
+  "C3": {
+    "MPN": "CL10A106KP8NNNC",
+    "Manufacturer": "Samsung Electro-Mechanics",
+    "Value": "10uF"
+  },
+  "C9": {
+    "MPN": "CL10B104KB8NNNC",
+    "Manufacturer": "Samsung Electro-Mechanics",
+    "Value": "100nF"
+  },
+  "D1": {
+    "MPN": "PESD5V0S1BA",
+    "Manufacturer": "Nexperia",
+    "Value": "PESD5V0S1BA"
+  },
+  "D2": {
+    "MPN": "USBLC6-2SC6",
+    "Manufacturer": "STMicroelectronics",
+    "Value": "USBLC6-2SC6"
+  },
+  "F1": {
+    "MPN": "MF-SM013/250-2",
+    "Manufacturer": "Bourns",
+    "Value": "PTC 1.1A"
+  },
+  "F2": {
+    "MPN": "MF-SM013/250-2",
+    "Manufacturer": "Bourns",
+    "Value": "PTC 1.1A"
+  },
+  "J1": {
+    "MPN": "TYPE-C-31-M-12",
+    "Manufacturer": "HRO",
+    "Value": "TYPE-C-31-M-12"
+  },
+  "J2": {
+    "MPN": "B2B-PH-K-S",
+    "Manufacturer": "JST",
+    "Value": "JST-PH LiPo"
+  },
+  "Q1": {
+    "MPN": "BSS138",
+    "Manufacturer": "ON Semiconductor",
+    "Value": "BSS138"
+  },
+  "R1": {
+    "MPN": "RC0603FR-075K1L",
+    "Manufacturer": "Yageo",
+    "Value": "5.1k"
+  },
+  "R2": {
+    "MPN": "RC0603FR-075K1L",
+    "Manufacturer": "Yageo",
+    "Value": "5.1k"
+  },
+  "R3": {
+    "MPN": "RC0603FR-071K1L",
+    "Manufacturer": "Yageo",
+    "Value": "1.1k"
+  },
+  "R4": {
+    "MPN": "RC0603FR-072KL",
+    "Manufacturer": "Yageo",
+    "Value": "2.0k"
+  },
+  "R5": {
+    "MPN": "RC0603FR-0710KL",
+    "Manufacturer": "Yageo",
+    "Value": "10k"
+  },
+  "R6": {
+    "MPN": "RC0603FR-0710KL",
+    "Manufacturer": "Yageo",
+    "Value": "10k"
+  },
+  "R7": {
+    "MPN": "RC0603FR-0710KL",
+    "Manufacturer": "Yageo",
+    "Value": "10k"
+  },
+  "R8": {
+    "MPN": "RC0603FR-0710KL",
+    "Manufacturer": "Yageo",
+    "Value": "10k"
+  },
+  "R9": {
+    "MPN": "RC0603FR-0710KL",
+    "Manufacturer": "Yageo",
+    "Value": "10k"
+  },
+  "R10": {
+    "MPN": "RC0603FR-07470KL",
+    "Manufacturer": "Yageo",
+    "Value": "470k"
+  },
+  "R11": {
+    "MPN": "RC0603FR-07470KL",
+    "Manufacturer": "Yageo",
+    "Value": "470k"
+  },
+  "R12": {
+    "MPN": "RC0603FR-07100KL",
+    "Manufacturer": "Yageo",
+    "Value": "100k"
+  },
+  "SW1": {
+    "MPN": "PEC11R-4215F-S0024",
+    "Manufacturer": "Bourns",
+    "Value": "PEC11R"
+  },
+  "SW2": {
+    "MPN": "PinHeader_1x02_P2.54mm",
+    "Manufacturer": "Generic",
+    "Value": "BOOT"
+  },
+  "U1": {
+    "MPN": "BQ24074RGTR",
+    "Manufacturer": "Texas Instruments",
+    "Value": "BQ24074RGTR"
+  },
+  "U2": {
+    "MPN": "AP2112K-3.3TRG1",
+    "Manufacturer": "Diodes Incorporated",
+    "Value": "AP2112K-3.3"
+  },
+  "U3": {
+    "MPN": "ESP32-C3-MINI-1-N4",
+    "Manufacturer": "Espressif Systems",
+    "Value": "ESP32-C3-MINI-1-N4"
+  }
+}
