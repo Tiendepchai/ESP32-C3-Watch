@@ -1,0 +1,15 @@
+{
+  "diff_version": "1.0",
+  "analyzer_type": "pcb",
+  "base_file": "hardware/fabrication/compact-evt-v2-4layer-evt-release-2026-06-09/reports/pcb-analysis-manufacturing-export-2026-06-09.json",
+  "head_file": "analysis/2026-06-10_1409-2/pcb.json",
+  "has_changes": false,
+  "summary": {
+    "total_changes": 0,
+    "added": 0,
+    "removed": 0,
+    "modified": 0,
+    "severity": "none"
+  },
+  "diff": {}
+}

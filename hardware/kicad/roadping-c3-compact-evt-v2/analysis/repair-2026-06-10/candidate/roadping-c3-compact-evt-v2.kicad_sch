@@ -1,0 +1,6197 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "a7a608b8-5634-45ce-b057-edee81ded4ea")
+	(paper "A4")
+	(lib_symbols
+		(symbol "roadping-c3:TP4056-Module"
+					(pin_names
+						(offset 1.016)
+					)
+					(exclude_from_sim no)
+					(in_bom yes)
+					(on_board yes)
+					(in_pos_files yes)
+					(duplicate_pin_numbers_are_jumpers no)
+					(property "Reference" "U"
+						(at -13.97 13.97 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(property "Value" "TP4056-Module"
+						(at 0 -13.97 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(property "Footprint" "roadping-c3:TP4056-Module"
+						(at 0 -16.51 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(property "Datasheet" ""
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(property "Description" "TP4056 protected 1S charger module using the local TP4056-Module through-hole footprint. Pad map from footprint silk: 1 IN+, 2 IN-, 3 OUT+, 4 OUT-, 5 B+, 6 B-. NEED_VERIFY_WITH_ACTUAL_BOARD: confirm pad labels and board dimensions before fabrication."
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(symbol "TP4056-Module_0_1"
+						(rectangle
+							(start -13.97 11.43)
+							(end 13.97 -11.43)
+							(stroke
+								(width 0.254)
+								(type default)
+							)
+							(fill
+								(type background)
+							)
+						)
+						(text "TP4056 PROTECTED MODULE"
+							(at 0 6.35 0)
+							(effects
+								(font
+									(size 1.016 1.016)
+								)
+							)
+						)
+						(text "THT footprint: TP4056-Module"
+							(at 0 3.81 0)
+							(effects
+								(font
+									(size 0.889 0.889)
+								)
+							)
+						)
+						(text "1 IN+ 2 IN- 3 OUT+ 4 OUT- 5 B+ 6 B-"
+							(at 0 -7.62 0)
+							(effects
+								(font
+									(size 0.762 0.762)
+								)
+							)
+						)
+						(text "NEED_VERIFY_WITH_ACTUAL_BOARD"
+							(at 0 -9.652 0)
+							(effects
+								(font
+									(size 0.762 0.762)
+								)
+							)
+						)
+					)
+					(symbol "TP4056-Module_1_1"
+						(pin power_in line
+							(at -16.51 5.08 0)
+							(length 2.54)
+							(name "IN+"
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+								)
+							)
+							(number "1"
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+								)
+							)
+						)
+						(pin power_in line
+							(at -16.51 2.54 0)
+							(length 2.54)
+							(name "IN-"
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+								)
+							)
+							(number "2"
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+								)
+							)
+						)
+						(pin power_out line
+							(at 16.51 5.08 180)
+							(length 2.54)
+							(name "OUT+"
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+								)
+							)
+							(number "3"
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+								)
+							)
+						)
+						(pin power_out line
+							(at 16.51 2.54 180)
+							(length 2.54)
+							(name "OUT-"
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+								)
+							)
+							(number "4"
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+								)
+							)
+						)
+						(pin passive line
+							(at 16.51 -2.54 180)
+							(length 2.54)
+							(name "B+"
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+								)
+							)
+							(number "5"
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+								)
+							)
+						)
+						(pin passive line
+							(at 16.51 -5.08 180)
+							(length 2.54)
+							(name "B-"
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+								)
+							)
+							(number "6"
+								(effects
+									(font
+										(size 1.27 1.27)
+									)
+								)
+							)
+						)
+					)
+					(embedded_fonts no)
+				)
+		(symbol "roadping-c3:ESP32-C3_SUPERMINI_TH"
+					(pin_names
+						(offset 1.016)
+					)
+					(exclude_from_sim no)
+					(in_bom yes)
+					(on_board yes)
+					(in_pos_files yes)
+					(duplicate_pin_numbers_are_jumpers no)
+					(property "Reference" "U"
+						(at -12.7 16.002 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify left bottom)
+						)
+					)
+					(property "Value" "ESP32-C3_SUPERMINI_TH"
+						(at -12.7 -20.32 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify left bottom)
+						)
+					)
+					(property "Footprint" "roadping-c3:MODULE_ESP32-C3_SUPERMINI_TH"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "Datasheet" ""
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(property "Description" "Super tiny ESP32-C3 board"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "MF" "Espressif Systems"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "CREATOR" "DIZAR"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "Price" "None"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "Package" "Package"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "Check_prices" "https://www.snapeda.com/parts/ESP32-C3%20SuperMini_TH/Espressif+Systems/view-part/?ref=eda"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "STANDARD" "IPC-7351B"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "VERIFIER" ""
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "SnapEDA_Link" "https://www.snapeda.com/parts/ESP32-C3%20SuperMini_TH/Espressif+Systems/view-part/?ref=snap"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "MP" "ESP32-C3 SuperMini_TH"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "Availability" "Not in stock"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "MANUFACTURER" "Espressif Systems"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(symbol "ESP32-C3_SUPERMINI_TH_0_0"
+						(rectangle
+							(start -12.7 -17.78)
+							(end 12.7 15.24)
+							(stroke
+								(width 0.254)
+								(type default)
+							)
+							(fill
+								(type background)
+							)
+						)
+						(pin bidirectional line
+							(at -17.78 5.08 0)
+							(length 5.08)
+							(name "GPIO0"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "0"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin bidirectional line
+							(at -17.78 2.54 0)
+							(length 5.08)
+							(name "GPIO1"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "1"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin bidirectional line
+							(at -17.78 0 0)
+							(length 5.08)
+							(name "GPIO2"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "2"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin bidirectional line
+							(at -17.78 -2.54 0)
+							(length 5.08)
+							(name "GPIO3"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "3"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin power_in line
+							(at 17.78 10.16 180)
+							(length 5.08)
+							(name "3V3"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "3.3"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin bidirectional line
+							(at -17.78 -5.08 0)
+							(length 5.08)
+							(name "GPIO4"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "4"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin bidirectional line
+							(at -17.78 -7.62 0)
+							(length 5.08)
+							(name "GPIO5"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "5"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin power_in line
+							(at 17.78 12.7 180)
+							(length 5.08)
+							(name "5V"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "5V"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin bidirectional line
+							(at -17.78 -10.16 0)
+							(length 5.08)
+							(name "GPIO6"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "6"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin bidirectional line
+							(at 17.78 5.08 180)
+							(length 5.08)
+							(name "GPIO7"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "7"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin bidirectional line
+							(at 17.78 2.54 180)
+							(length 5.08)
+							(name "GPIO8"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "8"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin bidirectional line
+							(at 17.78 0 180)
+							(length 5.08)
+							(name "GPIO9"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "9"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin bidirectional line
+							(at 17.78 -2.54 180)
+							(length 5.08)
+							(name "GPIO10"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "10"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin bidirectional line
+							(at 17.78 -5.08 180)
+							(length 5.08)
+							(name "GPIO20"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "20"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin bidirectional line
+							(at 17.78 -7.62 180)
+							(length 5.08)
+							(name "GPIO21"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "21"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin power_in line
+							(at 17.78 -15.24 180)
+							(length 5.08)
+							(name "GND"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "G"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+					)
+					(embedded_fonts no)
+				)
+		(symbol "roadping-c3:OLED_128X64_1.3_I2C"
+					(pin_names
+						(offset 1.016)
+					)
+					(exclude_from_sim no)
+					(in_bom yes)
+					(on_board yes)
+					(in_pos_files yes)
+					(duplicate_pin_numbers_are_jumpers no)
+					(property "Reference" "DS"
+						(at -10.16 10.922 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify left bottom)
+						)
+					)
+					(property "Value" "OLED_128X64_1.3_I2C"
+						(at -10.16 -10.16 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify left bottom)
+						)
+					)
+					(property "Footprint" "roadping-c3:OLED_4PIN_VDD_GND_SCK_SDA_2.54MM"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "Datasheet" ""
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(property "Description" "Non-Touch Graphic LCD Display Module Transmissive White OLED, Monochrome I2C 1.3 (33.02mm) 128 x 64"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "MF" "UNIVERSAL-SOLDER Electronics Ltd"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "Package" "None"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "Price" "None"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "Check_prices" "https://www.snapeda.com/parts/OLED%20128x64%201.3%22%20I2C/UNIVERSAL-SOLDER+Electronics+Ltd/view-part/?ref=eda"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "STANDARD" "Manufacturer Recommendations"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "PARTREV" "NA"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "SnapEDA_Link" "https://www.snapeda.com/parts/OLED%20128x64%201.3%22%20I2C/UNIVERSAL-SOLDER+Electronics+Ltd/view-part/?ref=snap"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "MP" "OLED 128x64 1.3&quot; I2C"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "Availability" "Not in stock"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "MANUFACTURER" "UNIVERSAL-SOLDER Electronics Ltd"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(symbol "OLED_128X64_1.3_I2C_0_0"
+						(rectangle
+							(start -10.16 -7.62)
+							(end 10.16 10.16)
+							(stroke
+								(width 0.254)
+								(type default)
+							)
+							(fill
+								(type background)
+							)
+						)
+						(pin power_in line
+							(at 15.24 7.62 180)
+							(length 5.08)
+							(name "VDD"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "1"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin power_in line
+							(at 15.24 -5.08 180)
+							(length 5.08)
+							(name "GND"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "2"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin input clock
+							(at -15.24 2.54 0)
+							(length 5.08)
+							(name "SCK"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "3"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin bidirectional line
+							(at -15.24 0 0)
+							(length 5.08)
+							(name "SDA"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "4"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+					)
+					(embedded_fonts no)
+				)
+		(symbol "roadping-c3:PEC11R-4215F-S0024"
+					(pin_names
+						(offset 1.016)
+					)
+					(exclude_from_sim no)
+					(in_bom yes)
+					(on_board yes)
+					(in_pos_files yes)
+					(duplicate_pin_numbers_are_jumpers no)
+					(property "Reference" "SW"
+						(at -10.16 10.16 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify left)
+						)
+					)
+					(property "Value" "PEC11R-4215F-S0024"
+						(at -10.16 -10.16 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify left)
+						)
+					)
+					(property "Footprint" "roadping-c3:XDCR_PEC11R-4215F-S0024"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "Datasheet" ""
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(property "Description" "Bourns PEC11R-4215F-S0024 rotary encoder, 24 detents, 24 PPR, 15 mm flatted shaft, push switch"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "MF" "Bourns"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(property "MP" "PEC11R-4215F-S0024"
+						(at 0 0 0)
+						(show_name no)
+						(do_not_autoplace no)
+						(hide yes)
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+							(justify bottom)
+						)
+					)
+					(symbol "PEC11R-4215F-S0024_0_0"
+						(rectangle
+							(start -7.62 -7.62)
+							(end 7.62 7.62)
+							(stroke
+								(width 0.254)
+								(type default)
+							)
+							(fill
+								(type background)
+							)
+						)
+						(polyline
+							(pts
+								(xy -2.54 2.54) (xy -7.62 2.54)
+							)
+							(stroke
+								(width 0.1524)
+								(type default)
+							)
+							(fill
+								(type none)
+							)
+						)
+						(polyline
+							(pts
+								(xy -2.54 2.54) (xy 2.794 4.6736)
+							)
+							(stroke
+								(width 0.1524)
+								(type default)
+							)
+							(fill
+								(type none)
+							)
+						)
+						(circle
+							(center 2.54 2.54)
+							(radius 0.3302)
+							(stroke
+								(width 0.1524)
+								(type default)
+							)
+							(fill
+								(type none)
+							)
+						)
+						(polyline
+							(pts
+								(xy 7.62 2.54) (xy 2.921 2.54)
+							)
+							(stroke
+								(width 0.1524)
+								(type default)
+							)
+							(fill
+								(type none)
+							)
+						)
+						(pin passive line
+							(at -10.16 2.54 0)
+							(length 2.54)
+							(name "SW1"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "1"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin passive line
+							(at 10.16 2.54 180)
+							(length 2.54)
+							(name "SW2"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "2"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin passive line
+							(at 10.16 -2.54 180)
+							(length 2.54)
+							(name "A"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "A"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin passive line
+							(at 10.16 -5.08 180)
+							(length 2.54)
+							(name "B"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "B"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin passive line
+							(at -10.16 -2.54 0)
+							(length 2.54)
+							(name "C"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "C"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin passive line
+							(at -10.16 -5.08 0)
+							(length 2.54)
+							(name "SHIELD1"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "S1"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+						(pin passive line
+							(at -10.16 -7.62 0)
+							(length 2.54)
+							(name "SHIELD2"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+							(number "S2"
+								(effects
+									(font
+										(size 1.016 1.016)
+									)
+								)
+							)
+						)
+					)
+					(embedded_fonts no)
+				)
+		(symbol "roadping-c3:R"
+			(pin_names (offset 0.762))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R" (at 0 2.54 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Value" "R" (at 0 -2.54 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 0 -5.08 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Datasheet" "" (at 0 0 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(symbol "R_0_1" (rectangle (start -1.905 0.762) (end 1.905 -0.762) (stroke (width 0.1524) (type default)) (fill (type none))))
+			(symbol "R_1_1"
+				(pin passive line (at -3.81 0 0) (length 1.905) (name "1" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+				(pin passive line (at 3.81 0 180) (length 1.905) (name "2" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+			)
+			(embedded_fonts no)
+		)
+		(symbol "roadping-c3:C"
+			(pin_names (offset 0.762))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C" (at 0 2.54 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Value" "C" (at 0 -2.54 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 0 -5.08 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Datasheet" "" (at 0 0 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(symbol "C_0_1"
+				(polyline (pts (xy -0.635 1.27) (xy -0.635 -1.27)) (stroke (width 0.2032) (type default)) (fill (type none)))
+				(polyline (pts (xy 0.635 1.27) (xy 0.635 -1.27)) (stroke (width 0.2032) (type default)) (fill (type none)))
+			)
+			(symbol "C_1_1"
+				(pin passive line (at -3.81 0 0) (length 3.175) (name "1" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+				(pin passive line (at 3.81 0 180) (length 3.175) (name "2" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+			)
+			(embedded_fonts no)
+		)
+		(symbol "roadping-c3:Fuse"
+			(pin_names (offset 0.762))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "F" (at 0 2.54 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Value" "Fuse/PTC" (at 0 -2.54 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "Fuse:Fuse_1206_3216Metric" (at 0 -5.08 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Datasheet" "" (at 0 0 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(symbol "Fuse_0_1"
+				(rectangle (start -1.905 0.762) (end 1.905 -0.762) (stroke (width 0.1524) (type default)) (fill (type none)))
+			)
+			(symbol "Fuse_1_1"
+				(pin passive line (at -3.81 0 0) (length 1.905) (name "1" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+				(pin passive line (at 3.81 0 180) (length 1.905) (name "2" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+			)
+			(embedded_fonts no)
+		)
+		(symbol "roadping-c3:D_TVS"
+			(pin_names (offset 0.762))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D" (at 0 2.54 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Value" "TVS" (at 0 -2.54 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "Diode_SMD:D_SOD-323" (at 0 -5.08 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Datasheet" "" (at 0 0 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(symbol "D_TVS_0_1"
+				(polyline (pts (xy -0.635 1.27) (xy -0.635 -1.27)) (stroke (width 0.2032) (type default)) (fill (type none)))
+				(polyline (pts (xy -0.635 0) (xy 0.635 0.762) (xy 0.635 -0.762) (xy -0.635 0)) (stroke (width 0.2032) (type default)) (fill (type none)))
+			)
+			(symbol "D_TVS_1_1"
+				(pin passive line (at -3.81 0 0) (length 3.175) (name "A" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+				(pin passive line (at 3.81 0 180) (length 3.175) (name "K" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+			)
+			(embedded_fonts no)
+		)
+		(symbol "roadping-c3:AP2112K-3.3"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U" (at 0 8.89 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Value" "AP2112K-3.3" (at 0 -8.89 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 0 -11.43 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Datasheet" "https://www.diodes.com/datasheet/download/AP2112.pdf" (at 0 0 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Description" "AP2112K fixed 3.3 V LDO, SOT-23-5: 1 VIN, 2 GND, 3 EN, 4 NC, 5 VOUT" (at 0 0 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(symbol "AP2112K-3.3_0_1" (rectangle (start -7.62 6.35) (end 7.62 -6.35) (stroke (width 0.254) (type default)) (fill (type background))))
+			(symbol "AP2112K-3.3_1_1"
+				(pin power_in line (at -10.16 5.08 0) (length 2.54) (name "VIN" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+				(pin power_in line (at -10.16 -5.08 0) (length 2.54) (name "GND" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+				(pin input line (at -10.16 0 0) (length 2.54) (name "EN" (effects (font (size 1.016 1.016)))) (number "3" (effects (font (size 1.016 1.016)))))
+				(pin no_connect line (at 10.16 -5.08 180) (length 2.54) (name "NC" (effects (font (size 1.016 1.016)))) (number "4" (effects (font (size 1.016 1.016)))))
+				(pin power_out line (at 10.16 5.08 180) (length 2.54) (name "VOUT" (effects (font (size 1.016 1.016)))) (number "5" (effects (font (size 1.016 1.016)))))
+			)
+			(embedded_fonts no)
+		)
+		(symbol "roadping-c3:Conn_01x02"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J" (at 0 5.08 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Value" "Conn_01x02" (at 0 -5.08 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" (at 0 -7.62 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Datasheet" "" (at 0 0 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(symbol "Conn_01x02_0_1" (rectangle (start -2.54 3.81) (end 2.54 -3.81) (stroke (width 0.254) (type default)) (fill (type background))))
+			(symbol "Conn_01x02_1_1"
+				(pin passive line (at -5.08 1.27 0) (length 2.54) (name "Pin_1" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+				(pin passive line (at -5.08 -1.27 0) (length 2.54) (name "Pin_2" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+			)
+			(embedded_fonts no)
+		)
+		(symbol "roadping-c3:Conn_01x06"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J" (at 0 10.16 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Value" "Conn_01x06" (at 0 -10.16 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "roadping-c3:TESTPADS_1X06_2.54MM_EVT" (at 0 -12.70 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Datasheet" "" (at 0 0 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(symbol "Conn_01x06_0_1" (rectangle (start -2.54 8.89) (end 2.54 -8.89) (stroke (width 0.254) (type default)) (fill (type background))))
+			(symbol "Conn_01x06_1_1"
+				(pin passive line (at -5.08 6.35 0) (length 2.54) (name "Pin_1" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+				(pin passive line (at -5.08 3.81 0) (length 2.54) (name "Pin_2" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+				(pin passive line (at -5.08 1.27 0) (length 2.54) (name "Pin_3" (effects (font (size 1.016 1.016)))) (number "3" (effects (font (size 1.016 1.016)))))
+				(pin passive line (at -5.08 -1.27 0) (length 2.54) (name "Pin_4" (effects (font (size 1.016 1.016)))) (number "4" (effects (font (size 1.016 1.016)))))
+				(pin passive line (at -5.08 -3.81 0) (length 2.54) (name "Pin_5" (effects (font (size 1.016 1.016)))) (number "5" (effects (font (size 1.016 1.016)))))
+				(pin passive line (at -5.08 -6.35 0) (length 2.54) (name "Pin_6" (effects (font (size 1.016 1.016)))) (number "6" (effects (font (size 1.016 1.016)))))
+			)
+			(embedded_fonts no)
+		)
+		(symbol "roadping-c3:TestPoint"
+			(pin_names (offset 0.762))
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "TP" (at 0 2.54 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Value" "TestPoint" (at 0 -2.54 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "roadping-c3:TP_Round_1.0mm" (at 0 -5.08 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Datasheet" "" (at 0 0 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(symbol "TestPoint_0_1" (circle (center 0 0) (radius 0.762) (stroke (width 0.1524) (type default)) (fill (type none))))
+			(symbol "TestPoint_1_1" (pin passive line (at -3.81 0 0) (length 3.048) (name "1" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016))))))
+			(embedded_fonts no)
+		)
+		(symbol "roadping-c3:PWR_FLAG"
+			(pin_names (offset 0))
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board no)
+			(property "Reference" "#FLG" (at 0 2.54 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Value" "PWR_FLAG" (at 0 -2.54 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at 0 0 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Datasheet" "" (at 0 0 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(symbol "PWR_FLAG_0_1" (polyline (pts (xy 0 0) (xy 0 2.54) (xy 1.27 1.905) (xy 0 1.27)) (stroke (width 0.2032) (type default)) (fill (type none))))
+			(symbol "PWR_FLAG_1_1" (pin power_out line (at 0 0 270) (length 0) (name "pwr" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016))))))
+			(embedded_fonts no)
+		)
+	)
+	(text "POWER INPUT / LIPO CHARGING"
+		(at 20.32 25.40 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "c8b8acff-3b30-4c69-86d5-1ed614470aeb")
+	)
+	(text "3.3V REGULATOR"
+		(at 55.88 25.40 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "53cae6e8-d57c-4c60-b521-f002fdc1ba11")
+	)
+	(text "ESP32-C3 SUPER MINI"
+		(at 119.38 25.40 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "2e942ab4-8eb2-49d3-8cd1-adcdbdcc3e87")
+	)
+	(text "PEC11R ENCODER"
+		(at 78.74 88.90 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "c74a2676-d85f-4ef2-8ba6-497c5e508a7f")
+	)
+	(text "SH1106 I2C OLED"
+		(at 123.19 88.90 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "1aa36616-3414-459a-9519-c1dec5923090")
+	)
+	(text "BATTERY ADC DIVIDER"
+		(at 50.80 76.20 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "26ce0bf5-ade4-49b0-be1e-01dc6462c4fc")
+	)
+	(text "UART / DEBUG / PROGRAMMING"
+		(at 20.32 124.46 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "4e6b2f76-dcef-4df2-9d2a-64c4492b35cf")
+	)
+	(text "TEST POINTS"
+		(at 170.18 25.40 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "93041cbb-cf73-45c3-9ec6-966334aef47e")
+	)
+	(text "NOTE: EVT debug header does not expose EN/RST; use onboard ESP32-C3 Super Mini RST button."
+		(at 20.32 135.89 0)
+		(effects
+			(font
+				(size 0.889 0.889)
+			)
+		)
+		(uuid "77ebdb2d-6858-4330-975f-50308312af01")
+	)
+	(text "NOTE: I2C_SCL moved to GPIO10. GPIO9 is boot-sensitive and must not be driven low during reset."
+		(at 20.32 138.43 0)
+		(effects
+			(font
+				(size 0.889 0.889)
+			)
+		)
+		(uuid "0f81e4db-d3ad-4f45-aebf-712f135e79a8")
+	)
+	(text "NOTE: TP4056 OUT+/OUT- and protection/load-output behavior must be verified on the actual module."
+		(at 20.32 140.97 0)
+		(effects
+			(font
+				(size 0.889 0.889)
+			)
+		)
+		(uuid "03fd560f-5121-454d-a015-9abf733ce65d")
+	)
+	(symbol
+		(lib_id "roadping-c3:TP4056-Module")
+		(at 76.20 102.87 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f50c24f8-b5e5-40ae-a959-483887823f16")
+		(property "Reference" "U1"
+			(at 76.20 99.06 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TP4056-Module"
+			(at 76.20 106.68 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "roadping-c3:TP4056-Module"
+			(at 76.20 102.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 76.20 102.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "TP4056 charger module; verify OUT+/OUT- protection/load-output behavior"
+			(at 76.20 102.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a0e8912c-a8bb-4f6b-9533-5794b4e275cc")
+		)
+		(pin "2"
+			(uuid "2272bb7d-95c5-4831-aa22-9d5d86d8d864")
+		)
+		(pin "3"
+			(uuid "f24d8cb0-14a6-4a53-98a4-ee003db80b91")
+		)
+		(pin "4"
+			(uuid "ea8283b3-a061-47da-bcf4-87b4c84a2c51")
+		)
+		(pin "5"
+			(uuid "c9c71562-0be6-47eb-a505-d4175e81771e")
+		)
+		(pin "6"
+			(uuid "fa3d8943-89e7-4aa6-9cce-624b58bcd677")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "U1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:Conn_01x02")
+		(at 45.72 105.41 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "222a37a6-d677-44ca-8caa-3a2ef7ad70de")
+		(property "Reference" "J1"
+			(at 45.72 101.60 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "USB_5V_INPUT"
+			(at 45.72 109.22 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+			(at 45.72 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 45.72 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Optional input pads feeding TP4056 IN+/IN-"
+			(at 45.72 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d902d9d1-13f2-4801-a1af-57509d81d507")
+		)
+		(pin "2"
+			(uuid "4e0eb56e-c127-41a4-b495-f332f6ce33b5")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "J1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:Conn_01x02")
+		(at 114.30 105.41 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "34e57219-756f-4d52-a270-d087438a1810")
+		(property "Reference" "J2"
+			(at 114.30 101.60 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "JST_PH_2PIN_LIPO"
+			(at 114.30 109.22 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical"
+			(at 114.30 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 114.30 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "EVT LiPo connector: JST-PH 2.0mm 2-pin; pin 1 VBAT/BAT+, pin 2 GND/BAT-. Check polarity before connecting battery."
+			(at 114.30 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "63dc96c0-51b9-4860-901f-9fe768b04c24")
+		)
+		(pin "2"
+			(uuid "e6afb157-0c50-469b-88ea-76b1130991b9")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "J2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:Fuse")
+		(at 57.15 104.14 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "296bc32d-0c8a-4cef-97d7-0f6be9d79be5")
+		(property "Reference" "F1"
+			(at 57.15 101.60 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PTC_USB_5V_1A"
+			(at 57.15 106.68 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Fuse:Fuse_1206_3216Metric"
+			(at 57.15 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 57.15 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resettable PTC in series with user-accessible USB_5V input before TP4056 IN+."
+			(at 57.15 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "1206L110SLWR"
+			(at 57.15 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Littelfuse"
+			(at 57.15 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "eddc117c-cd69-44e5-9072-dd9828db1251")
+		)
+		(pin "2"
+			(uuid "8172eeb4-2ab8-458d-830b-c0b3961a6c05")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "F1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:Fuse")
+		(at 121.92 104.14 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4a9c200e-3c19-4e74-8cd1-db1da2ebcc18")
+		(property "Reference" "F2"
+			(at 121.92 101.60 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PTC_BAT_1A"
+			(at 121.92 106.68 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Fuse:Fuse_1206_3216Metric"
+			(at 121.92 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 121.92 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resettable PTC in series with LiPo connector BAT+ before VBAT/TP4056 B+."
+			(at 121.92 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "1206L110SLWR"
+			(at 121.92 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Littelfuse"
+			(at 121.92 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "127f81db-686e-4449-b098-ad1b86bfecb2")
+		)
+		(pin "2"
+			(uuid "624b37c4-bc33-4ef3-abad-862cbd8057a7")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "F2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:D_TVS")
+		(at 57.15 111.76 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "36128f08-648c-4406-b500-a34f81f89422")
+		(property "Reference" "D1"
+			(at 57.15 109.22 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "USB_5V_TVS"
+			(at 57.15 114.30 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SOD-323"
+			(at 57.15 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 57.15 111.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "TVS diode from user-accessible USB_5V input to GND; place before USB input PTC."
+			(at 57.15 111.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "PESD5V0S1BA"
+			(at 57.15 111.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Nexperia"
+			(at 57.15 111.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "3cfa71a1-a53f-461d-b8e2-3c71d605618d")
+		)
+		(pin "2"
+			(uuid "b0092456-9701-4edd-b3e1-562ed63b2f97")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:AP2112K-3.3")
+		(at 55.88 55.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "c9747581-18c3-4916-a660-6c2742a90a29")
+		(property "Reference" "U2"
+			(at 55.88 52.07 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "AP2112K-3.3"
+			(at 55.88 59.69 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5"
+			(at 55.88 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.diodes.com/datasheet/download/AP2112.pdf"
+			(at 55.88 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "3.3 V fixed LDO, SOT-23-5"
+			(at 55.88 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "AP2112K-3.3TRG1"
+			(at 55.88 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Diodes Incorporated"
+			(at 55.88 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "3c5ff5ab-e907-48eb-8d67-c60d069dbb4d")
+		)
+		(pin "2"
+			(uuid "877294c5-f4d9-46cb-a529-38fe5136e53e")
+		)
+		(pin "3"
+			(uuid "dc141828-c95d-4831-bb49-9b7c4115ce8d")
+		)
+		(pin "4"
+			(uuid "545d9b1f-c511-4cf9-a970-7edbe0349a20")
+		)
+		(pin "5"
+			(uuid "08c90344-1b9e-44df-8382-06112bac2b0b")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "U2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:C")
+		(at 82.55 50.80 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7db996f0-44cf-40e8-bdd5-b5f1b9af9dbe")
+		(property "Reference" "C1"
+			(at 82.55 46.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1uF"
+			(at 82.55 54.61 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 82.55 50.80 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 82.55 50.80 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "AP2112 input capacitor close to VIN/GND"
+			(at 82.55 50.80 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "4a687879-9966-4a08-846f-d66d930f55e3")
+		)
+		(pin "2"
+			(uuid "d93cae4d-7d9f-424b-82b0-2accac27ec34")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "C1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:C")
+		(at 82.55 55.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "b827e69f-f2e9-4a1d-8da7-d6f79626646f")
+		(property "Reference" "C2"
+			(at 82.55 52.07 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1uF"
+			(at 82.55 59.69 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 82.55 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 82.55 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "AP2112 output capacitor close to VOUT/GND"
+			(at 82.55 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "fd923265-fb4f-40d0-a771-1c352f7828e8")
+		)
+		(pin "2"
+			(uuid "efe8638c-fdbb-493c-9aa7-deac394c5cd7")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "C2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:C")
+		(at 82.55 60.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "10b1f887-588d-4598-a418-13c924d9f7f4")
+		(property "Reference" "C3"
+			(at 82.55 57.15 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10uF"
+			(at 82.55 64.77 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 82.55 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 82.55 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Bulk capacitance near ESP32-C3 power input"
+			(at 82.55 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c8289e56-17ff-496b-a20b-788db7a57bb4")
+		)
+		(pin "2"
+			(uuid "5c47e265-f364-41b0-b6c5-9a821cb37b7e")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "C3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:C")
+		(at 82.55 66.04 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "096e904a-c7e3-4e0c-8b0a-7a9c536b9ae5")
+		(property "Reference" "C4"
+			(at 82.55 62.23 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100nF"
+			(at 82.55 69.85 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 82.55 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 82.55 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "ESP32-C3 local decoupling"
+			(at 82.55 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "036d4e74-b64e-49c2-b4c8-1761dbee231d")
+		)
+		(pin "2"
+			(uuid "0644722a-31ae-4a4a-9c6e-3dbbd1b1203d")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "C4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:C")
+		(at 82.55 71.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f051d69e-70df-4eb7-8ffc-bc07e5d9b3a4")
+		(property "Reference" "C5"
+			(at 82.55 67.31 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100nF"
+			(at 82.55 74.93 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 82.55 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 82.55 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "SH1106 OLED local decoupling"
+			(at 82.55 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e0d155e5-3579-4722-a668-106d49e3fde4")
+		)
+		(pin "2"
+			(uuid "a739e193-0b74-4729-b401-77c2a7863f3e")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "C5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:ESP32-C3_SUPERMINI_TH")
+		(at 119.38 62.23 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "56b4913f-110b-4d04-92ca-7974b3712817")
+		(property "Reference" "U3"
+			(at 119.38 58.42 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "ESP32-C3_SUPERMINI_TH"
+			(at 119.38 66.04 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "roadping-c3:MODULE_ESP32-C3_SUPERMINI_TH"
+			(at 119.38 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 119.38 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "ESP32-C3 Super Mini module; pinout and 22.52 mm x 18.00 mm size verified for EVT; I2C_SCL moved to GPIO10 to avoid GPIO9 boot-strapping risk; verify pitch, antenna keepout, and EN/RST."
+			(at 119.38 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "5V"
+			(uuid "f1376abd-32a4-41e7-b1bc-ee3eb6217f22")
+		)
+		(pin "G"
+			(uuid "17ee9212-74bc-48e3-a5cb-75d70c665ce8")
+		)
+		(pin "3.3"
+			(uuid "e3f7570b-4dd4-448d-b67e-c7242b764482")
+		)
+		(pin "0"
+			(uuid "00fb1a1b-ddcc-48f7-a45f-24c1f7fdc9e5")
+		)
+		(pin "1"
+			(uuid "11f53165-50a7-45da-b528-688b167123af")
+		)
+		(pin "2"
+			(uuid "27954c37-7f45-4b18-ad99-c60f246ccc92")
+		)
+		(pin "3"
+			(uuid "40512ab0-a5b6-42c9-bd8f-9bd15ae93498")
+		)
+		(pin "4"
+			(uuid "eb195bfa-c5db-441d-b00a-753b0cb953d2")
+		)
+		(pin "5"
+			(uuid "0477b177-8baa-450e-b3e9-6c0030452332")
+		)
+		(pin "6"
+			(uuid "094e9e7a-3fe6-40ff-b558-41eba70da877")
+		)
+		(pin "7"
+			(uuid "aa399728-df2c-4b6e-a961-58d5441accfa")
+		)
+		(pin "8"
+			(uuid "a568ad5f-e555-4ab0-afe5-9cc2034da79c")
+		)
+		(pin "9"
+			(uuid "ab1974b8-20bc-4b9e-b261-afd0eefadeff")
+		)
+		(pin "10"
+			(uuid "d9f1003a-8808-4623-9d04-99f93fbaa616")
+		)
+		(pin "20"
+			(uuid "08f3f03a-b6ca-47fa-9417-1e6fdeb5cee1")
+		)
+		(pin "21"
+			(uuid "235e14d8-8d02-48a8-b3d9-cd274aba49fc")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "U3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:OLED_128X64_1.3_I2C")
+		(at 128.27 96.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "358c6d23-4f55-4765-b62a-7bfef4274e8d")
+		(property "Reference" "DS1"
+			(at 128.27 92.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SH1106_I2C_OLED"
+			(at 128.27 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "roadping-c3:OLED_4PIN_VDD_GND_SCK_SDA_2.54MM"
+			(at 128.27 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 128.27 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "128x64 I2C OLED module, SH1106 firmware driver"
+			(at 128.27 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d87d6d46-6938-48d9-a952-e6fcdaed62f6")
+		)
+		(pin "2"
+			(uuid "5621b593-af85-4838-96a3-518ca5873305")
+		)
+		(pin "3"
+			(uuid "8f8a8c7a-8233-4df3-bcec-64b03b482177")
+		)
+		(pin "4"
+			(uuid "712c718d-9f2c-4489-b221-7d90ba0e01b9")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "DS1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:R")
+		(at 149.86 85.09 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files no)
+		(dnp yes)
+		(uuid "c5cbc44d-20af-4350-b35b-9cbc98619827")
+		(property "Reference" "R1"
+			(at 149.86 81.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "4.7k DNP"
+			(at 149.86 88.90 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 149.86 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.86 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Optional I2C pull-up; DNP if OLED module already has pull-ups"
+			(at 149.86 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" "Yes"
+			(at 149.86 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "BOM Comments" "DNP if SH1106 module has pull-ups"
+			(at 149.86 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "220ef434-acbb-4c2d-a3d3-3f65317430cf")
+		)
+		(pin "2"
+			(uuid "1f089f89-9c44-4778-97a8-35b7c6e410eb")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "R1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:R")
+		(at 149.86 90.17 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files no)
+		(dnp yes)
+		(uuid "b7b8665c-f3bb-4b70-81d9-36e01308345c")
+		(property "Reference" "R2"
+			(at 149.86 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "4.7k DNP"
+			(at 149.86 93.98 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 149.86 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.86 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Optional I2C pull-up; DNP if OLED module already has pull-ups"
+			(at 149.86 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" "Yes"
+			(at 149.86 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "BOM Comments" "DNP if SH1106 module has pull-ups"
+			(at 149.86 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5765c2ea-11f0-4484-b6ca-e593181dc019")
+		)
+		(pin "2"
+			(uuid "c2e81b18-e18e-4549-8d06-1c40bfafc1a3")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:PEC11R-4215F-S0024")
+		(at 86.36 68.58 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "50a2c49f-48aa-4578-a038-73feac8ea70e")
+		(property "Reference" "SW1"
+			(at 86.36 64.77 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PEC11R-4215F-S0024"
+			(at 86.36 72.39 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "roadping-c3:XDCR_PEC11R-4215F-S0024"
+			(at 86.36 68.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 86.36 68.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Bourns PEC11R-4215F-S0024 12mm encoder, 24 detents, 24 PPR, 15mm flatted shaft, push switch"
+			(at 86.36 68.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5da983af-c576-4086-8b72-5fa07870d304")
+		)
+		(pin "2"
+			(uuid "cc643195-b9b5-486c-aa79-b6a2f48f06ca")
+		)
+		(pin "A"
+			(uuid "d6096a79-18b9-417d-b28f-d3aef1231e37")
+		)
+		(pin "B"
+			(uuid "8c87df36-6b92-4774-9074-74b5290aab40")
+		)
+		(pin "C"
+			(uuid "adde7430-8b95-4b79-94e2-d8972fe7feeb")
+		)
+		(pin "S1"
+			(uuid "c8ae8df4-8e87-4af0-af1a-014af4142e83")
+		)
+		(pin "S2"
+			(uuid "dee9fa85-aeb2-479c-9577-97f43ecdf99f")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "SW1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:R")
+		(at 149.86 95.25 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "b7bbdd3b-8fd0-40c0-b2cc-8c3d77b8e785")
+		(property "Reference" "R3"
+			(at 149.86 91.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 149.86 99.06 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 149.86 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.86 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Encoder/push-button pull-up to 3V3"
+			(at 149.86 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "316b7714-695f-4be5-a810-538fbd739da6")
+		)
+		(pin "2"
+			(uuid "fba40730-de57-48a5-b0e4-a862545b01da")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "R3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:R")
+		(at 149.86 100.33 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a1430422-25d7-49f8-870e-13fb440fd683")
+		(property "Reference" "R4"
+			(at 149.86 96.52 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 149.86 104.14 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 149.86 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.86 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Encoder/push-button pull-up to 3V3"
+			(at 149.86 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b8947b1d-d75c-47a1-9832-93bf28cb6946")
+		)
+		(pin "2"
+			(uuid "1ba5ec16-02aa-4975-bda5-73a149b23d5c")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "R4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:R")
+		(at 149.86 105.41 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f2dcc734-b174-462f-bdd6-48e914c26295")
+		(property "Reference" "R5"
+			(at 149.86 101.60 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 149.86 109.22 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 149.86 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.86 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Encoder/push-button pull-up to 3V3"
+			(at 149.86 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "61d48d29-8305-4a5b-b595-32b092705c4d")
+		)
+		(pin "2"
+			(uuid "23fc595b-093b-4fcf-8cca-33c7695ee6c6")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "R5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:C")
+		(at 170.18 95.25 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files no)
+		(dnp yes)
+		(uuid "f1cabe43-1275-4856-add7-b0998e1abc2b")
+		(property "Reference" "C6"
+			(at 170.18 91.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10nF DNP"
+			(at 170.18 99.06 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 170.18 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 170.18 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Optional debounce capacitor; tune after encoder testing"
+			(at 170.18 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" "Yes"
+			(at 170.18 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "BOM Comments" "Optional debounce, DNP by default"
+			(at 170.18 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d996996a-3232-4da2-92b9-280185defd28")
+		)
+		(pin "2"
+			(uuid "7eef16cc-49a5-4a01-a444-4907e19c20c0")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "C6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:C")
+		(at 170.18 100.33 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files no)
+		(dnp yes)
+		(uuid "fcd64580-93fd-47ff-8479-adad5d489cd0")
+		(property "Reference" "C7"
+			(at 170.18 96.52 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10nF DNP"
+			(at 170.18 104.14 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 170.18 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 170.18 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Optional debounce capacitor; tune after encoder testing"
+			(at 170.18 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" "Yes"
+			(at 170.18 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "BOM Comments" "Optional debounce, DNP by default"
+			(at 170.18 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "045f917a-5286-49f4-9138-871c943bfcab")
+		)
+		(pin "2"
+			(uuid "682b9991-8f08-441e-846f-8d932ded6fb2")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "C7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:C")
+		(at 170.18 105.41 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files no)
+		(dnp yes)
+		(uuid "7ce55d80-83f8-4b87-a381-0d437aabdd93")
+		(property "Reference" "C8"
+			(at 170.18 101.60 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100nF DNP"
+			(at 170.18 109.22 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 170.18 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 170.18 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Optional debounce capacitor; tune after encoder testing"
+			(at 170.18 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" "Yes"
+			(at 170.18 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "BOM Comments" "Optional debounce, DNP by default"
+			(at 170.18 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "dec9c89d-b391-47df-ad37-e4fe799ad72e")
+		)
+		(pin "2"
+			(uuid "2621c2f4-cae1-4c9d-95c8-7abd968155fb")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "C8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:R")
+		(at 55.88 81.28 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "e58421e6-84fd-45a0-9898-ad6ef9d0f934")
+		(property "Reference" "R6"
+			(at 55.88 77.47 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "220k"
+			(at 55.88 85.09 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 55.88 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 55.88 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Battery divider top resistor from VBAT to BAT_ADC"
+			(at 55.88 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "684c7043-f90f-417c-a705-11e3c1741b29")
+		)
+		(pin "2"
+			(uuid "46b34407-c993-467d-8957-50c748124e7d")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "R6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:R")
+		(at 55.88 86.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "07c71924-0228-42aa-852d-57276c70dc41")
+		(property "Reference" "R7"
+			(at 55.88 82.55 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100k"
+			(at 55.88 90.17 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 55.88 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 55.88 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Battery divider bottom resistor from BAT_ADC to GND"
+			(at 55.88 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "7b6120a3-9711-4c28-8d7f-32882400d7d9")
+		)
+		(pin "2"
+			(uuid "3d938b8d-0105-47d3-a642-407cf0a4d16b")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "R7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:C")
+		(at 76.20 86.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "2d2c9a8d-25d0-4746-afed-0a566b142a1e")
+		(property "Reference" "C9"
+			(at 76.20 82.55 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100nF"
+			(at 76.20 90.17 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 76.20 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 76.20 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "ADC low-pass capacitor at BAT_ADC"
+			(at 76.20 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5f0922d3-bfad-4634-9b0c-a1c174882b5c")
+		)
+		(pin "2"
+			(uuid "71b440e1-ea3e-4818-bdd7-130583cc532c")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "C9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:R")
+		(at 149.86 110.49 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files no)
+		(dnp yes)
+		(uuid "522cab84-2e39-4f64-a1da-245b6dd711e1")
+		(property "Reference" "R8"
+			(at 149.86 106.68 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k DNP"
+			(at 149.86 114.30 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 149.86 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.86 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "DNP extra GPIO9 boot-test pull-up; GPIO9 is no longer I2C_SCL and remains boot-sensitive."
+			(at 149.86 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" "Yes"
+			(at 149.86 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "BOM Comments" "DNP; GPIO9_BOOT_NC must not be held low during reset"
+			(at 149.86 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "1a240e09-d6ac-4f2a-bf21-eb15a4ad43c6")
+		)
+		(pin "2"
+			(uuid "987e2bf5-4df6-4ca8-af8b-fb14cfac1315")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "R8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:Conn_01x06")
+		(at 45.72 127.00 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f8b81255-79b5-4f17-9170-1408e420d80e")
+		(property "Reference" "J3"
+			(at 45.72 123.19 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "UART_DEBUG_PROGRAM"
+			(at 45.72 130.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "roadping-c3:TESTPADS_1X06_2.54MM_EVT"
+			(at 45.72 127.00 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 45.72 127.00 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Compact EVT v2 bottom-edge debug row: pin 1 GND, pin 2 3V3, pin 3 UART_TX/GPIO21, pin 4 UART_RX/GPIO20, pin 5 I2C_SCL/GPIO10, pin 6 GND. SYS_RAW/VBAT/SDA/BAT_ADC use adjacent round pads."
+			(at 45.72 127.00 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "4d082cbe-b26d-4bf0-8eb4-2ee339576349")
+		)
+		(pin "2"
+			(uuid "195662e9-fe24-42f7-b8ae-c709765f71ce")
+		)
+		(pin "3"
+			(uuid "a302fffc-7b48-406c-a9d8-1d9648659206")
+		)
+		(pin "4"
+			(uuid "73262e70-c0c7-4cae-aa83-508ed9c8d42c")
+		)
+		(pin "5"
+			(uuid "b2beb877-3021-4dcf-a842-5d675964583a")
+		)
+		(pin "6"
+			(uuid "bfdf7394-efb1-494f-bef0-0a461dbfe0e3")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "J3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:TestPoint")
+		(at 177.80 35.56 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files no)
+		(dnp yes)
+		(uuid "cae2bbbd-d0cc-4f16-9f9d-ba6915873631")
+		(property "Reference" "TP1"
+			(at 177.80 31.75 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "USB_5V"
+			(at 177.80 39.37 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "roadping-c3:TP_Round_1.0mm"
+			(at 177.80 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.80 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Test point for USB_5V"
+			(at 177.80 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8891e4df-c5bb-400c-ae72-8ad68dedc3d8")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "TP1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:TestPoint")
+		(at 177.80 40.64 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "324a3fc1-f1e0-49ef-ba83-1f706d7782bc")
+		(property "Reference" "TP2"
+			(at 177.80 36.83 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "BAT_CONN+"
+			(at 177.80 44.45 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "roadping-c3:TP_Round_1.0mm"
+			(at 177.80 40.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.80 40.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Raw LiPo connector positive test point before F2 battery PTC; check polarity before use."
+			(at 177.80 40.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "23c5b09f-415d-403b-87c3-f016876ad556")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "TP2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:TestPoint")
+		(at 177.80 45.72 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "0c6c7506-df37-47a5-a300-cd7f3e5f2cf6")
+		(property "Reference" "TP3"
+			(at 177.80 41.91 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SYS_RAW"
+			(at 177.80 49.53 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "roadping-c3:TP_Round_1.0mm"
+			(at 177.80 45.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.80 45.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Test point for SYS_RAW"
+			(at 177.80 45.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c69405e4-ba0d-4fd8-a7b8-409b5ea19065")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "TP3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:TestPoint")
+		(at 177.80 50.80 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files no)
+		(dnp yes)
+		(uuid "3643893d-47de-45ea-a2cc-c75ec634e7c2")
+		(property "Reference" "TP4"
+			(at 177.80 46.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "3V3"
+			(at 177.80 54.61 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "roadping-c3:TP_Round_1.0mm"
+			(at 177.80 50.80 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.80 50.80 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Test point for 3V3"
+			(at 177.80 50.80 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f0af2f20-3cdb-4dad-b1c5-2aa092c728ba")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "TP4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:TestPoint")
+		(at 177.80 55.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "754fbbe9-a2f1-4aec-8012-967dd0f4e537")
+		(property "Reference" "TP5"
+			(at 177.80 52.07 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 177.80 59.69 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "roadping-c3:TP_Round_1.0mm"
+			(at 177.80 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.80 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Test point for GND"
+			(at 177.80 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "be074ebf-62da-4b2d-9d1c-6ae011b0e17c")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "TP5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:TestPoint")
+		(at 177.80 62.23 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files no)
+		(dnp yes)
+		(uuid "aeb1dc8b-297b-416c-9229-702b127e943e")
+		(property "Reference" "TP6"
+			(at 177.80 58.42 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "UART_TX"
+			(at 177.80 66.04 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "roadping-c3:TP_Round_1.0mm"
+			(at 177.80 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.80 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Test point for UART_TX"
+			(at 177.80 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "153bc3f4-7678-41d7-808c-03ebde37be35")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "TP6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:TestPoint")
+		(at 177.80 67.31 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files no)
+		(dnp yes)
+		(uuid "bd3dfd36-de36-448a-acc7-ac7298bb2008")
+		(property "Reference" "TP7"
+			(at 177.80 63.50 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "UART_RX"
+			(at 177.80 71.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "roadping-c3:TP_Round_1.0mm"
+			(at 177.80 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.80 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Test point for UART_RX"
+			(at 177.80 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2f2e755c-1578-4689-8d05-f8ff15c68ec8")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "TP7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:TestPoint")
+		(at 177.80 72.39 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "d94696e3-34ff-4e81-bcf2-a913c1d66ca1")
+		(property "Reference" "TP8"
+			(at 177.80 68.58 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "I2C_SDA"
+			(at 177.80 76.20 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "roadping-c3:TP_Round_1.0mm"
+			(at 177.80 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.80 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Test point for I2C_SDA"
+			(at 177.80 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "57a90366-883e-4986-9772-531bc2e88e5d")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "TP8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:TestPoint")
+		(at 177.80 77.47 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files no)
+		(dnp yes)
+		(uuid "f5a8d682-9319-47ac-ba70-ce6096fac4f1")
+		(property "Reference" "TP9"
+			(at 177.80 73.66 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "I2C_SCL"
+			(at 177.80 81.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "roadping-c3:TP_Round_1.0mm"
+			(at 177.80 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.80 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Test point for I2C_SCL"
+			(at 177.80 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "9dfec60b-0a93-4007-9302-0d6f33459453")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "TP9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:TestPoint")
+		(at 177.80 83.82 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files no)
+		(dnp yes)
+		(uuid "bd77c5ea-3704-4a5f-9133-927fb486fe69")
+		(property "Reference" "TP10"
+			(at 177.80 80.01 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "ENC_A"
+			(at 177.80 87.63 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "roadping-c3:TP_Round_1.0mm"
+			(at 177.80 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.80 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Test point for ENC_A"
+			(at 177.80 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a44fd96c-58a2-4a31-b954-cc97a35b9b75")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "TP10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:TestPoint")
+		(at 177.80 88.90 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files no)
+		(dnp yes)
+		(uuid "ddcaf24e-8ae4-4208-a34b-6e962d6f2397")
+		(property "Reference" "TP11"
+			(at 177.80 85.09 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "ENC_B"
+			(at 177.80 92.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "roadping-c3:TP_Round_1.0mm"
+			(at 177.80 88.90 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.80 88.90 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Test point for ENC_B"
+			(at 177.80 88.90 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ea9beb4d-8d2d-492d-a750-34fa8ff52f57")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "TP11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:TestPoint")
+		(at 177.80 93.98 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files no)
+		(dnp yes)
+		(uuid "164c7f6c-43b9-4af9-91d6-410521796f55")
+		(property "Reference" "TP12"
+			(at 177.80 90.17 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "ENC_SW"
+			(at 177.80 97.79 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "roadping-c3:TP_Round_1.0mm"
+			(at 177.80 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.80 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Test point for ENC_SW"
+			(at 177.80 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "28c114ad-1cba-49b9-accf-ef9b725fa2f7")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "TP12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:TestPoint")
+		(at 177.80 99.06 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "45f454fe-0099-4eba-b9ea-3a4df23b4b1f")
+		(property "Reference" "TP13"
+			(at 177.80 95.25 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "BAT_ADC"
+			(at 177.80 102.87 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "roadping-c3:TP_Round_1.0mm"
+			(at 177.80 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.80 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Test point for BAT_ADC"
+			(at 177.80 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "dad09d72-3936-411d-b4b3-40bfdda6883d")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "TP13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:TestPoint")
+		(at 177.80 120.65 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files no)
+		(dnp yes)
+		(uuid "37ea60bf-cc69-441f-9031-29e145b8683b")
+		(property "Reference" "TP14"
+			(at 177.80 116.84 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "EN_RST_UNVERIFIED_NC"
+			(at 177.80 124.46 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "roadping-c3:TP_Round_1.0mm"
+			(at 177.80 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.80 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unconnected EVT placeholder; external EN/RST pad is not verified and is not exposed for EVT"
+			(at 177.80 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "fa222a6c-cc2a-41b8-ad73-7a40ad5d6588")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "TP14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:TestPoint")
+		(at 177.80 125.73 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files no)
+		(dnp yes)
+		(uuid "9aef0677-24a3-4fab-99dd-9169e6ca575c")
+		(property "Reference" "TP15"
+			(at 177.80 121.92 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GPIO9_BOOT_NC"
+			(at 177.80 129.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "roadping-c3:TP_Round_1.0mm"
+			(at 177.80 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.80 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "DNP placeholder for GPIO9 boot-sensitive pad only; I2C_SCL is moved to GPIO10."
+			(at 177.80 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0fa88671-5164-46c9-b179-ab313b3863b0")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "TP15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:PWR_FLAG")
+		(at 35.56 35.56 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files no)
+		(dnp no)
+		(uuid "2cbb2537-a0ee-4175-8ab0-8b0bf7968f1a")
+		(property "Reference" "#FLG01"
+			(at 35.56 31.75 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 35.56 39.37 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 35.56 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 35.56 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5d7d415e-2850-4b96-a311-753f560359c4")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "#FLG01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "roadping-c3:PWR_FLAG")
+		(at 35.56 40.64 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files no)
+		(dnp no)
+		(uuid "f6c66084-c38b-42ef-8901-78bfc672720a")
+		(property "Reference" "#FLG02"
+			(at 35.56 36.83 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 35.56 44.45 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 35.56 40.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 35.56 40.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "16255fa0-b668-4203-85cc-a5d8b3075610")
+		)
+		(instances
+			(project "roadping-c3-compact-evt-v2"
+				(path "/a7a608b8-5634-45ce-b057-edee81ded4ea"
+					(reference "#FLG02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(label "USB_5V"
+		(at 59.69 97.79 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "66f4443a-9936-4607-8047-4384ea8a29eb")
+	)
+	(label "GND"
+		(at 59.69 100.33 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "97c876c7-6145-467b-baae-10b841e7bc3f")
+	)
+	(label "SYS_RAW"
+		(at 92.71 97.79 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "e8c33c0b-a110-4bf0-8596-12a00997971b")
+	)
+	(label "GND"
+		(at 92.71 100.33 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "83334d66-d494-4c07-9be6-44b72cde11ef")
+	)
+	(label "VBAT"
+		(at 92.71 105.41 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "0b67132b-b2e7-4218-8842-128a05b37f16")
+	)
+	(label "GND"
+		(at 92.71 107.95 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "64e3c787-4d8d-404f-9511-95f8e09c7e8f")
+	)
+	(label "USB_5V_IN"
+		(at 40.64 104.14 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "b0c82a7d-ef56-4cc9-af2f-4a543641020e")
+	)
+	(label "GND"
+		(at 40.64 106.68 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "1360463f-0248-477a-a752-91881149d73d")
+	)
+	(label "BAT_CONN+"
+		(at 109.22 104.14 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "d1707f42-2413-4bf3-a434-67b844652a96")
+	)
+	(label "USB_5V_IN"
+		(at 53.34 104.14 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "74e58563-7a8c-4f20-982c-139beccfae74")
+	)
+	(label "USB_5V"
+		(at 60.96 104.14 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "c12653a2-3822-4f2c-be37-761c48af786d")
+	)
+	(label "BAT_CONN+"
+		(at 118.11 104.14 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "96316f4a-cc85-4242-ba77-c4e0f2205262")
+	)
+	(label "VBAT"
+		(at 125.73 104.14 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "f169bfb7-1cde-4145-bd57-6773e3779847")
+	)
+	(label "GND"
+		(at 53.34 111.76 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "e9c5899b-10bf-4bf2-8170-525103a7d6f9")
+	)
+	(label "USB_5V_IN"
+		(at 60.96 111.76 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "90877e4f-1cee-4659-b293-be929dd7d166")
+	)
+	(label "GND"
+		(at 109.22 106.68 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "0f60328f-568b-4f6f-8c27-28d1da81aca6")
+	)
+	(label "SYS_RAW"
+		(at 45.72 50.80 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "b8b3e97c-7d79-4725-8f84-0bef8c28a6a4")
+	)
+	(label "GND"
+		(at 45.72 60.96 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "4b488917-6622-4cb2-b327-80fdbaceaf85")
+	)
+	(label "SYS_RAW"
+		(at 45.72 55.88 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "c0b5333b-850d-4c25-972c-17bb05363452")
+	)
+	(label "3V3"
+		(at 66.04 50.80 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "17ce2172-a777-43ac-8ff7-45e5cc356258")
+	)
+	(label "SYS_RAW"
+		(at 78.74 50.80 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "3c015025-0f3b-4476-9887-98048ed0e781")
+	)
+	(label "GND"
+		(at 86.36 50.80 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "4ab18353-fdae-4e6c-89b4-e52143346451")
+	)
+	(label "3V3"
+		(at 78.74 55.88 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "445c0cb3-f6cf-498e-94a1-bf754e1ef4f3")
+	)
+	(label "GND"
+		(at 86.36 55.88 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "89a49d5a-b8f4-4386-9e27-3ef9a535c0b1")
+	)
+	(label "3V3"
+		(at 78.74 60.96 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "046392c8-2563-453c-8830-2ac30eb26c19")
+	)
+	(label "GND"
+		(at 86.36 60.96 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "829acb13-b474-45ce-bfab-c38bc622ecc1")
+	)
+	(label "3V3"
+		(at 78.74 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "89a0618c-9f42-446a-ab8e-9f4fa195fd52")
+	)
+	(label "GND"
+		(at 86.36 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "32ca0317-da00-46cc-8328-5920447cbc61")
+	)
+	(label "3V3"
+		(at 78.74 71.12 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "6a7367be-fffc-4466-8bcf-2d250d331883")
+	)
+	(label "GND"
+		(at 86.36 71.12 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "195c9117-fd3a-473e-a501-3ffaab07fa95")
+	)
+	(label "BAT_ADC"
+		(at 101.60 57.15 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "cc3d15c8-8cf0-44ba-b2b8-4ce920a8ec5d")
+	)
+	(label "ENC_A"
+		(at 101.60 62.23 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "50378b66-dcf7-46da-85b0-dde2f87b69ad")
+	)
+	(label "ENC_B"
+		(at 101.60 64.77 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "24f2c7c3-8c8f-44b6-b680-8446ded769fa")
+	)
+	(label "ENC_SW"
+		(at 101.60 67.31 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "f6244881-5af5-4ef5-a394-41809d79cb66")
+	)
+	(no_connect
+		(at 101.60 72.39)
+		(uuid "a8c2dfd7-4f15-43cf-92b2-70d9c4313ec0")
+	)
+	(no_connect
+		(at 137.16 57.15)
+		(uuid "d792d36d-c42a-4d46-aab7-903da9e15419")
+	)
+	(label "I2C_SDA"
+		(at 137.16 59.69 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "e84018cc-bed8-49b7-b65c-ddc2a56cb15b")
+	)
+	(no_connect
+		(at 137.16 62.23)
+		(uuid "79bdfcfe-e997-49ff-a207-afb636280258")
+	)
+	(label "UART_RX"
+		(at 137.16 67.31 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "8bf59329-81f9-423a-bd2f-5f138900ce75")
+	)
+	(label "UART_TX"
+		(at 137.16 69.85 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "c3ef4ad8-756e-4355-92cb-36df58bbfdea")
+	)
+	(label "3V3"
+		(at 137.16 52.07 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "230f831e-4795-4ae9-b510-42b23eacf1d4")
+	)
+	(label "GND"
+		(at 137.16 77.47 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "fe58f294-177b-46d2-9d65-dc824e065baf")
+	)
+	(label "3V3"
+		(at 143.51 88.90 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "60de10c9-4b13-4782-a0dc-1523b934dfd8")
+	)
+	(label "GND"
+		(at 143.51 101.60 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "e83e9de5-fab1-4f6b-8259-c8c4b5167bf1")
+	)
+	(label "I2C_SCL"
+		(at 113.03 93.98 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "c307595b-b175-4e5c-8468-ff2b9ceb1e30")
+	)
+	(label "I2C_SDA"
+		(at 113.03 96.52 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "4927e0ef-95f0-4f1e-a272-9e172f507eb9")
+	)
+	(label "3V3"
+		(at 146.05 85.09 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "9738db3a-6170-4bc8-822f-9b8684f6d5ca")
+	)
+	(label "I2C_SDA"
+		(at 153.67 85.09 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "0b7fc0d3-2bea-437b-94f7-32479f798c72")
+	)
+	(label "3V3"
+		(at 146.05 90.17 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "b5991bda-36ab-4748-ad5e-053277618a18")
+	)
+	(label "I2C_SCL"
+		(at 153.67 90.17 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "979995e6-1a56-4c74-9661-99e9106ae0cc")
+	)
+	(label "GND"
+		(at 76.20 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "ed00000a-fcf1-404d-ac2d-599a47c24188")
+	)
+	(label "ENC_SW"
+		(at 96.52 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "a50bcf61-7fd5-4d11-9129-1260c0a10e1e")
+	)
+	(label "ENC_A"
+		(at 96.52 71.12 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "1e1220df-0307-4c76-884e-a72f548d49d3")
+	)
+	(label "ENC_B"
+		(at 96.52 73.66 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "3c53d57c-62ec-45a4-a506-9a94e285bd11")
+	)
+	(label "GND"
+		(at 76.20 71.12 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "a6c99978-bdd5-4bf6-8105-858a5e4c6080")
+	)
+	(label "GND"
+		(at 76.20 73.66 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "362fb154-bea5-40ca-aa39-ce0dbcee1fd9")
+	)
+	(label "3V3"
+		(at 146.05 95.25 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "f67f576e-87bf-43b0-945d-c460861dc9f7")
+	)
+	(label "ENC_A"
+		(at 153.67 95.25 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "666fe471-c5e6-436a-9e84-565b8f753e49")
+	)
+	(label "3V3"
+		(at 146.05 100.33 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "9a0be2b1-bd90-497e-b102-d0addb7809b4")
+	)
+	(label "ENC_B"
+		(at 153.67 100.33 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "c1f18660-c9ad-40d4-a28d-f2bc62c6ef5e")
+	)
+	(label "3V3"
+		(at 146.05 105.41 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "142027b4-14af-4f16-8852-cc823e09bc6c")
+	)
+	(label "ENC_SW"
+		(at 153.67 105.41 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "eae10577-e9b6-4b44-ad82-022cd16b476d")
+	)
+	(label "ENC_A"
+		(at 166.37 95.25 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "4f59fad2-702e-4af9-b7cc-c9b5db3b518f")
+	)
+	(label "GND"
+		(at 173.99 95.25 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "11341aa5-f466-4e04-87ab-f228f116d881")
+	)
+	(label "ENC_B"
+		(at 166.37 100.33 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "06e71e39-ae3e-4bf8-8c28-feead37da946")
+	)
+	(label "GND"
+		(at 173.99 100.33 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "643d15f6-3e35-4a36-ae1b-d0a3bb76ef1c")
+	)
+	(label "ENC_SW"
+		(at 166.37 105.41 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "1bf1692b-9100-404e-be75-c8f541b864d5")
+	)
+	(label "GND"
+		(at 173.99 105.41 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "980c5166-5db2-4581-a13f-9cb20fda672a")
+	)
+	(label "VBAT"
+		(at 52.07 81.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "e93ac7d1-01b6-4cdf-baed-5546a4052de8")
+	)
+	(label "BAT_ADC"
+		(at 59.69 81.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "1a9b9aeb-f9b3-45f5-9d2f-d80dcad7a9e8")
+	)
+	(label "BAT_ADC"
+		(at 52.07 86.36 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "ca14d6d7-d04b-4c9c-af84-abcc935ad120")
+	)
+	(label "GND"
+		(at 59.69 86.36 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "62b47d04-b361-46f1-b310-fe91f8ad6aa4")
+	)
+	(label "BAT_ADC"
+		(at 72.39 86.36 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "e6392d5a-f5dd-4b37-bf64-b31a76d8701f")
+	)
+	(label "GND"
+		(at 80.01 86.36 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "af78ada0-e07e-46c3-9f4e-32d8e15efd94")
+	)
+	(label "3V3"
+		(at 146.05 110.49 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "83ee0db0-5c41-42dd-a7bc-2b470e47405f")
+	)
+	(label "GPIO9_BOOT_NC"
+		(at 153.67 110.49 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "1895fb7f-f0ac-40ea-b6c9-1aecbf1f0d1a")
+	)
+	(label "GND"
+		(at 40.64 120.65 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "146d5586-e0a2-47da-8aae-4a8e7786e6d3")
+	)
+	(label "3V3"
+		(at 40.64 123.19 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "8a969f27-b695-4023-8053-17b621e52c5f")
+	)
+	(label "UART_TX"
+		(at 40.64 125.73 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "0e14883a-1d68-48d1-b996-4f5a68ee0188")
+	)
+	(label "UART_RX"
+		(at 40.64 128.27 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "d0b25aae-30e8-4b5d-bbaa-0c15a8c64454")
+	)
+	(label "I2C_SCL"
+		(at 40.64 130.81 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "a5a7aa02-3895-48b2-b23d-bc60e2956d2c")
+	)
+	(label "GND"
+		(at 40.64 133.35 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "cbfdb99d-5774-4ede-bf76-ac6f1430ef79")
+	)
+	(label "USB_5V"
+		(at 173.99 35.56 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "e8ed2da1-9bae-4c58-9f41-64c91c68afe1")
+	)
+	(label "BAT_CONN+"
+		(at 173.99 40.64 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "f4327047-20e9-4773-90ad-b57599185998")
+	)
+	(label "SYS_RAW"
+		(at 173.99 45.72 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "8dfb82d1-2acf-455a-b5c7-a141868a8b4d")
+	)
+	(label "3V3"
+		(at 173.99 50.80 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "3dfa6fc1-1fc1-4c4c-962f-fc7da54c1da5")
+	)
+	(label "GND"
+		(at 173.99 55.88 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "097642ea-d6fb-4b56-a65f-5d9732c6616a")
+	)
+	(label "UART_TX"
+		(at 173.99 62.23 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "21f6f5c8-e0a0-4993-ae28-7a4a509f39dc")
+	)
+	(label "UART_RX"
+		(at 173.99 67.31 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "564c49ce-af01-42cd-9816-7feca3abbdb9")
+	)
+	(label "I2C_SDA"
+		(at 173.99 72.39 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "228ef5f8-0887-45ac-9886-8cfa524e1c58")
+	)
+	(label "I2C_SCL"
+		(at 173.99 77.47 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "c1026cfc-d286-44dd-b83f-8f4c8986cccc")
+	)
+	(label "ENC_A"
+		(at 173.99 83.82 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "211f2384-b5e4-4e61-a1dc-5cfa574272af")
+	)
+	(label "ENC_B"
+		(at 173.99 88.90 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "db26607c-368e-4e41-8137-a064686e6bb7")
+	)
+	(label "ENC_SW"
+		(at 173.99 93.98 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "93cf89fb-824f-4e9b-aed0-b3adcacded57")
+	)
+	(label "BAT_ADC"
+		(at 173.99 99.06 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "0e27c42a-d5fa-4541-9e8e-a761fce0e4fc")
+	)
+	(no_connect
+		(at 173.99 120.65)
+		(uuid "8131cfa5-9bad-485f-b139-f9fa5daddcfd")
+	)
+	(label "GPIO9_BOOT_NC"
+		(at 173.99 125.73 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "b5e25727-28fc-41d3-bc49-b5ac819a3813")
+	)
+	(label "USB_5V"
+		(at 35.56 35.56 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "536f3744-2062-4277-8b57-2d6fbde8addc")
+	)
+	(label "VBAT"
+		(at 35.56 40.64 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "69c17fbf-3870-4cca-9f9f-d68aa95ca3b7")
+	)
+	(label "GND"
+		(at 76.20 76.20 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "ac5aba3b-40a5-4349-9f7d-64009f96ab4f")
+	)
+	(no_connect
+		(at 66.04 60.96)
+		(uuid "7f8b303c-7a49-4e6f-98b6-1c26f9d08034")
+	)
+	(no_connect
+		(at 101.60 59.69)
+		(uuid "9e66c04f-4eb3-449d-ae75-2afb7f642e0b")
+	)
+	(no_connect
+		(at 101.60 69.85)
+		(uuid "3b345f51-1bef-4344-93a7-e0854731d131")
+	)
+	(label "I2C_SCL"
+		(at 137.16 64.77 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "614e3e11-ba1b-4336-ac04-5d8e9441cf25")
+	)
+	(no_connect
+		(at 137.16 49.53)
+		(uuid "21dbe0cb-2c0b-4820-a54b-08cdd7bbda36")
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

@@ -1,0 +1,415 @@
+{
+  "analyzer_type": "cross_analysis",
+  "schema_version": "1.3.0",
+  "elapsed_s": 0.002,
+  "summary": {
+    "total_findings": 6,
+    "by_severity": {
+      "error": 0,
+      "warning": 6,
+      "info": 0
+    }
+  },
+  "findings": [
+    {
+      "detector": "check_cross_validation",
+      "rule_id": "XV-001",
+      "category": "design_sync",
+      "summary": "9 component(s) in schematic but not PCB",
+      "description": "Missing from PCB: C6, C7, C8, D1, F1, F2, R1, R2, R8.",
+      "components": [
+        "C6",
+        "C7",
+        "C8",
+        "D1",
+        "F1",
+        "F2",
+        "R1",
+        "R2",
+        "R8"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "warning",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Update PCB from schematic (Tools > Update PCB from Schematic).",
+      "report_context": {
+        "section": "Design Sync",
+        "impact": "Missing components on manufactured board",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "detector": "check_cross_validation",
+      "rule_id": "XV-002",
+      "category": "design_sync",
+      "summary": "TP2: value mismatch \u2014 \"BAT_CONN+\" vs \"VBAT\"",
+      "description": "TP2 has \"BAT_CONN+\" in schematic but \"VBAT\" in PCB.",
+      "components": [
+        "TP2"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "warning",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Sync PCB with schematic to resolve value differences.",
+      "report_context": {
+        "section": "Design Sync",
+        "impact": "Wrong component may be placed during assembly",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "detector": "check_cross_validation",
+      "rule_id": "XV-002",
+      "category": "design_sync",
+      "summary": "U3: value mismatch \u2014 \"ESP32-C3_SUPERMINI_TH\" vs \"ESP32-C3_SUPERMINI\"",
+      "description": "U3 has \"ESP32-C3_SUPERMINI_TH\" in schematic but \"ESP32-C3_SUPERMINI\" in PCB.",
+      "components": [
+        "U3"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "warning",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Sync PCB with schematic to resolve value differences.",
+      "report_context": {
+        "section": "Design Sync",
+        "impact": "Wrong component may be placed during assembly",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "detector": "check_cross_validation",
+      "rule_id": "XV-002",
+      "category": "design_sync",
+      "summary": "TP3: value mismatch \u2014 \"SYS_RAW\" vs \"RAW\"",
+      "description": "TP3 has \"SYS_RAW\" in schematic but \"RAW\" in PCB.",
+      "components": [
+        "TP3"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "warning",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Sync PCB with schematic to resolve value differences.",
+      "report_context": {
+        "section": "Design Sync",
+        "impact": "Wrong component may be placed during assembly",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "detector": "check_cross_validation",
+      "rule_id": "XV-002",
+      "category": "design_sync",
+      "summary": "TP8: value mismatch \u2014 \"I2C_SDA\" vs \"SDA\"",
+      "description": "TP8 has \"I2C_SDA\" in schematic but \"SDA\" in PCB.",
+      "components": [
+        "TP8"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "warning",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Sync PCB with schematic to resolve value differences.",
+      "report_context": {
+        "section": "Design Sync",
+        "impact": "Wrong component may be placed during assembly",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "detector": "check_cross_validation",
+      "rule_id": "XV-002",
+      "category": "design_sync",
+      "summary": "TP13: value mismatch \u2014 \"BAT_ADC\" vs \"BAT\"",
+      "description": "TP13 has \"BAT_ADC\" in schematic but \"BAT\" in PCB.",
+      "components": [
+        "TP13"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "warning",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Sync PCB with schematic to resolve value differences.",
+      "report_context": {
+        "section": "Design Sync",
+        "impact": "Wrong component may be placed during assembly",
+        "standard_ref": ""
+      },
+      "stages": [
+        "pre_fab"
+      ]
+    }
+  ],
+  "trust_summary": {
+    "total_findings": 6,
+    "trust_level": "high",
+    "by_confidence": {
+      "deterministic": 6,
+      "heuristic": 0,
+      "datasheet-backed": 0
+    },
+    "by_evidence_source": {
+      "datasheet": 0,
+      "topology": 6,
+      "heuristic_rule": 0,
+      "symbol_footprint": 0,
+      "bom": 0,
+      "geometry": 0,
+      "api_lookup": 0
+    },
+    "provenance_coverage_pct": 0.0
+  },
+  "audience_summary": {
+    "designer": {
+      "total_findings": 6,
+      "by_severity": {
+        "error": 0,
+        "warning": 6,
+        "info": 0
+      },
+      "by_category": {
+        "design_sync": 6
+      },
+      "top_issues": [
+        {
+          "detector": "check_cross_validation",
+          "rule_id": "XV-001",
+          "category": "design_sync",
+          "summary": "9 component(s) in schematic but not PCB",
+          "description": "Missing from PCB: C6, C7, C8, D1, F1, F2, R1, R2, R8.",
+          "components": [
+            "C6",
+            "C7",
+            "C8",
+            "D1",
+            "F1",
+            "F2",
+            "R1",
+            "R2",
+            "R8"
+          ],
+          "nets": [],
+          "pins": [],
+          "severity": "warning",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "recommendation": "Update PCB from schematic (Tools > Update PCB from Schematic).",
+          "report_context": {
+            "section": "Design Sync",
+            "impact": "Missing components on manufactured board",
+            "standard_ref": ""
+          },
+          "stages": [
+            "pre_fab"
+          ]
+        },
+        {
+          "detector": "check_cross_validation",
+          "rule_id": "XV-002",
+          "category": "design_sync",
+          "summary": "TP2: value mismatch \u2014 \"BAT_CONN+\" vs \"VBAT\"",
+          "description": "TP2 has \"BAT_CONN+\" in schematic but \"VBAT\" in PCB.",
+          "components": [
+            "TP2"
+          ],
+          "nets": [],
+          "pins": [],
+          "severity": "warning",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "recommendation": "Sync PCB with schematic to resolve value differences.",
+          "report_context": {
+            "section": "Design Sync",
+            "impact": "Wrong component may be placed during assembly",
+            "standard_ref": ""
+          },
+          "stages": [
+            "pre_fab"
+          ]
+        },
+        {
+          "detector": "check_cross_validation",
+          "rule_id": "XV-002",
+          "category": "design_sync",
+          "summary": "U3: value mismatch \u2014 \"ESP32-C3_SUPERMINI_TH\" vs \"ESP32-C3_SUPERMINI\"",
+          "description": "U3 has \"ESP32-C3_SUPERMINI_TH\" in schematic but \"ESP32-C3_SUPERMINI\" in PCB.",
+          "components": [
+            "U3"
+          ],
+          "nets": [],
+          "pins": [],
+          "severity": "warning",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "recommendation": "Sync PCB with schematic to resolve value differences.",
+          "report_context": {
+            "section": "Design Sync",
+            "impact": "Wrong component may be placed during assembly",
+            "standard_ref": ""
+          },
+          "stages": [
+            "pre_fab"
+          ]
+        },
+        {
+          "detector": "check_cross_validation",
+          "rule_id": "XV-002",
+          "category": "design_sync",
+          "summary": "TP3: value mismatch \u2014 \"SYS_RAW\" vs \"RAW\"",
+          "description": "TP3 has \"SYS_RAW\" in schematic but \"RAW\" in PCB.",
+          "components": [
+            "TP3"
+          ],
+          "nets": [],
+          "pins": [],
+          "severity": "warning",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "recommendation": "Sync PCB with schematic to resolve value differences.",
+          "report_context": {
+            "section": "Design Sync",
+            "impact": "Wrong component may be placed during assembly",
+            "standard_ref": ""
+          },
+          "stages": [
+            "pre_fab"
+          ]
+        },
+        {
+          "detector": "check_cross_validation",
+          "rule_id": "XV-002",
+          "category": "design_sync",
+          "summary": "TP8: value mismatch \u2014 \"I2C_SDA\" vs \"SDA\"",
+          "description": "TP8 has \"I2C_SDA\" in schematic but \"SDA\" in PCB.",
+          "components": [
+            "TP8"
+          ],
+          "nets": [],
+          "pins": [],
+          "severity": "warning",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "recommendation": "Sync PCB with schematic to resolve value differences.",
+          "report_context": {
+            "section": "Design Sync",
+            "impact": "Wrong component may be placed during assembly",
+            "standard_ref": ""
+          },
+          "stages": [
+            "pre_fab"
+          ]
+        },
+        {
+          "detector": "check_cross_validation",
+          "rule_id": "XV-002",
+          "category": "design_sync",
+          "summary": "TP13: value mismatch \u2014 \"BAT_ADC\" vs \"BAT\"",
+          "description": "TP13 has \"BAT_ADC\" in schematic but \"BAT\" in PCB.",
+          "components": [
+            "TP13"
+          ],
+          "nets": [],
+          "pins": [],
+          "severity": "warning",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "recommendation": "Sync PCB with schematic to resolve value differences.",
+          "report_context": {
+            "section": "Design Sync",
+            "impact": "Wrong component may be placed during assembly",
+            "standard_ref": ""
+          },
+          "stages": [
+            "pre_fab"
+          ]
+        }
+      ]
+    },
+    "reviewer": {
+      "total_findings": 6,
+      "by_category": {
+        "design_sync": 6
+      },
+      "top_issues": [
+        {
+          "rule_id": "XV-001",
+          "severity": "warning",
+          "summary": "9 component(s) in schematic but not PCB",
+          "recommendation": "Update PCB from schematic (Tools > Update PCB from Schematic).",
+          "category": "design_sync"
+        },
+        {
+          "rule_id": "XV-002",
+          "severity": "warning",
+          "summary": "TP2: value mismatch \u2014 \"BAT_CONN+\" vs \"VBAT\"",
+          "recommendation": "Sync PCB with schematic to resolve value differences.",
+          "category": "design_sync"
+        },
+        {
+          "rule_id": "XV-002",
+          "severity": "warning",
+          "summary": "U3: value mismatch \u2014 \"ESP32-C3_SUPERMINI_TH\" vs \"ESP32-C3_SUPERMINI\"",
+          "recommendation": "Sync PCB with schematic to resolve value differences.",
+          "category": "design_sync"
+        },
+        {
+          "rule_id": "XV-002",
+          "severity": "warning",
+          "summary": "TP3: value mismatch \u2014 \"SYS_RAW\" vs \"RAW\"",
+          "recommendation": "Sync PCB with schematic to resolve value differences.",
+          "category": "design_sync"
+        },
+        {
+          "rule_id": "XV-002",
+          "severity": "warning",
+          "summary": "TP8: value mismatch \u2014 \"I2C_SDA\" vs \"SDA\"",
+          "recommendation": "Sync PCB with schematic to resolve value differences.",
+          "category": "design_sync"
+        },
+        {
+          "rule_id": "XV-002",
+          "severity": "warning",
+          "summary": "TP13: value mismatch \u2014 \"BAT_ADC\" vs \"BAT\"",
+          "recommendation": "Sync PCB with schematic to resolve value differences.",
+          "category": "design_sync"
+        }
+      ]
+    },
+    "manager": {
+      "risk_level": "low",
+      "blocker_count": 0,
+      "warning_count": 6,
+      "stage_readiness": {
+        "schematic": "pass",
+        "layout": "pass",
+        "pre_fab": "needs_review",
+        "bring_up": "pass"
+      },
+      "one_liner": "6 warnings across 1 category."
+    }
+  }
+}

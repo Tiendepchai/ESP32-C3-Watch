@@ -1,0 +1,6 @@
+*.bak
+__pycache__/
+datasheets/*.pdf
+!datasheets/manifest
+fabrication/*.zip
+analysis/*.png
